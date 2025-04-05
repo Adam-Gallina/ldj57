@@ -1,8 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://fcfvs6lptyxx"]
+[gd_scene load_steps=3 format=3 uid="uid://fcfvs6lptyxx"]
 
 [ext_resource type="Script" uid="uid://flotiam5n1l6" path="res://Player/player_controller.gd" id="1_4flbx"]
-[ext_resource type="Texture2D" uid="uid://nm8xwqgqnuib" path="res://Player/Mouth.png" id="2_4ntmi"]
-[ext_resource type="Script" uid="uid://djxg3vwa8oe4t" path="res://Player/inventory.gd" id="3_btcbx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
 
@@ -19,24 +17,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
 target_position = Vector3(0, 0, -100)
 collision_mask = 10
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -32.0
-offset_right = 32.0
-offset_bottom = 32.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_4ntmi")
-expand_mode = 2
-stretch_mode = 4
-
-[node name="Inventory" type="Node" parent="."]
-script = ExtResource("3_btcbx")
