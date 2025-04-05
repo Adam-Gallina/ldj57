@@ -3,6 +3,11 @@ extends CharacterBody3D
 @export_category('Movement')
 @export var MoveSpeed = 10
 
+@export_category('Combat')
+@export var AttackSpeed = 0
+@export var AttackDamage = 1
+var _attack_cooldown = 0
+
 @export_category('Camera')
 @export var CamSpeed = .125
 var curr_pan_mod = 1
@@ -17,7 +22,7 @@ var yaw:
 
 
 @onready var cam: Camera3D = $Camera3D
-@onready var raycast: RayCast3D = get_node('%RayCast3D')
+@onready var raycast: RayCast3D = $Camera3D/RayCast3D
 
 
 func _ready() -> void:
@@ -31,9 +36,12 @@ func _process(delta):
 
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE else Input.MOUSE_MODE_VISIBLE
 
+	_handle_input(delta)
+
 	velocity = _handle_movement(delta)
 	move_and_slide()
 	apply_floor_snap()
+
 
 func _handle_movement(_delta):
 	var x = Input.get_axis('Left', 'Right')
@@ -44,20 +52,12 @@ func _handle_movement(_delta):
 
 	return dir
 
-
-func get_mouse_ray():
-	var m = get_viewport().get_mouse_position()
-
-	var pos = cam.project_ray_origin(m)
-	var dir = cam.project_ray_normal(m)
-
-	raycast.global_position = pos
-	raycast.target_position = dir * 100
-	raycast.force_raycast_update()
-	return raycast
-
-func get_screen_pos(pos: Vector3):
-	return cam.unproject_position(pos)
+func _handle_input(_delta):
+	if raycast.is_colliding():
+		if Input.is_action_just_pressed('Fire'):
+			var hit = raycast.get_collider()
+			if hit is EnemyBase:
+				hit.damage(AttackDamage)
 
 
 func set_camera(p: float, y: float):
