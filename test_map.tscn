@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=3 uid="uid://bg2fd2c5t3wyv"]
+
+[ext_resource type="PackedScene" uid="uid://fcfvs6lptyxx" path="res://player.tscn" id="1_4qc02"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_4wuf8"]
+size = Vector2(100, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4qc02"]
+albedo_color = Color(0.317836, 0.369665, 0.791912, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4wuf8"]
+
+[node name="TestMap" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_4wuf8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -3.39033, 4.3105, 1)
+material_override = SubResource("StandardMaterial3D_4qc02")
+mesh = SubResource("CylinderMesh_4wuf8")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.30526, 7.41831, 1)
+material_override = SubResource("StandardMaterial3D_4qc02")
+mesh = SubResource("CylinderMesh_4wuf8")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 3.707, 1.73203, 1)
+material_override = SubResource("StandardMaterial3D_4qc02")
+mesh = SubResource("CylinderMesh_4wuf8")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -4.05454, -1.63489, 1)
+material_override = SubResource("StandardMaterial3D_4qc02")
+mesh = SubResource("CylinderMesh_4wuf8")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.7706, -2.24552, 1)
+material_override = SubResource("StandardMaterial3D_4qc02")
+mesh = SubResource("CylinderMesh_4wuf8")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -4.65357, 13.5599, 1)
+material_override = SubResource("StandardMaterial3D_4qc02")
+mesh = SubResource("CylinderMesh_4wuf8")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -11.8603, 4.17851, 0.999999)
+material_override = SubResource("StandardMaterial3D_4qc02")
+mesh = SubResource("CylinderMesh_4wuf8")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -8.30977, -6.31378, 0.999998)
+material_override = SubResource("StandardMaterial3D_4qc02")
+mesh = SubResource("CylinderMesh_4wuf8")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.19727, -7.04307, 0.999999)
+material_override = SubResource("StandardMaterial3D_4qc02")
+mesh = SubResource("CylinderMesh_4wuf8")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 9.17084, 1.14727, 1)
+material_override = SubResource("StandardMaterial3D_4qc02")
+mesh = SubResource("CylinderMesh_4wuf8")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 7.30246, 11.0445, 0.999999)
+material_override = SubResource("StandardMaterial3D_4qc02")
+mesh = SubResource("CylinderMesh_4wuf8")
+
+[node name="Player" parent="." instance=ExtResource("1_4qc02")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.879897, 0.15338, 0.449728, -0.475164, 0.284026, 0.832796, 0, -0.946469, 0.322794, 0, 4.58988, 0.0269973)
