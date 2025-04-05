@@ -2,9 +2,18 @@ extends Toggle
 class_name Placeable
 
 @export var RequiredItemID : Constants.PuzzleItem
+var _item
+@export var CanRetrieveItem = true
 
 func interact():
     if Locked:
+        if CanRetrieveItem:
+            Locked = false
+            Inventory.add_item(_item)
+            _item = null
+            deactivate()
+            return true
+
         return false
 
     Inventory.show_ui()
@@ -13,7 +22,7 @@ func interact():
 
     if id == RequiredItemID:
         activate()
-        Inventory.remove_item(id)
+        _item = Inventory.remove_item(id)
 
     Inventory.hide_ui()
     

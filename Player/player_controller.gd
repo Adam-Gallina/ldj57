@@ -45,11 +45,11 @@ func _handle_movement(_delta):
 	return dir
 
 func _handle_input(_delta):
-	if _disable_cam: return
-	
 	if Input.is_action_just_pressed('Inventory'):
 		_disable_cam = Inventory.toggle_ui()
 
+	if _disable_cam: return
+	
 	if Input.is_action_just_pressed('Fire'):
 		if not raycast.is_colliding(): return
 		var hit = raycast.get_collider()

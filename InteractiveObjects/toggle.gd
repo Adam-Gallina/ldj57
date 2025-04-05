@@ -7,6 +7,7 @@ signal deactivated()
 
 @export var Active = false
 @export var Locked = false
+@export var LockOnActivate = false
 
 
 func interact():
@@ -29,6 +30,8 @@ func activate():
     update_visuals()
     activatated.emit()
     triggered.emit(true)
+
+    if LockOnActivate: Locked = true
 
 func deactivate():
     update_visuals()

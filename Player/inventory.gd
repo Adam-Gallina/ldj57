@@ -24,7 +24,8 @@ func add_item(item):
 	if not item is Grabbable: return
 
 	items[item.ItemID] = item
-	item.get_parent().remove_child(item)
+	if item.get_parent() != null:
+		item.get_parent().remove_child(item)
 
 	var i = InventoryImageScene.instantiate()
 	i.set_item(item)
