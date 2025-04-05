@@ -7,6 +7,8 @@ var imgs : Dictionary = {}
 @export var InventoryImageScene : PackedScene
 @onready var _inventory = $PlayerUILayer/Inventory/HBoxContainer
 @onready var _inventory_ui = $PlayerUILayer/Inventory
+@onready var _hovered_item_name = $PlayerUILayer/Inventory/HoveredItemName
+@onready var _hovered_item_desc = $PlayerUILayer/Inventory/HoveredItemDescription
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -30,6 +32,7 @@ func add_item(item):
 	var i = InventoryImageScene.instantiate()
 	i.set_item(item)
 	i.pressed.connect(func(): _on_inventory_item_selected(item.ItemID))
+	i.mouse_entered.connect(func(): _on_inventory_item_hovered(item.ItemID))
 	_inventory.add_child(i)
 	imgs[item.ItemID] = i
 
@@ -50,6 +53,8 @@ func remove_item(item_id):
 
 func show_ui():
 	_inventory_ui.show()
+	_hovered_item_name.text = ""
+	_hovered_item_desc.text = ""
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func hide_ui():
@@ -66,3 +71,7 @@ func toggle_ui():
 
 func _on_inventory_item_selected(item_id):
 	inventory_item_selected.emit(item_id)
+
+func _on_inventory_item_hovered(item_id):
+	_hovered_item_name.text = items[item_id].ItemName
+	_hovered_item_desc.text = items[item_id].ItemDescription
