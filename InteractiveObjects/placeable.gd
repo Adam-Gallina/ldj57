@@ -1,29 +1,36 @@
 extends Toggle
 class_name Placeable
 
-@export var RequiredItemID : Constants.PuzzleItem
+@export var CorrectItemID : Constants.PuzzleItem
+@export var ValidItemID : Array[Constants.PuzzleItem]
 var _item
 @export var CanRetrieveItem = true
 
 func interact():
-    if Locked:
-        if CanRetrieveItem:
-            Locked = false
-            Inventory.add_item(_item)
-            _item = null
-            deactivate()
-            return true
+	if Locked:
+		return false
 
-        return false
+	if _item == null:
+		Inventory.show_ui()
 
-    Inventory.show_ui()
+		var id = await Inventory.inventory_item_selected
 
-    var id = await Inventory.inventory_item_selected
+		if id in ValidItemID:
+			_on_item_applied(Inventory.remove_item(id))
+			if id == CorrectItemID:
+				activate()
 
-    if id == RequiredItemID:
-        activate()
-        _item = Inventory.remove_item(id)
+		Inventory.hide_ui()
+		
+		return true
+	elif CanRetrieveItem:
+		Inventory.add_item(_item)
 
-    Inventory.hide_ui()
-    
-    return true
+		if _item.ItemID == CorrectItemID:
+			deactivate()
+			
+		_item = null
+		return true
+
+func _on_item_applied(item):
+	_item = item

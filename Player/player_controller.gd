@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @export_category('Movement')
 @export var MoveSpeed = 10
+var _disable_movement = false
 
 @export_category('Interaction')
 @export var MaxInteractionDist = 10
@@ -30,9 +31,10 @@ var _disable_cam = false
 func _process(delta):
 	_handle_input(delta)
 
-	velocity = _handle_movement(delta)
-	move_and_slide()
-	apply_floor_snap()
+	if not _disable_movement:
+		velocity = _handle_movement(delta)
+		move_and_slide()
+		apply_floor_snap()
 
 
 func _handle_movement(_delta):
@@ -60,8 +62,16 @@ func _handle_input(_delta):
 				Inventory.add_item(hit)
 		elif hit is Placeable:
 			_disable_cam = true
+			_disable_movement = true
 			await hit.interact()
 			_disable_cam = false
+			_disable_movement = false
+		elif hit is UIToggle:
+			_disable_cam = true
+			_disable_movement = true
+			await hit.interact()
+			_disable_cam = false
+			_disable_movement = false
 		elif hit is Interactive:
 			hit.interact()
 

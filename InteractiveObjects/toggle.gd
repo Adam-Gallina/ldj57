@@ -2,11 +2,10 @@ extends Interactive
 class_name Toggle
 
 signal triggered(state)
-signal activatated()
+signal activated()
 signal deactivated()
 
 @export var Active = false
-@export var Locked = false
 @export var LockOnActivate = false
 
 
@@ -20,20 +19,23 @@ func interact():
 
 
 func toggle():
-    Active = not Active
-    if Active:
+    if not Active:
         activate()
     else:
         deactivate()
 
 func activate():
+    Active = true
+
     update_visuals()
-    activatated.emit()
+    activated.emit()
     triggered.emit(true)
 
-    if LockOnActivate: Locked = true
+    if LockOnActivate: lock()
 
 func deactivate():
+    Active = false
+
     update_visuals()
     deactivated.emit()
     triggered.emit(false)

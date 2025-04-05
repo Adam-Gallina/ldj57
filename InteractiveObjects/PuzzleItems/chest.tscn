@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkdejcy5ug50f"]
+
+[ext_resource type="Script" uid="uid://hefskbbgjw73" path="res://InteractiveObjects/lever.gd" id="1_2ie5h"]
+[ext_resource type="PackedScene" uid="uid://lq8yrjoaf4iu" path="res://Models/Bedroom/Chest.glb" id="2_074g5"]
+[ext_resource type="PackedScene" uid="uid://yiv6e6vbdajb" path="res://Models/Bedroom/ChestLid.glb" id="3_fa2y2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2ie5h"]
+size = Vector3(1.51278, 0.651981, 1.14994)
+
+[node name="Chest" type="StaticBody3D" node_paths=PackedStringArray("RotationTarget")]
+collision_layer = 12
+collision_mask = 0
+script = ExtResource("1_2ie5h")
+RotationTarget = NodePath("Pivot")
+ActiveAngle = Vector3(105, 0, 0)
+InactiveAngle = Vector3(0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00363463, 0.317442, -0.000406034)
+shape = SubResource("BoxShape3D_2ie5h")
+
+[node name="Chest2" parent="." instance=ExtResource("2_074g5")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.616501, 0.558183)
+
+[node name="ChestLid" parent="Pivot" instance=ExtResource("3_fa2y2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.616501, -0.558183)

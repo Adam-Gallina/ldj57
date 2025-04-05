@@ -1,3 +1,3 @@
 extends Node
 
-enum PuzzleItem { Null, Test1, Test2, Test3 }
+enum PuzzleItem { Null, GearS, GearM, GearL, HallKey, Crank, Crowbar }

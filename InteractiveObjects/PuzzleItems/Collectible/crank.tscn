@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://4q3er0kbekdy"]
+
+[ext_resource type="Script" uid="uid://dn1xdkf1cabjq" path="res://InteractiveObjects/grabbable.gd" id="1_bpp7g"]
+[ext_resource type="Texture2D" uid="uid://c86exwl5ujppa" path="res://InteractiveObjects/PuzzleItems/Collectible/InventoryImages/Winch.png" id="2_bpp7g"]
+[ext_resource type="PackedScene" uid="uid://bx4s2os667d0b" path="res://Models/Workshop/CraneWinch.glb" id="3_bpp7g"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vmlrh"]
+height = 0.357094
+radius = 0.217773
+
+[node name="Crank" type="StaticBody3D"]
+collision_layer = 8
+collision_mask = 12
+script = ExtResource("1_bpp7g")
+ItemID = 5
+InventoryImage = ExtResource("2_bpp7g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.186995, 0.057753)
+shape = SubResource("CylinderShape3D_vmlrh")
+
+[node name="CraneWinch" parent="." instance=ExtResource("3_bpp7g")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.31176, -0.284539, 1.19209e-07)

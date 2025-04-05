@@ -5,4 +5,5 @@ class_name Grabbable
 @export var InventoryImage : Texture2D
 
 func interact():
+    $CollisionShape3D.disabled = true
     return true
