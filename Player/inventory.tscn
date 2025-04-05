@@ -47,9 +47,6 @@ grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
 
-[node name="TextureRect" parent="PlayerUILayer/Inventory/HBoxContainer" instance=ExtResource("2_us6v5")]
-layout_mode = 2
-
 [node name="TextureRect2" type="TextureRect" parent="PlayerUILayer/Inventory/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("4_0dko7")

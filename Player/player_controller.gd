@@ -45,29 +45,25 @@ func _handle_movement(_delta):
 	return dir
 
 func _handle_input(_delta):
+	if _disable_cam: return
+	
 	if Input.is_action_just_pressed('Inventory'):
 		_disable_cam = Inventory.toggle_ui()
 
 	if Input.is_action_just_pressed('Fire'):
-		if raycast.is_colliding():
-			var hit = raycast.get_collider()
-			if hit is Interactive and global_position.distance_to(hit.global_position) <= MaxInteractionDist:
-				if hit is Grabbable:
-					if hit.interact():
-						Inventory.add_item(hit)
-				else:
-					hit.interact()
-			#elif hit is EnemyBase:
-			#	hit.damage(AttackDamage)
-		#else:
-		#	var s = _inventory.remove_stone()
-		#	if s != null:
-		#		_throw_stone(s)
-
-
-#func _throw_stone(stone:RigidBody3D):
-#	stone.global_position = raycast.global_position
-#	stone.linear_velocity = -raycast.global_transform.basis.z * ThrowStrenth
+		if not raycast.is_colliding(): return
+		var hit = raycast.get_collider()
+		if global_position.distance_to(hit.global_position) > MaxInteractionDist: return
+		
+		if hit is Grabbable:
+			if hit.interact():
+				Inventory.add_item(hit)
+		elif hit is Placeable:
+			_disable_cam = true
+			await hit.interact()
+			_disable_cam = false
+		elif hit is Interactive:
+			hit.interact()
 
 
 func set_camera(p: float, y: float):

@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bg2fd2c5t3wyv"]
+[gd_scene load_steps=15 format=3 uid="uid://bg2fd2c5t3wyv"]
 
 [ext_resource type="PackedScene" uid="uid://fcfvs6lptyxx" path="res://Player/player.tscn" id="1_4qc02"]
 [ext_resource type="PackedScene" uid="uid://mecow5oc1hsn" path="res://InteractiveObjects/lever.tscn" id="2_4wuf8"]
 [ext_resource type="PackedScene" uid="uid://dbfj5qin4rqax" path="res://InteractiveObjects/test_puzzle_item.tscn" id="3_s02eq"]
+[ext_resource type="Script" uid="uid://dhadxxq80gm7w" path="res://InteractiveObjects/placeable.gd" id="4_t8dge"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_4wuf8"]
 vertices = PackedVector3Array(-10.75, 0.499998, -5.25, -6.75, 0.499998, -9.75, -6.75, 0.499998, -10.75, -12.25, 0.499998, -5.25, -49.5, 0.499998, -4.25, -5.75, 0.499998, -49.5, -49.5, 0.499998, -49.5, -12.5, 0.499998, -4.25, -5.75, 0.499998, -11.25, -5, 0.499998, -11.25, -4.5, 0.499998, -10.5, 2.25, 0.499998, -10.5, 3, 0.499998, -10.5, 3, 0.499998, -49.5, 4, 0.499998, -10, 4, 0.499998, -8.75, 7.5, 0.499998, -8.5, 8, 0.499998, -8.75, 8, 0.499998, -49.5, 9.25, 0.499998, -8.75, 9.75, 0.499998, -7.75, 49.5, 0.499998, -7.75, 49.5, 0.499998, -49.5, -4.5, 0.499998, -9.25, -5, 0.499998, -9, -3.75, 0.499998, -5.5, -2.75, 0.499998, -5.5, 1.75, 0.499998, -8.75, 1.75, 0.499998, -10, 2.5, 0.499998, -8.25, -6.25, 0.499998, -1.75, -6, 0.499998, -1.25, -4, 0.499998, -3.25, -4.5, 0.499998, -3.5, -4.5, 0.499998, -5, -6.25, 0.499998, -9, -10.25, 0.499998, -5, -10.25, 0.499998, -3.5, -11, 0.499998, -3, -8.25, 0.499998, -1.25, -8, 0.499998, -1.75, 5.5, 0.499998, -4, 6.25, 0.499998, -3.25, 8.25, 0.499998, -6.5, 7.5, 0.499998, -7, 4.75, 0.499998, -4, 3.75, 0.499998, -8.25, -2.25, 0.499998, -5, -2.25, 0.499998, -3.5, 4, 0.499998, -3.25, 6.25, 0.499998, -2.25, 8, 0.499998, -2, 9.5, 0.499998, -2.5, 9, 0.499998, -6.5, 10.25, 0.499998, -1.25, 49.5, 0.499998, -1.25, -7.25, 0.499998, 2.75, -6.5, 0.499998, 2.25, -6.75, 0.499998, 0.5, -8.25, 0.499998, 0, -3.25, 0.499998, 49.5, -3.25, 0.499998, 8.75, -4.5, 0.499998, 8.25, -4.5, 0.499998, 7.25, -5.5, 0.499998, 4.5, -6.75, 0.499998, 4.5, -7.25, 0.499998, 4, -12, 0.499998, -3, -49.5, 0.499998, 49.5, 4.5, 0.499998, 4.25, 5, 0.499998, 3.5, 4.5, 0.499998, 3.25, 3, 0.499998, 4.25, 0, 0.499998, 4.75, 2.75, 0.499998, 5, -2.25, 0.499998, 7, -1.5, 0.499998, 5.5, -2.25, 0.499998, 5, -3.75, 0.499998, 6.5, 6, 0.499998, -1.75, 8, 0.499998, -0.5, -6, 0.499998, 0, -5, 0.499998, 2.5, -0.5, 0.499998, 3.25, 4.5, 0.499998, 1.75, -5, 0.499998, 4.25, 4.25, 0.499998, -1.75, -2, 0.499998, 3.25, 6.25, 0.499998, 1.25, 6.5, 0.499998, 1.75, 8.5, 0.499998, -0.25, 5, 0.499998, 1.25, 5, 0.499998, 4.75, 6.25, 0.499998, 3.5, 9.75, 0.499998, -0.25, 5, 0.499998, 6, 6.75, 0.499998, 3, 4.25, 0.499998, 6.5, 4.25, 0.499998, 49.5, 49.5, 0.499998, 49.5, -0.5, 0.499998, 5.5, -2.25, 0.499998, 8.5, 2.75, 0.499998, 6)
@@ -24,6 +25,13 @@ albedo_color = Color(0.317836, 0.369665, 0.791912, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_s02eq"]
 radius = 0.25
 height = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ssfg1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qgarv"]
+albedo_color = Color(1, 0.537914, 0.039644, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_r0pc2"]
 
 [node name="TestMap" type="Node3D"]
 
@@ -208,21 +216,38 @@ transform = Transform3D(0.879897, 0.15338, 0.449728, -0.475164, 0.284026, 0.8327
 transform = Transform3D(-0.691437, 0, 0.722436, 0, 1, 0, -0.722436, 0, -0.691437, 4.77573, 1.19045, -2.39418)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.183, 2.53212, -2.76902)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.67446, 1.80756, -5.73011)
 visible = false
 mesh = SubResource("SphereMesh_s02eq")
 
 [node name="TestItem" parent="." instance=ExtResource("3_s02eq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.48926, 0.25, -3.40302)
-ItemName = "Item1"
+ItemID = 1
 
 [node name="TestItem2" parent="." instance=ExtResource("3_s02eq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.211205, 0.25, -4.2804)
-ItemName = "Item2"
+ItemID = 2
 
 [node name="TestItem3" parent="." instance=ExtResource("3_s02eq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.63192, 0.25, -3.7156)
-ItemName = "Item3"
+ItemID = 3
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70058, 0.485669, -5.83792)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("4_t8dge")
+RequiredItemID = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_ssfg1")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D"]
+material_override = SubResource("StandardMaterial3D_qgarv")
+mesh = SubResource("BoxMesh_r0pc2")
+skeleton = NodePath("../..")
 
 [connection signal="activatated" from="Lever" to="MeshInstance3D" method="show"]
 [connection signal="deactivated" from="Lever" to="MeshInstance3D" method="hide"]
+[connection signal="activatated" from="StaticBody3D" to="MeshInstance3D" method="show"]
+[connection signal="deactivated" from="StaticBody3D" to="MeshInstance3D" method="hide"]
