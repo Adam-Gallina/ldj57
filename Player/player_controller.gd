@@ -3,10 +3,13 @@ extends CharacterBody3D
 @export_category('Movement')
 @export var MoveSpeed = 10
 
+@export_category('Interaction')
+@export var MaxInteractionDist = 10
+@onready var _inventory = $Inventory
+
 @export_category('Combat')
-@export var AttackSpeed = 0
 @export var AttackDamage = 1
-var _attack_cooldown = 0
+@export var ThrowStrenth = 20
 
 @export_category('Camera')
 @export var CamSpeed = .125
@@ -53,11 +56,26 @@ func _handle_movement(_delta):
 	return dir
 
 func _handle_input(_delta):
-	if raycast.is_colliding():
-		if Input.is_action_just_pressed('Fire'):
+	if Input.is_action_just_pressed('Fire'):
+		if raycast.is_colliding():
 			var hit = raycast.get_collider()
-			if hit is EnemyBase:
-				hit.damage(AttackDamage)
+			if hit is Interactive and global_position.distance_to(hit.global_position) <= MaxInteractionDist:
+				if hit is Grabbable:
+					if hit.interact():
+						_inventory.add_item(hit)
+				else:
+					hit.interact()
+			#elif hit is EnemyBase:
+			#	hit.damage(AttackDamage)
+		else:
+			var s = _inventory.remove_stone()
+			if s != null:
+				_throw_stone(s)
+
+
+func _throw_stone(stone:RigidBody3D):
+	stone.global_position = raycast.global_position
+	stone.linear_velocity = -raycast.global_transform.basis.z * ThrowStrenth
 
 
 func set_camera(p: float, y: float):
