@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbhg3ovv7yp1j"]
+
+[ext_resource type="ArrayMesh" uid="uid://cqux3im7riix6" path="res://Environment/Bridge_Cube_008.res" id="1_tg6tr"]
+[ext_resource type="Material" uid="uid://dm3r08p0n0cgi" path="res://Environment/WallTex.tres" id="2_i7if7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7yi3r"]
+size = Vector3(2, 0.458496, 0.266425)
+
+[node name="HalfWallTile" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.229248, -9.61907e-05)
+shape = SubResource("BoxShape3D_7yi3r")
+disabled = true
+
+[node name="BasicHalfWallCube004" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_tg6tr")
+surface_material_override/0 = ExtResource("2_i7if7")

@@ -2,10 +2,12 @@ extends Node
 
 signal inventory_item_selected(item_id)
 
+@onready var reticle = $PlayerUILayer/TextureRect
+
 var items : Dictionary = {}
 var imgs : Dictionary = {}
 @export var InventoryImageScene : PackedScene
-@onready var _inventory = $PlayerUILayer/Inventory/HBoxContainer
+@onready var _inventory = $PlayerUILayer/Inventory/TextureRect/HBoxContainer
 @onready var _inventory_ui = $PlayerUILayer/Inventory
 @onready var _hovered_item_name = $PlayerUILayer/Inventory/HoveredItemName
 @onready var _hovered_item_desc = $PlayerUILayer/Inventory/HoveredItemDescription
@@ -19,7 +21,7 @@ func _process(_delta):
 		if Input.is_key_pressed(KEY_SHIFT):
 			get_tree().quit.call_deferred()
 
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE else Input.MOUSE_MODE_VISIBLE
+		#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE else Input.MOUSE_MODE_VISIBLE
 
 
 func add_item(item):
@@ -75,3 +77,10 @@ func _on_inventory_item_selected(item_id):
 func _on_inventory_item_hovered(item_id):
 	_hovered_item_name.text = items[item_id].ItemName
 	_hovered_item_desc.text = items[item_id].ItemDescription
+
+
+func show_reticle():
+	reticle.show()
+
+func hide_reticle():
+	reticle.hide()

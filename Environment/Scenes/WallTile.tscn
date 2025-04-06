@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7lk04jjbkcgi"]
+
+[ext_resource type="ArrayMesh" uid="uid://0wbbhrf3wdj3" path="res://Environment/Tiles/BasicWall_Cube_003.res" id="1_p3rs4"]
+[ext_resource type="Material" uid="uid://dm3r08p0n0cgi" path="res://Environment/WallTex.tres" id="2_3kgqr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_irc8c"]
+size = Vector3(2, 3, 0.266425)
+
+[node name="WallTile" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -9.61907e-05)
+shape = SubResource("BoxShape3D_irc8c")
+
+[node name="BasicWallCube003" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_p3rs4")
+surface_material_override/0 = ExtResource("2_3kgqr")

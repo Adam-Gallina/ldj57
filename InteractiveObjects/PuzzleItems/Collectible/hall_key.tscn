@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://blgq5cusqwr0t" path="res://Models/Generic/Key.glb" id="3_0tigo"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_vmlrh"]
-height = 0.0286293
-radius = 0.0913086
+height = 0.0553303
+radius = 0.270996
 
 [node name="HallKey" type="StaticBody3D"]
 collision_layer = 8
@@ -18,7 +18,8 @@ ItemName = "Old Key"
 ItemDescription = "A slightly rusted key. I bet it goes to a door. Keys usually do"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.97869e-05, 0.057753)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0594396, 0.0133307, 0.210902)
 shape = SubResource("CylinderShape3D_vmlrh")
 
 [node name="Key2" parent="." instance=ExtResource("3_0tigo")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)

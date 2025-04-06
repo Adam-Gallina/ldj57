@@ -1,6 +1,8 @@
 extends Interactive
 class_name Grabbable
 
+signal grabbed()
+
 @export var ItemID : Constants.PuzzleItem
 @export var InventoryImage : Texture2D
 @export var ItemName = "Unnamed Item"
@@ -8,4 +10,5 @@ class_name Grabbable
 
 func interact():
     $CollisionShape3D.disabled = true
+    grabbed.emit()
     return true

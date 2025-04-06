@@ -27,3 +27,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.616501, 0.558183)
 
 [node name="ChestLid" parent="Pivot" instance=ExtResource("3_fa2y2")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.616501, -0.558183)
+
+[connection signal="activated" from="." to="CollisionShape3D" method="set_disabled" binds= [true]]
+[connection signal="deactivated" from="." to="CollisionShape3D" method="set_disabled" binds= [false]]

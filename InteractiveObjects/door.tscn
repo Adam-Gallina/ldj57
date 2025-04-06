@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccuapu0kxtr1d"]
+[gd_scene load_steps=5 format=3 uid="uid://ccuapu0kxtr1d"]
 
 [ext_resource type="Script" uid="uid://hefskbbgjw73" path="res://InteractiveObjects/lever.gd" id="1_q8jo4"]
 [ext_resource type="PackedScene" uid="uid://cfya7pquih6oa" path="res://Models/Generic/Door.glb" id="2_5kc6i"]
+[ext_resource type="PackedScene" uid="uid://by274td1f0y5q" path="res://Models/Generic/Doorknob.glb" id="3_byjqb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hcok6"]
 size = Vector3(1.70909, 2.39005, 0.0949706)
@@ -22,3 +23,6 @@ shape = SubResource("BoxShape3D_hcok6")
 
 [node name="Door" parent="Pivot" instance=ExtResource("2_5kc6i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.833286, 0, 0)
+
+[node name="Doorknob2" parent="Pivot/Door" instance=ExtResource("3_byjqb")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

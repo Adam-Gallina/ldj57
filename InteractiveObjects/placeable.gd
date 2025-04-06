@@ -3,14 +3,19 @@ class_name Placeable
 
 @export var CorrectItemID : Constants.PuzzleItem
 @export var ValidItemID : Array[Constants.PuzzleItem]
-var _item
+@export var CurrItem : Grabbable
 @export var CanRetrieveItem = true
+
+func _ready() -> void:
+	if CurrItem != null:
+		if CorrectItemID == CurrItem.ItemID:
+			activate.call_deferred()
 
 func interact():
 	if Locked:
 		return false
 
-	if _item == null:
+	if CurrItem == null:
 		Inventory.show_ui()
 
 		var id = await Inventory.inventory_item_selected
@@ -24,13 +29,13 @@ func interact():
 		
 		return true
 	elif CanRetrieveItem:
-		Inventory.add_item(_item)
+		Inventory.add_item(CurrItem)
 
-		if _item.ItemID == CorrectItemID:
+		if CurrItem.ItemID == CorrectItemID:
 			deactivate()
 			
-		_item = null
+		CurrItem = null
 		return true
 
 func _on_item_applied(item):
-	_item = item
+	CurrItem = item

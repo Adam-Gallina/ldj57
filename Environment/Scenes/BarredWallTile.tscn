@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bm2lfb6kb07rh"]
+
+[ext_resource type="ArrayMesh" uid="uid://ck8e7vqohqt6k" path="res://Environment/BarredWall_Cube_005.res" id="1_ww6lp"]
+[ext_resource type="Material" uid="uid://dm3r08p0n0cgi" path="res://Environment/WallTex.tres" id="2_ww6lp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gxr4j"]
+size = Vector3(2, 0.974609, 0.266425)
+
+[node name="BarredWallTile" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.487305, -9.61907e-05)
+shape = SubResource("BoxShape3D_gxr4j")
+
+[node name="BasicBarredWallCube004" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_ww6lp")
+surface_material_override/0 = ExtResource("2_ww6lp")

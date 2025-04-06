@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://eul4s8gomenm"]
+
+[ext_resource type="Script" uid="uid://b7u4ynbkow0hd" path="res://InteractiveObjects/PuzzleItems/placeable_item.gd" id="1_2m5an"]
+[ext_resource type="PackedScene" uid="uid://dbuhvll66yedg" path="res://Models/Closet/StatuettePedestal.glb" id="2_tt535"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7kopr"]
+height = 1.28083
+radius = 0.297852
+
+[node name="StatuettePedestal" type="StaticBody3D" node_paths=PackedStringArray("ItemPivot")]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_2m5an")
+ItemPivot = NodePath("Pivot")
+ValidItemID = Array[int]([7, 8, 9, 10, 11])
+LockOnActivate = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, 0, 0.642992, 0.00175814)
+shape = SubResource("CylinderShape3D_7kopr")
+
+[node name="StatuettePedestal" parent="." instance=ExtResource("2_tt535")]
+transform = Transform3D(0.068, 0, 0, 0, 0.068, 0, 0, 0, 0.068, 0, 0.109586, 0)
+
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00153683, 0)

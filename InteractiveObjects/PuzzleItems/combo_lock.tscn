@@ -21,11 +21,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0254963, 0.314223, 0.007228
 shape = SubResource("BoxShape3D_r8j0k")
 
 [node name="Lock" parent="." instance=ExtResource("2_j86v6")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.724367, -0.561018, -0.565641)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.724367, -0.683424, -0.565641)
 
 [node name="Chest2" parent="." instance=ExtResource("3_wvneo")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
-visible = false
 
 [node name="Pivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.616501, 0.558183)

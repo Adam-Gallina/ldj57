@@ -4,9 +4,6 @@ extends CharacterBody3D
 @export var MoveSpeed = 10
 var _disable_movement = false
 
-@export_category('Interaction')
-@export var MaxInteractionDist = 10
-
 @export_category('Combat')
 @export var AttackDamage = 1
 @export var ThrowStrenth = 20
@@ -22,10 +19,14 @@ var yaw:
 	set(val): rotation.y = val
 	get: return rotation.y
 var _disable_cam = false
+@export var CamMod = 1.
 
 
 @onready var cam: Camera3D = $Camera3D
 @onready var raycast: RayCast3D = $Camera3D/RayCast3D
+
+func _ready() -> void:
+	Inventory.inventory_item_selected.connect(_on_item_selected)
 
 
 func _process(delta):
@@ -52,28 +53,33 @@ func _handle_input(_delta):
 
 	if _disable_cam: return
 	
-	if Input.is_action_just_pressed('Fire'):
-		if not raycast.is_colliding(): return
-		var hit = raycast.get_collider()
-		if global_position.distance_to(hit.global_position) > MaxInteractionDist: return
-		
-		if hit is Grabbable:
-			if hit.interact():
-				Inventory.add_item(hit)
-		elif hit is Placeable:
-			_disable_cam = true
-			_disable_movement = true
-			await hit.interact()
-			_disable_cam = false
-			_disable_movement = false
-		elif hit is UIToggle:
-			_disable_cam = true
-			_disable_movement = true
-			await hit.interact()
-			_disable_cam = false
-			_disable_movement = false
-		elif hit is Interactive:
-			hit.interact()
+	if not raycast.is_colliding():
+		Inventory.hide_reticle()
+		if Input.is_action_just_pressed('Fire'):
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	else:
+		Inventory.show_reticle()
+
+		if Input.is_action_just_pressed('Fire'):
+			var hit = raycast.get_collider()
+			
+			if hit is Grabbable:
+				if hit.interact():
+					Inventory.add_item(hit)
+			elif hit is Placeable:
+				_disable_cam = true
+				_disable_movement = true
+				await hit.interact()
+				_disable_cam = false
+				_disable_movement = false
+			elif hit is UIToggle:
+				_disable_cam = true
+				_disable_movement = true
+				await hit.interact()
+				_disable_cam = false
+				_disable_movement = false
+			elif hit is Interactive:
+				hit.interact()
 
 
 func set_camera(p: float, y: float):
@@ -83,8 +89,8 @@ func set_camera(p: float, y: float):
 	pitch = p
 
 func _rotate_camera(dp: float, dy: float):
-	yaw -= dy * CamSpeed * PI / 180
-	var p = pitch * 180 / PI - dp * CamSpeed
+	yaw -= dy * CamSpeed * CamMod * PI / 180
+	var p = pitch * 180 / PI - dp * CamSpeed * CamMod
 	if p < MinPitch: p = MinPitch
 	elif p > MaxPitch: p = MaxPitch
 	pitch = p * PI / 180
@@ -92,3 +98,10 @@ func _rotate_camera(dp: float, dy: float):
 func _input(event):
 	if event is InputEventMouseMotion and not _disable_cam:
 		_rotate_camera(event.relative.y, event.relative.x)
+
+
+
+func _on_item_selected(item):
+	if item == Constants.PuzzleItem.Null:
+		_disable_cam = false
+		_disable_movement = false

@@ -44,75 +44,102 @@ shape = SubResource("BoxShape3D_4wuf8")
 transform = Transform3D(0.879897, 0.15338, 0.449728, -0.475164, 0.284026, 0.832796, 0, -0.946469, 0.322794, 0, 4.58988, 0.0269973)
 
 [node name="LargeGear" parent="." instance=ExtResource("5_gqtbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3506, 0.000190848, -2.94711)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00092, 0.000190371, -12.5515)
 
 [node name="SmallGear" parent="." instance=ExtResource("7_5354r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.190646, 0.000599037, -3.20812)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.11713, 0.000599037, -16.7106)
 
 [node name="MediumGear" parent="." instance=ExtResource("6_bu3ac")]
-transform = Transform3D(1, 0, -5.36442e-07, 0, 1, 0, 5.36442e-07, 0, 1, -1.01803, 0, -2.78404)
+transform = Transform3D(1, 0, -5.36442e-07, 0, 1, 0, 5.36442e-07, 0, 1, 2.51473, 0, -12.2913)
 
-[node name="Lever2" parent="." instance=ExtResource("9_bu3ac")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.36163, 0.00540955, -5.34037)
+[node name="Door2" parent="." instance=ExtResource("9_bu3ac")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01375, 0.00540955, -9.58042)
 
-[node name="Lever3" parent="." instance=ExtResource("9_bu3ac")]
-transform = Transform3D(0.720938, 0, -0.692999, 0, 1, 0, 0.692999, 0, 0.720938, 3.53384, 0.00540955, -2.3154)
+[node name="Door3" parent="." instance=ExtResource("9_bu3ac")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01331, 0.00540955, -23.9761)
 
 [node name="HallKey" parent="." instance=ExtResource("10_5354r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.576336, 0.0106471, -2.71397)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.211042, 0.0106471, -3.5781)
 
 [node name="Lock" parent="." instance=ExtResource("11_yobqo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.838767, 0.00540926, -6.73323)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.858205, 0.00541021, -5.17127)
 CorrectItemID = 4
 
 [node name="Door2" parent="Lock" instance=ExtResource("9_bu3ac")]
 Locked = true
 
 [node name="Crowbar" parent="." instance=ExtResource("12_ihcqn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.81886, 0.034569, -1.91086)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.42061, 0.034569, -15.4327)
 
 [node name="Crank" parent="." instance=ExtResource("13_7l7f8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.55583, 0.284539, -1.18678)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.28746, 0.284539, -26.0713)
 
 [node name="Crane" parent="." instance=ExtResource("14_3qa0k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.16194, -5.10575e-08, -1.75738)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.59225, 9.02617e-07, -16.1587)
 
 [node name="Boards" parent="." instance=ExtResource("15_7l7f8")]
-transform = Transform3D(0.229863, 0, 0.973223, 0, 1, 0, -0.973223, 0, 0.229863, 5.3561, 0.00540932, -0.208114)
+transform = Transform3D(0.229863, 0, 0.973223, 0, 1, 0, -0.973223, 0, 0.229863, 6.00361, 0.00540932, -23.8343)
 CorrectItemID = 6
 
 [node name="Door2" parent="Boards" instance=ExtResource("9_bu3ac")]
 Locked = true
 
 [node name="Node3D" type="Node3D" parent="." node_paths=PackedStringArray("TargetToggles")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.96819, 0, -8.87436)
 script = ExtResource("12_1wgsg")
-TargetToggles = [NodePath("GearMount"), NodePath("GearMount2"), NodePath("GearMount3")]
+TargetToggles = [NodePath("GearMount")]
 
 [node name="GearMount" parent="Node3D" instance=ExtResource("8_yobqo")]
 transform = Transform3D(-0.64074, 0, -0.767758, 0, 1, 0, 0.767758, 0, -0.64074, -2.91127, 1.1502, -3.52301)
 CorrectItemID = 1
 LockOnActivate = false
 
-[node name="GearMount2" parent="Node3D" instance=ExtResource("8_yobqo")]
+[node name="Node3D2" type="Node3D" parent="." node_paths=PackedStringArray("TargetToggles")]
+transform = Transform3D(-0.238144, 0, -0.97123, 0, 1, 0, 0.97123, 0, -0.238144, -0.804588, -4.76837e-07, -11.3841)
+script = ExtResource("12_1wgsg")
+TargetToggles = [NodePath("GearMount"), NodePath("GearMount2"), NodePath("GearMount3")]
+
+[node name="GearMount" parent="Node3D2" instance=ExtResource("8_yobqo")]
+transform = Transform3D(-0.64074, 0, -0.767758, 0, 1, 0, 0.767758, 0, -0.64074, -2.91127, 1.1502, -3.52301)
+CorrectItemID = 1
+LockOnActivate = false
+
+[node name="GearMount2" parent="Node3D2" instance=ExtResource("8_yobqo")]
 transform = Transform3D(-0.837786, 0, -0.546, 0, 1, 0, 0.546, 0, -0.837786, -2.09422, 1.1502, -3.99858)
 CorrectItemID = 2
 LockOnActivate = false
 
-[node name="GearMount3" parent="Node3D" instance=ExtResource("8_yobqo")]
+[node name="GearMount3" parent="Node3D2" instance=ExtResource("8_yobqo")]
 transform = Transform3D(-0.999684, 0, -0.0251476, 0, 1, 0, 0.0251476, 0, -0.999684, -1.19433, 1.1502, -4.23608)
 CorrectItemID = 3
 LockOnActivate = false
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18782, 1.66963, -4.96722)
 visible = false
 mesh = SubResource("SphereMesh_ihcqn")
 
-[node name="Chest" parent="Node3D" instance=ExtResource("14_ihcqn")]
-transform = Transform3D(0.404312, 0, -0.914621, 0, 1, 0, 0.914621, 0, 0.404312, -1.83583, 0.00203332, 0.0104513)
+[node name="Node3D3" type="Node3D" parent="." node_paths=PackedStringArray("TargetToggles")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.96819, 0, -14.3556)
+script = ExtResource("12_1wgsg")
+TargetToggles = [NodePath("GearMount"), NodePath("GearMount3")]
+
+[node name="GearMount" parent="Node3D3" instance=ExtResource("8_yobqo")]
+transform = Transform3D(-0.64074, 0, -0.767758, 0, 1, 0, 0.767758, 0, -0.64074, -2.91127, 1.1502, -3.52301)
+CorrectItemID = 1
+LockOnActivate = false
+
+[node name="GearMount3" parent="Node3D3" instance=ExtResource("8_yobqo")]
+transform = Transform3D(-0.999684, 0, -0.0251476, 0, 1, 0, 0.0251476, 0, -0.999684, -1.19433, 1.1502, -4.23608)
+CorrectItemID = 3
+LockOnActivate = false
+
+[node name="Lever3" parent="." instance=ExtResource("9_bu3ac")]
+transform = Transform3D(-0.999804, 0, -0.0197559, 0, 1, 0, 0.0197559, 0, -0.999804, 0.479325, 0.00540955, -18.5396)
+Locked = true
 
 [node name="ChestLock" parent="." instance=ExtResource("15_3qa0k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49232, 0.561018, 1.44163)
+transform = Transform3D(0.155107, 0, 0.987898, 0, 1, 0, -0.987898, 0, 0.155107, 8.80413, 0.561018, -22.6812)
 
 [node name="Chest" parent="ChestLock" instance=ExtResource("14_ihcqn")]
 Locked = true
@@ -121,10 +148,15 @@ Locked = true
 [connection signal="deactivated" from="Lock" to="Lock/Door2" method="lock"]
 [connection signal="activated" from="Boards" to="Boards/Door2" method="unlock"]
 [connection signal="deactivated" from="Boards" to="Boards/Door2" method="lock"]
-[connection signal="activated" from="Node3D" to="Node3D/MeshInstance3D" method="show"]
-[connection signal="deactivated" from="Node3D" to="Node3D/MeshInstance3D" method="hide"]
 [connection signal="triggered" from="Node3D/GearMount" to="Node3D" method="interact" unbinds=1]
-[connection signal="triggered" from="Node3D/GearMount2" to="Node3D" method="interact" unbinds=1]
-[connection signal="triggered" from="Node3D/GearMount3" to="Node3D" method="interact" unbinds=1]
+[connection signal="activated" from="Node3D2" to="Node3D2/MeshInstance3D" method="show"]
+[connection signal="deactivated" from="Node3D2" to="Node3D2/MeshInstance3D" method="hide"]
+[connection signal="triggered" from="Node3D2/GearMount" to="Node3D2" method="interact" unbinds=1]
+[connection signal="triggered" from="Node3D2/GearMount2" to="Node3D2" method="interact" unbinds=1]
+[connection signal="triggered" from="Node3D2/GearMount3" to="Node3D2" method="interact" unbinds=1]
+[connection signal="activated" from="Node3D3" to="Lever3" method="unlock"]
+[connection signal="deactivated" from="Node3D3" to="Lever3" method="lock"]
+[connection signal="triggered" from="Node3D3/GearMount" to="Node3D3" method="interact" unbinds=1]
+[connection signal="triggered" from="Node3D3/GearMount3" to="Node3D3" method="interact" unbinds=1]
 [connection signal="activated" from="ChestLock" to="ChestLock/Chest" method="unlock"]
 [connection signal="deactivated" from="ChestLock" to="ChestLock/Chest" method="lock"]

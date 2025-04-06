@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dfgqcge6beyph" path="res://icon.svg" id="1_7d0lf"]
 [ext_resource type="Script" uid="uid://cpmbfcpocdsav" path="res://Player/UI/inventory_item.gd" id="2_ye22m"]
 
-[node name="Button" type="Button"]
+[node name="InventoryItem" type="Button"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
