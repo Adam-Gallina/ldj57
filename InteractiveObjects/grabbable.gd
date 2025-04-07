@@ -9,6 +9,8 @@ signal grabbed()
 @export var ItemDescription = "Probably Something"
 
 func interact():
+    if Locked:
+        return false
     $CollisionShape3D.disabled = true
     grabbed.emit()
     return true

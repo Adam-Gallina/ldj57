@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://3ye2rstccuw5"]
+
+[ext_resource type="Texture2D" uid="uid://bqv7athd28vix" path="res://Player/UI/Alert.png" id="1_727io"]
+
+[node name="Alert" type="Node3D"]
+visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+pixel_size = 0.003
+texture = ExtResource("1_727io")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://dwugv86ktb1dd"]
+[gd_scene load_steps=91 format=3 uid="uid://dwugv86ktb1dd"]
 
 [ext_resource type="PackedScene" uid="uid://b7lk04jjbkcgi" path="res://Environment/Scenes/WallTile.tscn" id="1_7if1s"]
 [ext_resource type="PackedScene" uid="uid://cau85gu55kosn" path="res://Models/Props/Lecturn.tscn" id="1_ckdtb"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://vdj4k132crsn" path="res://InteractiveObjects/fake_door.tscn" id="13_tpiga"]
 [ext_resource type="PackedScene" uid="uid://4q3er0kbekdy" path="res://InteractiveObjects/PuzzleItems/Collectible/crank.tscn" id="14_hniq5"]
 [ext_resource type="PackedScene" uid="uid://bejnid6p6avm6" path="res://InteractiveObjects/PuzzleItems/Collectible/medium_gear.tscn" id="14_lf0el"]
+[ext_resource type="PackedScene" uid="uid://3ye2rstccuw5" path="res://alert.tscn" id="16_obikd"]
 [ext_resource type="PackedScene" uid="uid://b14qwvh11hqmk" path="res://InteractiveObjects/PuzzleItems/door_boards.tscn" id="16_suv0k"]
 [ext_resource type="PackedScene" uid="uid://h61wcpcjnuro" path="res://InteractiveObjects/PuzzleItems/Collectible/hall_key.tscn" id="17_0odt2"]
 [ext_resource type="PackedScene" uid="uid://l3ymn56xjx72" path="res://InteractiveObjects/PuzzleItems/Collectible/statuette1.tscn" id="18_63tq4"]
@@ -58,6 +59,7 @@
 [ext_resource type="PackedScene" uid="uid://dyol82tc4jy8s" path="res://Models/Viewing/VatlingSmokestack.glb" id="44_d4oyn"]
 [ext_resource type="PackedScene" uid="uid://8e8h4q5ickb1" path="res://InteractiveObjects/PuzzleItems/Collectible/statuette4v2.tscn" id="44_vphb4"]
 [ext_resource type="AudioStream" uid="uid://bbpftcgaci2d7" path="res://Audio/Interact.wav" id="45_vveqt"]
+[ext_resource type="Script" uid="uid://cf876n6ptyyl8" path="res://InteractiveObjects/button.gd" id="57_k3uuf"]
 [ext_resource type="PackedScene" uid="uid://iwdh3vxgc8j3" path="res://Models/Props/GearBlocker.glb" id="58_1gwpe"]
 
 [sub_resource type="GDScript" id="GDScript_phpw6"]
@@ -137,6 +139,16 @@ func play_inventory_tut():
 
 func _on_sensitivity_changed(value_changed: bool) -> void:
 	$Player.CamMod = $MenuCanvasLayer/TextureRect/Label2/HSlider.value / 100.
+
+
+func _on_clockwork_heart_2_heart_collected() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	$AnimationPlayer.play('GameWin')
+
+
+func _on_check_button_toggled(toggled_on: bool) -> void:
+	print(toggled_on)
+	get_tree().call_group(\"ItemHints\", \"item_hint_toggled\", toggled_on)
 "
 
 [sub_resource type="Environment" id="Environment_oa7bu"]
@@ -203,6 +215,21 @@ size = Vector3(1.75934, 2.46753, 4.17499)
 [sub_resource type="BoxShape3D" id="BoxShape3D_vveqt"]
 size = Vector3(2.57135, 2.20483, 0.609924)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_vphb4"]
+size = Vector3(0.53894, 0.577698, 0.540283)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k3uuf"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_obikd"]
+material = SubResource("StandardMaterial3D_k3uuf")
+size = Vector2(1, 1.5)
+
+[sub_resource type="Gradient" id="Gradient_k3uuf"]
+colors = PackedColorArray(1, 0.918801, 0.697295, 1, 1, 0.917647, 0.698039, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_obikd"]
+gradient = SubResource("Gradient_k3uuf")
+
 [sub_resource type="Gradient" id="Gradient_pkupc"]
 colors = PackedColorArray(0, 0, 0, 0.392157, 0, 0, 0, 0.392157)
 
@@ -231,10 +258,10 @@ tracks/0/path = NodePath("AnimatedCanvasLayer/TextureRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(3.93333, 4.96667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 3.93333, 4.96667),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -243,10 +270,10 @@ tracks/1/path = NodePath("AnimatedCanvasLayer/Label2:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1.02, 1.8, 3.98667, 4.96667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.02, 1.8, 3.98667, 4.96667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -255,10 +282,10 @@ tracks/2/path = NodePath("AnimatedCanvasLayer/Label:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(2.39, 3, 3.98667, 4.96667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 2.39, 3, 3.98667, 4.96667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_vphb4"]
@@ -299,10 +326,99 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedCanvasLayer/Label3:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimatedCanvasLayer/Label4:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimatedCanvasLayer/Button:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_obikd"]
+resource_name = "GameWin"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedCanvasLayer/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedCanvasLayer/Label3:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.03, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedCanvasLayer/Label4:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.63333, 3.56667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedCanvasLayer/Button:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.58, 4.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_obikd"]
 _data = {
 &"GameOpening": SubResource("Animation_k3uuf"),
+&"GameWin": SubResource("Animation_obikd"),
 &"RESET": SubResource("Animation_vphb4")
 }
 
@@ -1475,6 +1591,9 @@ LockOnActivate = false
 [node name="SmallGear" parent="Rooms/Workshop/HallDoorTile/EntranceGears/GearMount" instance=ExtResource("11_0odt2")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 
+[node name="Alert2" parent="Rooms/Workshop/HallDoorTile/EntranceGears/GearMount/SmallGear" instance=ExtResource("16_obikd")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
 [node name="GearMount5" parent="Rooms/Workshop/HallDoorTile/EntranceGears" instance=ExtResource("8_iye0r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6166, 1.42417, 0.839743)
 Locked = true
@@ -1502,9 +1621,11 @@ TargetToggles = [NodePath("GearMount2")]
 
 [node name="GearMount" parent="Rooms/Workshop/AlcoveDoorTile/AlcoveGears" instance=ExtResource("8_iye0r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.0819, 1.67009, -0.161193)
+Locked = true
 
 [node name="LargeGear" parent="Rooms/Workshop/AlcoveDoorTile/AlcoveGears/GearMount" instance=ExtResource("13_275sb")]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 0, 0)
+collision_layer = 0
 
 [node name="GearBlocker2" parent="Rooms/Workshop/AlcoveDoorTile/AlcoveGears/GearMount" instance=ExtResource("58_1gwpe")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
@@ -1515,9 +1636,11 @@ CorrectItemID = 2
 
 [node name="GearMount3" parent="Rooms/Workshop/AlcoveDoorTile/AlcoveGears" instance=ExtResource("8_iye0r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2586, 1.88816, -0.161193)
+Locked = true
 
 [node name="LargeGear" parent="Rooms/Workshop/AlcoveDoorTile/AlcoveGears/GearMount3" instance=ExtResource("13_275sb")]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 0, 0)
+collision_layer = 0
 
 [node name="GearBlocker2" parent="Rooms/Workshop/AlcoveDoorTile/AlcoveGears/GearMount3" instance=ExtResource("58_1gwpe")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
@@ -1543,15 +1666,18 @@ Locked = true
 
 [node name="SmallGear" parent="Rooms/Workshop/CraneDoorTile/CraneGears/GearMount2" instance=ExtResource("11_0odt2")]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 0, 0)
+collision_layer = 0
 Locked = true
 
 [node name="GearBlocker2" parent="Rooms/Workshop/CraneDoorTile/CraneGears/GearMount2" instance=ExtResource("58_1gwpe")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 
-[node name="GearMount3" parent="Rooms/Workshop/CraneDoorTile/CraneGears" instance=ExtResource("8_iye0r")]
+[node name="GearMount3" parent="Rooms/Workshop/CraneDoorTile/CraneGears" groups=["ItemHints"] instance=ExtResource("8_iye0r")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16.8404, 1.71696, -9.68494)
 CorrectItemID = 3
 LockOnActivate = false
+
+[node name="Alert" parent="Rooms/Workshop/CraneDoorTile/CraneGears/GearMount3" instance=ExtResource("16_obikd")]
 
 [node name="GearMount4" parent="Rooms/Workshop/CraneDoorTile/CraneGears" instance=ExtResource("8_iye0r")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16.9001, 1.46598, -9.23242)
@@ -1559,13 +1685,17 @@ Locked = true
 
 [node name="SmallGear" parent="Rooms/Workshop/CraneDoorTile/CraneGears/GearMount4" instance=ExtResource("11_0odt2")]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 0, 0)
+collision_layer = 0
 Locked = true
 
 [node name="GearBlocker2" parent="Rooms/Workshop/CraneDoorTile/CraneGears/GearMount4" instance=ExtResource("58_1gwpe")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 
-[node name="Crane" parent="Rooms/Workshop" instance=ExtResource("7_s2a0k")]
+[node name="Crane" parent="Rooms/Workshop" groups=["ItemHints"] instance=ExtResource("7_s2a0k")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20.0001, 0, -13.2891)
+
+[node name="Alert" parent="Rooms/Workshop/Crane" instance=ExtResource("16_obikd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.501125, 0.740997, 0.0219116)
 
 [node name="CraneBucket" parent="Rooms/Workshop" instance=ExtResource("9_lf0el")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20.0509, 0.778325, -13.4262)
@@ -1604,7 +1734,7 @@ LockOnActivate = false
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 0, 0)
 visible = false
 
-[node name="GearMount7" parent="Rooms/Workshop/Machine/VatlingGears" instance=ExtResource("8_iye0r")]
+[node name="GearMount7" parent="Rooms/Workshop/Machine/VatlingGears" groups=["ItemHints"] instance=ExtResource("8_iye0r")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -14.3075, 0.957403, -6.76581)
 CorrectItemID = 3
 LockOnActivate = false
@@ -1612,6 +1742,9 @@ LockOnActivate = false
 [node name="LargeGear" parent="Rooms/Workshop/Machine/VatlingGears/GearMount7" instance=ExtResource("13_275sb")]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 0, 0)
 visible = false
+
+[node name="Alert" parent="Rooms/Workshop/Machine/VatlingGears/GearMount7" instance=ExtResource("16_obikd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.273991)
 
 [node name="GearMount10" parent="Rooms/Workshop/Machine/VatlingGears" instance=ExtResource("8_iye0r")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -13.7606, 1.07193, -6.74966)
@@ -1627,6 +1760,7 @@ CorrectItemID = 3
 
 [node name="LargeGear" parent="Rooms/Workshop/Machine/GearMount11" instance=ExtResource("13_275sb")]
 transform = Transform3D(3.82138e-15, -8.74228e-08, 2, -2, -8.74228e-08, 7.19978e-21, 8.74228e-08, -2, -8.74228e-08, 0, 0, 0)
+collision_layer = 0
 Locked = true
 
 [node name="GearMount16" parent="Rooms/Workshop/Machine" instance=ExtResource("8_iye0r")]
@@ -1635,6 +1769,7 @@ CorrectItemID = 3
 
 [node name="LargeGear" parent="Rooms/Workshop/Machine/GearMount16" instance=ExtResource("13_275sb")]
 transform = Transform3D(3.82138e-15, -8.74228e-08, 2, -2, -8.74228e-08, 7.19978e-21, 8.74228e-08, -2, -8.74228e-08, 0, 0, 0)
+collision_layer = 0
 Locked = true
 
 [node name="GearMount14" parent="Rooms/Workshop/Machine" instance=ExtResource("8_iye0r")]
@@ -1643,6 +1778,7 @@ CorrectItemID = 3
 
 [node name="LargeGear" parent="Rooms/Workshop/Machine/GearMount14" instance=ExtResource("13_275sb")]
 transform = Transform3D(-2.98023e-08, -4.37114e-08, 1, -1, -4.37114e-08, -2.98023e-08, 4.37114e-08, -1, -4.37114e-08, 0, 0, 0)
+collision_layer = 0
 Locked = true
 
 [node name="GearMount15" parent="Rooms/Workshop/Machine" instance=ExtResource("8_iye0r")]
@@ -1651,6 +1787,7 @@ CorrectItemID = 3
 
 [node name="LargeGear" parent="Rooms/Workshop/Machine/GearMount15" instance=ExtResource("13_275sb")]
 transform = Transform3D(-2.98023e-08, -4.37114e-08, 1, -1, -4.37114e-08, -2.98023e-08, 4.37114e-08, -1, -4.37114e-08, 0, 0, 0)
+collision_layer = 0
 Locked = true
 
 [node name="GearMount12" parent="Rooms/Workshop/Machine" instance=ExtResource("8_iye0r")]
@@ -1659,6 +1796,7 @@ CorrectItemID = 3
 
 [node name="LargeGear" parent="Rooms/Workshop/Machine/GearMount12" instance=ExtResource("13_275sb")]
 transform = Transform3D(3.82138e-15, -8.74228e-08, 2, -2, -8.74228e-08, 7.19978e-21, 8.74228e-08, -2, -8.74228e-08, 0, 0, 0)
+collision_layer = 0
 Locked = true
 
 [node name="GearMount13" parent="Rooms/Workshop/Machine" instance=ExtResource("8_iye0r")]
@@ -1667,6 +1805,7 @@ CorrectItemID = 3
 
 [node name="LargeGear" parent="Rooms/Workshop/Machine/GearMount13" instance=ExtResource("13_275sb")]
 transform = Transform3D(3.82138e-15, -8.74228e-08, 2, -2, -8.74228e-08, 7.19978e-21, 8.74228e-08, -2, -8.74228e-08, 0, 0, 0)
+collision_layer = 0
 Locked = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Rooms/Workshop/Machine"]
@@ -1785,10 +1924,15 @@ transform = Transform3D(-0.387463, 0.871976, -0.299218, 0.886705, 0.441309, 0.13
 [node name="Hallway" type="Node3D" parent="Rooms"]
 
 [node name="LargeGear" parent="Rooms/Hallway" instance=ExtResource("13_275sb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5064, 0, 4.27718)
+transform = Transform3D(1, 0, 0, 0, 0.636711, 0.771103, 0, -0.771103, 0.636711, -11.5581, 0.286917, 4.66991)
+
+[node name="Alert2" parent="Rooms/Hallway/LargeGear" instance=ExtResource("16_obikd")]
+transform = Transform3D(1, 0, 0, 0, 0.522975, -0.852348, 0, 0.852348, 0.522975, 0, 0, 0)
 
 [node name="MediumGear" parent="Rooms/Hallway" instance=ExtResource("14_lf0el")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.55687, 0, 12.3026)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9056, 0, 10.5242)
+
+[node name="Alert2" parent="Rooms/Hallway/MediumGear" instance=ExtResource("16_obikd")]
 
 [node name="Closet" type="Node3D" parent="Rooms"]
 
@@ -1801,7 +1945,7 @@ collision_layer = 4
 Locked = true
 
 [node name="Crank" parent="Rooms/Closet" instance=ExtResource("14_hniq5")]
-transform = Transform3D(0.725398, 0, 0.688329, 0, 1, 0, -0.688329, 0, 0.725398, -26.0277, 1.53485, 8.19475)
+transform = Transform3D(0.725398, 0, 0.688329, 0, 1, 0, -0.688329, 0, 0.725398, -26.0277, 0.824176, 8.19475)
 
 [node name="HallDoorTile" parent="Rooms/Closet" instance=ExtResource("4_jrcb4")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -23, 0, 4)
@@ -1809,7 +1953,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -23, 0
 [node name="Door" parent="Rooms/Closet/HallDoorTile" instance=ExtResource("6_saq0m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.815943, 0, 0)
 
-[node name="Statuettes" type="Node3D" parent="Rooms/Closet" node_paths=PackedStringArray("TargetToggles")]
+[node name="Statuettes" type="Node3D" parent="Rooms/Closet" node_paths=PackedStringArray("TargetToggles") groups=["ItemHints"]]
 transform = Transform3D(0.938318, 0, -0.345773, 0, 1, 0, 0.345773, 0, 0.938318, -27.872, 0.722973, 3.21076)
 script = ExtResource("18_p7d8v")
 TargetToggles = [NodePath("StatuettePedestal"), NodePath("StatuettePedestal2"), NodePath("StatuettePedestal3"), NodePath("StatuettePedestal4")]
@@ -1839,6 +1983,9 @@ Locked = true
 transform = Transform3D(0.861053, 0, 0.508516, 0, 1, 0, -0.508516, 0, 0.861053, 0.178654, 0.274006, -0.852185)
 CorrectItemID = 10
 LockOnActivate = false
+
+[node name="Alert" parent="Rooms/Closet/Statuettes" instance=ExtResource("16_obikd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.26646e-09, 0, 0.126767)
 
 [node name="Props" type="Node3D" parent="Rooms/Closet"]
 
@@ -1998,6 +2145,7 @@ Locked = true
 
 [node name="ChestLock" parent="Rooms/Bedroom" instance=ExtResource("18_275sb")]
 transform = Transform3D(-3.45113e-08, 0, 0.789526, 0, 0.789526, 0, -0.789526, 0, -3.45113e-08, -1.12467, 0, 6.5538)
+Combination = "0228q"
 
 [node name="Chest" parent="Rooms/Bedroom/ChestLock" instance=ExtResource("19_hniq5")]
 Locked = true
@@ -2277,26 +2425,106 @@ transform = Transform3D(0.192865, 0, -0.981225, 0, 1, 0, 0.981225, 0, 0.192865, 
 [node name="Jar2" parent="Rooms/Viewing/Props" instance=ExtResource("37_j65g8")]
 transform = Transform3D(0.866174, 0, 0.499743, 0, 1, 0, -0.499743, 0, 0.866174, -6.78549, 1.01648, -9.22784)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Rooms/Viewing" groups=["ItemHints"]]
+transform = Transform3D(0.717543, 0.410384, -0.562776, 0, 0.80799, 0.589196, 0.696514, -0.422774, 0.579767, -1.3781, 1.08583, -10.0468)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("57_k3uuf")
+ShowMouseOnPress = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rooms/Viewing/StaticBody3D"]
+transform = Transform3D(1, 2.95043e-06, -2.98023e-08, 0, 1, 0, 0, -5.26011e-06, 1, -0.197694, -0.211147, -0.16467)
+shape = SubResource("BoxShape3D_vphb4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rooms/Viewing/StaticBody3D"]
+transform = Transform3D(0.270072, -0.0133142, -0.0250674, 0.0259597, 0.0188846, 0.269655, -0.0114776, -0.270575, 0.020054, -0.203715, -0.0426125, -0.0824829)
+mesh = SubResource("QuadMesh_obikd")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Rooms/Viewing/StaticBody3D"]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="Rooms/Viewing/StaticBody3D/CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -168.0
+offset_top = -226.0
+offset_right = 168.0
+offset_bottom = 226.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_obikd")
+
+[node name="Label" type="Label" parent="Rooms/Viewing/StaticBody3D/CanvasLayer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Grand Mechanist,
+
+The newest disciple has been
+observed concealing one of our
+precious statuettes within his robes.
+
+If you wish to investigate, his chest
+is locked with the code 0228.
+
+We have respected his privacy and
+await your decision regarding the
+situation
+
+    - The Council"
+
+[node name="Button" type="Button" parent="Rooms/Viewing/StaticBody3D/CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -78.0
+offset_right = 25.0
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Close"
+
+[node name="Alert" parent="Rooms/Viewing/StaticBody3D" instance=ExtResource("16_obikd")]
+transform = Transform3D(1, 0, 0, 0, 0.786288, -0.61786, 0, 0.61786, 0.786288, 0, -0.345445, -0.271448)
+
 [node name="Player" parent="." instance=ExtResource("4_0f2yp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.6252, 1.90735e-06, 3.99965)
+transform = Transform3D(0.420038, 0, 0.907506, 0, 1, 0, -0.907506, 0, 0.420038, 1.83797, 1.90735e-06, -2.35969)
 
 [node name="Crank" parent="." instance=ExtResource("14_hniq5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.7526, 0, -11.6201)
+visible = false
 
 [node name="Crowbar" parent="." instance=ExtResource("10_suv0k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.76191, 0, 6.95283)
+visible = false
 
 [node name="MediumGear2" parent="." instance=ExtResource("14_lf0el")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.7658, 0, -1.20291)
+visible = false
 
 [node name="Statuette2" parent="." instance=ExtResource("24_t0imr")]
 transform = Transform3D(-0.993455, 0, 0.114226, 0, 1, 0, -0.114226, 0, -0.993455, -24.7939, -0.0849475, 2.96816)
+visible = false
 
 [node name="Statuette4" parent="." instance=ExtResource("25_r3woe")]
 transform = Transform3D(0.95523, -0.100209, -0.278376, -0.0176365, 0.919935, -0.391675, 0.295337, 0.379049, 0.876982, -25.0366, -0.0317347, 3.65879)
+visible = false
 
 [node name="LargeGear" parent="." instance=ExtResource("13_275sb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.6939, 9.53674e-07, -9.45398)
+visible = false
 
 [node name="TutorialCanvasLayer" type="CanvasLayer" parent="."]
 
@@ -2346,7 +2574,7 @@ offset_right = 186.5
 offset_bottom = 24.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Left click objects with a      to interact with them"
+text = "Left click objects with a hand indicator to interact with them"
 
 [node name="InventoryTutorial" type="TextureRect" parent="TutorialCanvasLayer"]
 visible = false
@@ -2406,9 +2634,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -145.0
-offset_top = 57.5
+offset_top = 43.5
 offset_right = -5.0
-offset_bottom = 80.5
+offset_bottom = 66.5
 grow_horizontal = 2
 text = "Mouse Sensitivity:"
 
@@ -2421,6 +2649,25 @@ offset_bottom = 21.0
 min_value = 10.0
 max_value = 200.0
 value = 100.0
+
+[node name="Label3" type="Label" parent="MenuCanvasLayer/TextureRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -145.0
+offset_top = 68.5
+offset_right = -5.0
+offset_bottom = 91.5
+grow_horizontal = 2
+text = "Item Hints:"
+
+[node name="CheckButton" type="CheckButton" parent="MenuCanvasLayer/TextureRect/Label3"]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 1.0
+offset_right = 183.0
+offset_bottom = 25.0
 
 [node name="Button" type="Button" parent="MenuCanvasLayer/TextureRect"]
 layout_mode = 1
@@ -2494,6 +2741,53 @@ grow_vertical = 2
 text = "\"Don't come back without the Clockwork Heart again\""
 horizontal_alignment = 1
 
+[node name="Label3" type="Label" parent="AnimatedCanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -24.5
+offset_right = 208.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "With heart in hand, you turn to leave..."
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="AnimatedCanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = 139.0
+offset_right = 208.0
+offset_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Thank you for playing!"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="AnimatedCanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -21.0
+offset_top = -138.0
+offset_right = 21.0
+offset_bottom = -107.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Quit"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_obikd")
@@ -2526,7 +2820,11 @@ libraries = {
 [connection signal="activated" from="Rooms/Bedroom/Props/ChestLock2" to="Rooms/Bedroom/Props/ChestLock2/Chest" method="unlock"]
 [connection signal="activated" from="Rooms/Bedroom/Props/ChestLock3" to="Rooms/Bedroom/Props/ChestLock3/Chest" method="unlock"]
 [connection signal="activated" from="Rooms/Bedroom/Props/ChestLock4" to="Rooms/Bedroom/Props/ChestLock4/Chest" method="unlock"]
+[connection signal="heart_collected" from="Rooms/Viewing/ClockworkHeart2" to="." method="_on_clockwork_heart_2_heart_collected"]
+[connection signal="pressed" from="Rooms/Viewing/StaticBody3D" to="Rooms/Viewing/StaticBody3D/CanvasLayer" method="show"]
+[connection signal="pressed" from="Rooms/Viewing/StaticBody3D/CanvasLayer/Button" to="Rooms/Viewing/StaticBody3D/CanvasLayer" method="hide"]
 [connection signal="drag_ended" from="MenuCanvasLayer/TextureRect/Label2/HSlider" to="." method="_on_sensitivity_changed"]
+[connection signal="toggled" from="MenuCanvasLayer/TextureRect/Label3/CheckButton" to="." method="_on_check_button_toggled"]
 [connection signal="pressed" from="MenuCanvasLayer/TextureRect/Button" to="." method="close_menu"]
 [connection signal="pressed" from="MenuCanvasLayer/TextureRect/Button" to="MenuCanvasLayer/InteractStreamPlayer" method="play"]
 [connection signal="pressed" from="MenuCanvasLayer/TextureRect/Button2" to="." method="quit_btn"]

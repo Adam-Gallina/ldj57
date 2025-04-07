@@ -1,5 +1,9 @@
 extends Node3D
 
+signal heart_collected()
+func emit_heart():
+    heart_collected.emit()
+
 @export var BeatDelay = 1
 @export var BeatFrequency = 4
 

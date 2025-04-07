@@ -25,6 +25,10 @@ Constants="*res://constants.gd"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_height"
 
+[global_group]
+
+ItemHints=""
+
 [input]
 
 Forward={

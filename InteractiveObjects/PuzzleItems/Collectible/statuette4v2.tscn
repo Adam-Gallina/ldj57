@@ -1,15 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://8e8h4q5ickb1"]
+[gd_scene load_steps=7 format=3 uid="uid://8e8h4q5ickb1"]
 
 [ext_resource type="Script" uid="uid://dn1xdkf1cabjq" path="res://InteractiveObjects/grabbable.gd" id="1_votal"]
 [ext_resource type="Texture2D" uid="uid://c7tcl5f2kchu" path="res://InteractiveObjects/PuzzleItems/Collectible/InventoryImages/Statue4v2.png" id="2_gbc2o"]
 [ext_resource type="PackedScene" uid="uid://da5es5q1nf71o" path="res://Models/Closet/AscendanceStatuette.glb" id="3_ojkaw"]
 [ext_resource type="PackedScene" uid="uid://dsttsgc3hyxpy" path="res://Models/Closet/AscendenceStatuette2.glb" id="4_ojkaw"]
+[ext_resource type="PackedScene" uid="uid://3ye2rstccuw5" path="res://alert.tscn" id="5_ojkaw"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_vmlrh"]
 height = 0.99921
 radius = 0.240234
 
-[node name="Statuette4" type="StaticBody3D"]
+[node name="Statuette4" type="StaticBody3D" groups=["ItemHints"]]
 collision_layer = 8
 collision_mask = 12
 script = ExtResource("1_votal")
@@ -28,3 +29,5 @@ visible = false
 
 [node name="AscendenceStatuette2" parent="." instance=ExtResource("4_ojkaw")]
 transform = Transform3D(0.068, 0, 0, 0, 0.068, 0, 0, 0, 0.068, 0, 0.130081, 0)
+
+[node name="Alert" parent="." instance=ExtResource("5_ojkaw")]

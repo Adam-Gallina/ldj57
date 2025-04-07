@@ -77,8 +77,11 @@ func _on_inventory_item_selected(item_id):
 		$InteractStreamPlayer.play()
 
 func _on_inventory_item_hovered(item_id):
-	_hovered_item_name.text = items[item_id].ItemName
-	_hovered_item_desc.text = items[item_id].ItemDescription
+	if contains_item(item_id):
+		_hovered_item_name.text = items[item_id].ItemName
+		_hovered_item_desc.text = items[item_id].ItemDescription
+	else:
+		print('Tried to hover over invalid item')
 
 
 func show_reticle():
