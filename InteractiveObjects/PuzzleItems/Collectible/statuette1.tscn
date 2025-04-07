@@ -26,3 +26,4 @@ shape = SubResource("CylinderShape3D_vmlrh")
 transform = Transform3D(0.0675405, 0, 0, 0, 0.0675405, 0, 0, 0, 0.0675405, -0.000437021, 0.135477, 4.79221e-05)
 
 [node name="Alert" parent="." groups=["ItemHints"] instance=ExtResource("4_d7t18")]
+top_level = true
