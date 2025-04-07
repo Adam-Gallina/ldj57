@@ -13,7 +13,7 @@ var imgs : Dictionary = {}
 @onready var _hovered_item_desc = $PlayerUILayer/Inventory/HoveredItemDescription
 
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	hide_ui()
 
 func _process(_delta):
@@ -73,6 +73,8 @@ func toggle_ui():
 
 func _on_inventory_item_selected(item_id):
 	inventory_item_selected.emit(item_id)
+	if item_id != Constants.PuzzleItem.Null:
+		$InteractStreamPlayer.play()
 
 func _on_inventory_item_hovered(item_id):
 	_hovered_item_name.text = items[item_id].ItemName

@@ -1,0 +1,399 @@
+[gd_scene load_steps=17 format=3 uid="uid://ch8giqrqhbk4q"]
+
+[ext_resource type="Material" uid="uid://dm3r08p0n0cgi" path="res://Environment/WallTex.tres" id="1_7mycd"]
+[ext_resource type="PackedScene" uid="uid://be5vi54fph6ey" path="res://Models/Generic/Board.glb" id="2_272bh"]
+[ext_resource type="PackedScene" uid="uid://cx82wvril18o8" path="res://Environment/sconce.tscn" id="3_5vw27"]
+[ext_resource type="PackedScene" uid="uid://chaoslcrikco1" path="res://Models/Main/cultist.glb" id="4_kek77"]
+[ext_resource type="PackedScene" uid="uid://btqm201kf054n" path="res://Models/Props/banner.tscn" id="5_4c57u"]
+[ext_resource type="PackedScene" uid="uid://b7lk04jjbkcgi" path="res://Environment/Scenes/WallTile.tscn" id="6_efxa6"]
+
+[sub_resource type="GDScript" id="GDScript_7mycd"]
+script/source = "extends Node3D
+
+signal game_loaded()
+
+@export var GameScenePath : String
+var _game_scene
+var _game_loaded = false
+
+func _ready():
+	Inventory.hide_reticle()
+	load_game.call_deferred()
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
+	
+	
+func load_game():
+	#print('starting load')
+	_game_scene = await ResourceLoader.load(GameScenePath).instantiate()
+	# GameScene.instantiate()
+	#print('game loaded')
+
+
+func _on_button_pressed() -> void:
+	#print('pressed')
+	#load_game()
+	#print('here')
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	$AnimationPlayer.play('MainMenu')
+	await $AnimationPlayer.animation_finished
+	
+	get_parent().add_child(_game_scene)
+	queue_free()
+"
+
+[sub_resource type="Animation" id="Animation_7mycd"]
+resource_name = "MainMenu"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.03333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.807756, 0.151539), Vector3(0, -1.61594, 0.308443)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("cultist2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.03333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.0143221, -2.38419e-07, -2.10407), Vector3(-0.0998678, 0.421891, -3.22475)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("cultist3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.03333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(3.58975, 1.13784, -3.26558), Vector3(4.74606, 1.6407, -4.73303)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("cultist4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.03333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-3.53252, 1.71214, -3.93241), Vector3(-3.60296, 2.23862, -6.84186)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/TextureRect:modulate")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.03333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_272bh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.807756, 0.151539)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("cultist2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0143221, -2.38419e-07, -2.10407)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("cultist3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.58975, 1.13784, -3.26558)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("cultist4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-3.53252, 1.71214, -3.93241)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/TextureRect:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_272bh"]
+_data = {
+&"MainMenu": SubResource("Animation_7mycd"),
+&"RESET": SubResource("Animation_272bh")
+}
+
+[sub_resource type="Environment" id="Environment_vivmo"]
+ambient_light_source = 2
+ambient_light_color = Color(0.472845, 0.309446, 0.227094, 1)
+ambient_light_energy = 0.3
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.126624, 0.126624, 0.126624, 1)
+fog_light_energy = 0.1
+fog_density = 1.0
+fog_depth_end = 40.0
+
+[sub_resource type="Gradient" id="Gradient_7mycd"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_272bh"]
+gradient = SubResource("Gradient_7mycd")
+
+[sub_resource type="QuadMesh" id="QuadMesh_dg77c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ycdy4"]
+albedo_color = Color(0.466057, 0.466057, 0.466057, 1)
+metallic = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w48qg"]
+albedo_color = Color(0.527155, 0, 0, 1)
+
+[node name="Main" type="Node3D"]
+script = SubResource("GDScript_7mycd")
+GameScenePath = "res://Map.tscn"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_272bh")
+}
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vivmo")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.190586, -0.98167, 0, 0.98167, 0.190586, 0, -0.807756, 0.151539)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -295.5
+offset_top = 136.0
+offset_right = 295.5
+offset_bottom = 205.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "THE CLOCKWORK HEART"
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -34.0
+offset_top = 234.0
+offset_right = 34.0
+offset_bottom = 284.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Play"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_272bh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.498434, -4.37114e-08, 1)
+material_override = ExtResource("1_7mycd")
+mesh = SubResource("QuadMesh_dg77c")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.49843, -4.37114e-08, 1)
+material_override = ExtResource("1_7mycd")
+mesh = SubResource("QuadMesh_dg77c")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.49843, 0, 0)
+material_override = ExtResource("1_7mycd")
+mesh = SubResource("QuadMesh_dg77c")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.49843, 4.37114e-08, -1)
+material_override = ExtResource("1_7mycd")
+mesh = SubResource("QuadMesh_dg77c")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.49843, -4.37114e-08, 1)
+material_override = ExtResource("1_7mycd")
+mesh = SubResource("QuadMesh_dg77c")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.49843, 0, 0)
+material_override = ExtResource("1_7mycd")
+mesh = SubResource("QuadMesh_dg77c")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.49843, 4.37114e-08, -1)
+material_override = ExtResource("1_7mycd")
+mesh = SubResource("QuadMesh_dg77c")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.50157, -4.37114e-08, 1)
+material_override = ExtResource("1_7mycd")
+mesh = SubResource("QuadMesh_dg77c")
+
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.50157, 0, 0)
+material_override = ExtResource("1_7mycd")
+mesh = SubResource("QuadMesh_dg77c")
+
+[node name="MeshInstance3D18" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.50157, 4.37114e-08, -1)
+material_override = ExtResource("1_7mycd")
+mesh = SubResource("QuadMesh_dg77c")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.498434, 4.37114e-08, -1)
+material_override = ExtResource("1_7mycd")
+mesh = SubResource("QuadMesh_dg77c")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.501566, 4.37114e-08, -1)
+material_override = ExtResource("1_7mycd")
+mesh = SubResource("QuadMesh_dg77c")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.50157, 0, 0)
+material_override = ExtResource("1_7mycd")
+mesh = SubResource("QuadMesh_dg77c")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.50157, -4.37114e-08, 1)
+material_override = ExtResource("1_7mycd")
+mesh = SubResource("QuadMesh_dg77c")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, -2.18557e-06, -50, 0, 50, -2.18557e-06, 0.498434, 27.3287, 1)
+material_override = SubResource("StandardMaterial3D_ycdy4")
+mesh = SubResource("QuadMesh_dg77c")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="."]
+transform = Transform3D(38.3057, 0, 0, 0, -1.6744e-06, -38.3057, 0, 38.3057, -1.6744e-06, 0.498434, 15.802, -22.5249)
+material_override = SubResource("StandardMaterial3D_w48qg")
+mesh = SubResource("QuadMesh_dg77c")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.50157, 4.37114e-08, -1)
+material_override = ExtResource("1_7mycd")
+mesh = SubResource("QuadMesh_dg77c")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.501566, -4.37114e-08, 1)
+material_override = ExtResource("1_7mycd")
+mesh = SubResource("QuadMesh_dg77c")
+
+[node name="Board2" parent="." instance=ExtResource("2_272bh")]
+transform = Transform3D(-4.37114e-08, 1.39724, 0, -1, -6.10753e-08, 0, 0, 0, 1, 0.00855514, -0.0476741, -0.534954)
+
+[node name="Board4" parent="." instance=ExtResource("2_272bh")]
+transform = Transform3D(-4.37114e-08, -3.67132e-08, -1, -1, 0, 4.37114e-08, 0, 0.839901, -4.37114e-08, 1.00856, -0.0476741, -0.0492134)
+
+[node name="Board5" parent="." instance=ExtResource("2_272bh")]
+transform = Transform3D(-4.37114e-08, -3.67132e-08, -1, -1, 0, 4.37114e-08, 0, 0.839901, -4.37114e-08, -0.991445, -0.0476741, -0.0492135)
+
+[node name="Board3" parent="." instance=ExtResource("2_272bh")]
+transform = Transform3D(-4.37114e-08, 1.39724, 0, -1, -6.10753e-08, 0, 0, 0, 1, 0.00855514, -0.0476741, 0.465046)
+
+[node name="Sconce" parent="." instance=ExtResource("3_5vw27")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.88738, 0, 0.17608)
+
+[node name="Sconce2" parent="." instance=ExtResource("3_5vw27")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.1118, 0, 0.227573)
+
+[node name="cultist" parent="." instance=ExtResource("4_kek77")]
+transform = Transform3D(0.101664, -0.000473652, 0.281849, 0.094211, 0.282446, -0.0335078, -0.265637, 0.0999912, 0.0959849, 1.418, 0.0108532, -0.69725)
+visible = false
+
+[node name="cultist2" parent="." instance=ExtResource("4_kek77")]
+transform = Transform3D(-0.0949294, 0.0355531, -0.994849, 0.35073, 0.936476, 0, -0.931653, 0.348924, 0.101369, 0.0143221, -2.38419e-07, -2.10407)
+
+[node name="cultist3" parent="." instance=ExtResource("4_kek77")]
+transform = Transform3D(0.653988, 0.0355532, 0.755669, 0.242203, 0.936476, -0.253672, -0.716685, 0.348924, 0.603833, 3.58975, 1.13784, -3.26558)
+
+[node name="cultist4" parent="." instance=ExtResource("4_kek77")]
+transform = Transform3D(-0.587813, -0.162607, 0.792486, 0.0508632, 0.970225, 0.236803, -0.807396, 0.179505, -0.562041, -3.53252, 1.71214, -3.93241)
+
+[node name="Banner" parent="." instance=ExtResource("5_4c57u")]
+transform = Transform3D(0.485184, 0, 0, 0, 0.485184, 0, 0, 0, 0.485184, -8.77055, 9.20263, -4.35611)
+pixel_size = 0.01
+
+[node name="Banner2" parent="." instance=ExtResource("5_4c57u")]
+transform = Transform3D(0.485184, 0, 0, 0, 0.485184, 0, 0, 0, 0.485184, 6.65049, 9.20263, -4.35611)
+pixel_size = 0.01
+
+[node name="WallTile" parent="." instance=ExtResource("6_efxa6")]
+transform = Transform3D(4.6, 0, 0, 0, 4.6, 0, 0, 0, 4.6, -7.84442, 6, -5.12278)
+
+[node name="WallTile5" parent="." instance=ExtResource("6_efxa6")]
+transform = Transform3D(4.6, 0, 0, 0, 4.6, 0, 0, 0, 4.6, -17.0444, 6, -5.12278)
+
+[node name="WallTile2" parent="." instance=ExtResource("6_efxa6")]
+transform = Transform3D(4.6, 0, 0, 0, 4.6, 0, 0, 0, 4.6, 1.35558, 6, -5.12278)
+
+[node name="WallTile3" parent="." instance=ExtResource("6_efxa6")]
+transform = Transform3D(4.6, 0, 0, 0, 4.6, 0, 0, 0, 4.6, 10.5556, 6, -5.12278)
+
+[node name="WallTile4" parent="." instance=ExtResource("6_efxa6")]
+transform = Transform3D(4.6, 0, 0, 0, 4.6, 0, 0, 0, 4.6, 19.6236, 6.05757, -5.14363)
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

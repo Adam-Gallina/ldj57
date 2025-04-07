@@ -34,6 +34,9 @@ func _process(delta):
 
 	if not _disable_movement:
 		velocity = _handle_movement(delta)
+		if velocity.length() > 0:
+			if $StepTimer.is_stopped():
+				$StepTimer.start()
 		move_and_slide()
 		apply_floor_snap()
 
@@ -65,14 +68,17 @@ func _handle_input(_delta):
 			
 			if hit is Grabbable:
 				if hit.interact():
+					$GrabStreamPlayer.play()
 					Inventory.add_item(hit)
 			elif hit is Placeable:
+				$InteractStreamPlayer.play()
 				_disable_cam = true
 				_disable_movement = true
 				await hit.interact()
 				_disable_cam = false
 				_disable_movement = false
 			elif hit is UIToggle:
+				$InteractStreamPlayer.play()
 				_disable_cam = true
 				_disable_movement = true
 				await hit.interact()
@@ -105,3 +111,8 @@ func _on_item_selected(item):
 	if item == Constants.PuzzleItem.Null:
 		_disable_cam = false
 		_disable_movement = false
+
+func _on_step_timer_timeout() -> void:
+	if velocity.length() > 0:
+		$StepStreamPlayer.play()
+		$StepTimer.start()

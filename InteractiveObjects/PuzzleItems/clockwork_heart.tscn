@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://266hk540owr8"]
+[gd_scene load_steps=5 format=3 uid="uid://266hk540owr8"]
 
 [ext_resource type="PackedScene" uid="uid://blumfg2ktcrxb" path="res://Models/Viewing/ClockworkHeart.glb" id="1_ykhll"]
+[ext_resource type="Script" uid="uid://byw536noua8d3" path="res://InteractiveObjects/PuzzleItems/heartbeat.gd" id="2_t10qf"]
+[ext_resource type="AudioStream" uid="uid://02a5hfifil6l" path="res://Audio/Heartbeat2.wav" id="3_t10qf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ucgfg"]
 albedo_color = Color(0.493211, 0.159028, 0.159028, 1)
@@ -10,6 +12,13 @@ emission = Color(0.60183, 0.106976, 0.106976, 1)
 emission_energy_multiplier = 0.25
 
 [node name="ClockworkHeart" instance=ExtResource("1_ykhll")]
+script = ExtResource("2_t10qf")
 
 [node name="Heart" parent="." index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_ucgfg")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="1"]
+stream = ExtResource("3_t10qf")
+attenuation_model = 3
+volume_db = -12.0
+max_distance = 60.0

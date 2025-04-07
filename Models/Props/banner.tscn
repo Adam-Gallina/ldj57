@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://btqm201kf054n"]
+
+[ext_resource type="Texture2D" uid="uid://ch0vhful16tdy" path="res://Models/Props/Banner.png" id="1_pixi6"]
+
+[node name="Banner" type="Sprite3D"]
+pixel_size = 0.001
+texture = ExtResource("1_pixi6")

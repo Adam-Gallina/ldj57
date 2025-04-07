@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://pnydfdiv55s0"]
+[gd_scene load_steps=7 format=3 uid="uid://pnydfdiv55s0"]
 
 [ext_resource type="Script" uid="uid://djxg3vwa8oe4t" path="res://Player/inventory.gd" id="1_jh2io"]
 [ext_resource type="PackedScene" uid="uid://1muu1htrdsua" path="res://Player/UI/inventory_item.tscn" id="2_us6v5"]
 [ext_resource type="Texture2D" uid="uid://dlh713vknfhua" path="res://Player/Hand.png" id="3_xfn5r"]
+[ext_resource type="AudioStream" uid="uid://bbpftcgaci2d7" path="res://Audio/Interact.wav" id="4_jh2io"]
 
 [sub_resource type="Gradient" id="Gradient_xfn5r"]
 colors = PackedColorArray(0, 0, 0, 0.392157, 0, 0, 0, 0.392157)
@@ -105,4 +106,9 @@ offset_right = 166.0
 offset_bottom = 437.0
 text = " Close Inventory "
 
+[node name="InteractStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_jh2io")
+volume_db = -15.0
+
 [connection signal="pressed" from="PlayerUILayer/Inventory/Button" to="." method="hide_ui"]
+[connection signal="pressed" from="PlayerUILayer/Inventory/Button" to="InteractStreamPlayer" method="play"]
