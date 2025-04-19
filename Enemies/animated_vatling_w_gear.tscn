@@ -1,0 +1,58 @@
+[gd_scene load_steps=13 format=3 uid="uid://dwo6wvp55ah3w"]
+
+[ext_resource type="PackedScene" uid="uid://42ltm21lu7vu" path="res://Enemies/Models/Buns.glb" id="1_26wu8"]
+[ext_resource type="Script" uid="uid://borfuikad2wvw" path="res://Enemies/animated_vatling.gd" id="1_wpt3x"]
+[ext_resource type="PackedScene" uid="uid://dgb58rdp7cbux" path="res://Enemies/Models/Torso.glb" id="2_wpt3x"]
+[ext_resource type="PackedScene" uid="uid://bf0065x7ymguu" path="res://Enemies/Models/Arm.glb" id="3_6tpb3"]
+[ext_resource type="PackedScene" uid="uid://c87hu7jrf232e" path="res://Enemies/Models/Hand.glb" id="4_rhsc2"]
+[ext_resource type="PackedScene" uid="uid://dyol82tc4jy8s" path="res://Models/Viewing/VatlingSmokestack.glb" id="5_0js7j"]
+[ext_resource type="PackedScene" uid="uid://iwdh3vxgc8j3" path="res://Models/Props/GearBlocker.glb" id="6_2lm4s"]
+[ext_resource type="PackedScene" uid="uid://4idndxh500jb" path="res://Models/Workshop/Gear3.glb" id="7_24pqc"]
+[ext_resource type="PackedScene" uid="uid://vnku0oce67qq" path="res://Models/Workshop/GearMount.glb" id="8_qljb1"]
+[ext_resource type="PackedScene" uid="uid://bejnid6p6avm6" path="res://InteractiveObjects/PuzzleItems/Collectible/medium_gear.tscn" id="9_efdpk"]
+[ext_resource type="PackedScene" uid="uid://1srrty7c2gtg" path="res://Enemies/Models/Leg.glb" id="10_7aok7"]
+[ext_resource type="PackedScene" uid="uid://cqss2r2r0rr4j" path="res://Enemies/Models/Foot.glb" id="11_4y6p5"]
+
+[node name="AnimatedVatling_WGear" type="Node3D"]
+script = ExtResource("1_wpt3x")
+
+[node name="Buns2" parent="." instance=ExtResource("1_26wu8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06225, 0)
+
+[node name="Torso2" parent="Buns2" instance=ExtResource("2_wpt3x")]
+
+[node name="Arm" parent="Buns2/Torso2" instance=ExtResource("3_6tpb3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.661228, 0.277904, 0.102614)
+
+[node name="Hand" parent="Buns2/Torso2/Arm" instance=ExtResource("4_rhsc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0292622, -0.608651, 0)
+
+[node name="VatlingSmokestack" parent="Buns2/Torso2" instance=ExtResource("5_0js7j")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -1, 0)
+
+[node name="GearBlocker2" parent="Buns2/Torso2" instance=ExtResource("6_2lm4s")]
+transform = Transform3D(0.7, 0, 3.0598e-08, -3.0598e-08, 1.91069e-15, 0.7, 0, -1, 1.33748e-15, 0, 0.884144, -0.47399)
+
+[node name="Gear32" parent="Buns2/Torso2/GearBlocker2" instance=ExtResource("7_24pqc")]
+transform = Transform3D(1.42857, 0, 0, 0, 1, -7.35137e-08, 0, 1.0502e-07, 1.42857, 0, 0, 0)
+
+[node name="GearMount2" parent="Buns2/Torso2" instance=ExtResource("8_qljb1")]
+transform = Transform3D(1, 0, 4.37114e-08, -4.37114e-08, 1.91069e-15, 1, 0, -1, 1.91069e-15, 0, 0.407816, -0.463973)
+
+[node name="MediumGear" parent="Buns2/Torso2/GearMount2" instance=ExtResource("9_efdpk")]
+
+[node name="LegL" parent="Buns2" instance=ExtResource("10_7aok7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.302562, -0.185783, 0.0905839)
+
+[node name="FootL" parent="Buns2/LegL" instance=ExtResource("11_4y6p5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011064, -0.602671, 0)
+
+[node name="LegR" parent="Buns2" instance=ExtResource("10_7aok7")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -0.303, -0.186, 0.091)
+
+[node name="FootR" parent="Buns2/LegR" instance=ExtResource("11_4y6p5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011064, -0.602671, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[connection signal="grabbed" from="Buns2/Torso2/GearMount2/MediumGear" to="." method="_deactivate_gears" flags=6]

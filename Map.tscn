@@ -2072,7 +2072,7 @@ EndGear = NodePath("GearMount3")
 TargetToggles = [NodePath("GearMount2")]
 
 [node name="GearMount" parent="Rooms/Workshop/AlcoveDoorTile/AlcoveGears" instance=ExtResource("8_iye0r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.0819, 1.67009, -0.161193)
+transform = Transform3D(1, -0.000261799, 0, 0.000261799, 1, 0, 0, 0, 1, -18.0819, 1.67009, -0.161193)
 Locked = true
 
 [node name="LargeGear" parent="Rooms/Workshop/AlcoveDoorTile/AlcoveGears/GearMount" instance=ExtResource("13_275sb")]

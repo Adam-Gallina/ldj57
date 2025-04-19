@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bg2fd2c5t3wyv"]
+[gd_scene load_steps=20 format=3 uid="uid://bg2fd2c5t3wyv"]
 
 [ext_resource type="PackedScene" uid="uid://fcfvs6lptyxx" path="res://Player/player.tscn" id="1_4qc02"]
 [ext_resource type="PackedScene" uid="uid://cpi18rctej3fn" path="res://InteractiveObjects/PuzzleItems/Collectible/large_gear.tscn" id="5_gqtbx"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://4q3er0kbekdy" path="res://InteractiveObjects/PuzzleItems/Collectible/crank.tscn" id="13_7l7f8"]
 [ext_resource type="PackedScene" uid="uid://b4e8rkrldomhc" path="res://InteractiveObjects/PuzzleItems/crane.tscn" id="14_3qa0k"]
 [ext_resource type="PackedScene" uid="uid://bkdejcy5ug50f" path="res://InteractiveObjects/PuzzleItems/chest.tscn" id="14_ihcqn"]
+[ext_resource type="PackedScene" uid="uid://d0pegdmq18tia" path="res://Enemies/patrol_vatling.tscn" id="14_pphbs"]
 [ext_resource type="PackedScene" uid="uid://b8f24kfc42oro" path="res://InteractiveObjects/PuzzleItems/combo_lock.tscn" id="15_3qa0k"]
 [ext_resource type="PackedScene" uid="uid://b14qwvh11hqmk" path="res://InteractiveObjects/PuzzleItems/door_boards.tscn" id="15_7l7f8"]
 
@@ -93,6 +94,9 @@ TargetToggles = [NodePath("GearMount")]
 transform = Transform3D(-0.64074, 0, -0.767758, 0, 1, 0, 0.767758, 0, -0.64074, -2.91127, 1.1502, -3.52301)
 CorrectItemID = 1
 LockOnActivate = false
+
+[node name="PatrolVatling" parent="Node3D" instance=ExtResource("14_pphbs")]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -3.37836, 0.0491863, 5.7603)
 
 [node name="Node3D2" type="Node3D" parent="." node_paths=PackedStringArray("TargetToggles")]
 transform = Transform3D(-0.238144, 0, -0.97123, 0, 1, 0, 0.97123, 0, -0.238144, -0.804588, -4.76837e-07, -11.3841)

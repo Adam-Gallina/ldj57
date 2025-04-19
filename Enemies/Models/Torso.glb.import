@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cgfqd26g7iccl"
-path="res://.godot/imported/Vatling.glb-9869d1507a6b5768f51417da2e7338df.scn"
+uid="uid://dgb58rdp7cbux"
+path="res://.godot/imported/Torso.glb-5dc3b4053b28d79be3b720764bc89410.scn"
 
 [deps]
 
-source_file="res://Models/Viewing/Vatling.glb"
-dest_files=["res://.godot/imported/Vatling.glb-9869d1507a6b5768f51417da2e7338df.scn"]
+source_file="res://Enemies/Models/Torso.glb"
+dest_files=["res://.godot/imported/Torso.glb-5dc3b4053b28d79be3b720764bc89410.scn"]
 
 [params]
 

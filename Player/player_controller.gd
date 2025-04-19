@@ -4,10 +4,6 @@ extends CharacterBody3D
 @export var MoveSpeed = 10
 var _disable_movement = false
 
-@export_category('Combat')
-@export var AttackDamage = 1
-@export var ThrowStrenth = 20
-
 @export_category('Camera')
 @export var CamSpeed = .125
 @export var MinPitch = -90.

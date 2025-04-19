@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0pegdmq18tia"]
+
+[ext_resource type="PackedScene" uid="uid://dwo6wvp55ah3w" path="res://Enemies/animated_vatling_w_gear.tscn" id="1_71enn"]
+
+[node name="PatrolVatling" type="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[node name="AnimatedVatling_WGear" parent="." instance=ExtResource("1_71enn")]
