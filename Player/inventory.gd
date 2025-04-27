@@ -2,15 +2,20 @@ extends Node
 
 signal inventory_item_selected(item_id)
 
-@onready var reticle = $PlayerUILayer/TextureRect
+@onready var hand_reticle = $CursorLayer/Hand
+@onready var glass_reticle = $CursorLayer/MagnifyingGlass
+
+@onready var _inventory_canvas = $InventoryLayer
 
 var items : Dictionary = {}
 var imgs : Dictionary = {}
 @export var InventoryImageScene : PackedScene
-@onready var _inventory = $PlayerUILayer/Inventory/TextureRect/HBoxContainer
-@onready var _inventory_ui = $PlayerUILayer/Inventory
-@onready var _hovered_item_name = $PlayerUILayer/Inventory/HoveredItemName
-@onready var _hovered_item_desc = $PlayerUILayer/Inventory/HoveredItemDescription
+@onready var _inventory_ui = $InventoryLayer/Inventory
+@onready var _inventory = $InventoryLayer/Inventory/TextureRect/HBoxContainer
+@onready var _hovered_item_name = $InventoryLayer/Inventory/HoveredItemName
+@onready var _hovered_item_desc = $InventoryLayer/Inventory/HoveredItemDescription
+
+@onready var _notes_ui = $InventoryLayer/Notes
 
 func _ready() -> void:
 	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -52,23 +57,34 @@ func remove_item(item_id):
 
 	return null
 
-
-func show_ui():
+func show_inventory():
+	show_ui()
 	_inventory_ui.show()
+	_notes_ui.hide()
 	_hovered_item_name.text = ""
 	_hovered_item_desc.text = ""
+
+func show_notes():
+	show_ui()
+	_inventory_ui.hide()
+	_notes_ui.show()
+
+func show_ui():
+	_inventory_canvas.show()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	Constants.GetPlayer().set_input(false, false)
 
 func hide_ui():
-	_inventory_ui.hide()
+	_inventory_canvas.hide()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	Constants.GetPlayer().set_input(true, true)
 	inventory_item_selected.emit(Constants.PuzzleItem.Null)
 
 func toggle_ui():
-	if _inventory_ui.visible: hide_ui()
+	if _inventory_canvas.visible: hide_ui()
 	else: show_ui()
 	
-	return _inventory_ui.visible
+	return _inventory_canvas.visible
 
 
 func _on_inventory_item_selected(item_id):
@@ -84,8 +100,25 @@ func _on_inventory_item_hovered(item_id):
 		print('Tried to hover over invalid item')
 
 
-func show_reticle():
-	reticle.show()
+func _on_inventory_note_selected(note_id):
+	print('Selected ', note_id)
+
+
+func show_reticle(reticle:Constants.ReticleType):
+	if reticle == Constants.ReticleType.Hand:
+		hand_reticle.show()
+		glass_reticle.hide()
+	elif reticle == Constants.ReticleType.Glass:
+		hand_reticle.hide()
+		glass_reticle.show()
 
 func hide_reticle():
-	reticle.hide()
+	hand_reticle.hide()
+	glass_reticle.hide()
+
+
+func _on_inventory_button_pressed() -> void:
+	show_inventory()
+
+func _on_notes_button_pressed() -> void:
+	show_notes()

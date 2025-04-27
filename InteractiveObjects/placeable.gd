@@ -16,7 +16,7 @@ func interact():
 		return false
 
 	if CurrItem == null:
-		Inventory.show_ui()
+		Inventory.show_inventory()
 
 		var id = await Inventory.inventory_item_selected
 

@@ -4,6 +4,8 @@ enum PuzzleItem { Null, GearS, GearM, GearL, HallKey, Crank, Crowbar, Statuette1
 
 enum CollisionLayer { Player=1, Enemy=2, Environment=3, Interactive = 4}
 
+enum ReticleType { Hand, Glass }
+
 var _player : CharacterBody3D
 func SetPlayer(p:CharacterBody3D):
     _player = p

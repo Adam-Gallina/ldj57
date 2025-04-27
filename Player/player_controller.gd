@@ -28,6 +28,11 @@ func _ready() -> void:
 	Inventory.inventory_item_selected.connect(_on_item_selected)
 
 
+func set_input(enable_movement=true, enable_cam=true):
+	_disable_movement = not enable_movement
+	_disable_cam = not enable_cam
+
+
 func _process(delta):
 	_handle_input(delta)
 
@@ -60,31 +65,15 @@ func _handle_input(_delta):
 		if Input.is_action_just_pressed('Fire'):
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	else:
-		Inventory.show_reticle()
+		var hit = raycast.get_collider()
+		if hit is Interactive:
+			Inventory.show_reticle(hit.Reticle)
 
-		if Input.is_action_just_pressed('Fire'):
-			var hit = raycast.get_collider()
-			
-			if hit is Grabbable:
-				if hit.interact():
-					$GrabStreamPlayer.play()
-					Inventory.add_item(hit)
-			elif hit is Placeable:
-				$InteractStreamPlayer.play()
-				_disable_cam = true
-				_disable_movement = true
-				await hit.interact()
-				_disable_cam = false
-				_disable_movement = false
-			elif hit is UIToggle:
-				$InteractStreamPlayer.play()
-				_disable_cam = true
-				_disable_movement = true
-				await hit.interact()
-				_disable_cam = false
-				_disable_movement = false
-			elif hit is Interactive:
+			if Input.is_action_just_pressed('Fire'):
 				hit.interact()
+				$InteractStreamPlayer.play()
+		else:
+			Inventory.hide_reticle()
 
 
 func set_camera(p: float, y: float):

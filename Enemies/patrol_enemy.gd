@@ -29,7 +29,6 @@ func _ready():
 	remove_child(pf)
 	path.add_child(pf)
 
-var t = false
 func _process(delta):
 	if Mode == PatrolMode.Idle:
 		return
@@ -55,9 +54,7 @@ func _process(delta):
 			set_mode(PatrolMode.Return)
 
 
-
 func _physics_process(delta):
-	print(Mode, ' ', _investigation_time)
 	if Mode == PatrolMode.Idle:
 		return
 
