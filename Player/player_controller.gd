@@ -21,6 +21,9 @@ var _disable_cam = false
 @onready var cam: Camera3D = $Camera3D
 @onready var raycast: RayCast3D = $Camera3D/RayCast3D
 
+func _init():
+	Constants.SetPlayer(self)
+
 func _ready() -> void:
 	Inventory.inventory_item_selected.connect(_on_item_selected)
 

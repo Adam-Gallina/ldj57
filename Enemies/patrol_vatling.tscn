@@ -1,9 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0pegdmq18tia"]
+[gd_scene load_steps=4 format=3 uid="uid://d0pegdmq18tia"]
 
 [ext_resource type="PackedScene" uid="uid://dwo6wvp55ah3w" path="res://Enemies/animated_vatling_w_gear.tscn" id="1_71enn"]
+[ext_resource type="Script" uid="uid://cs3o3edqfcs1t" path="res://Enemies/patrol_enemy.gd" id="1_yyi03"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_52do1"]
+height = 2.42822
+radius = 0.631348
 
 [node name="PatrolVatling" type="CharacterBody3D"]
+script = ExtResource("1_yyi03")
+PatrolSpeed = 2.0
+ChaseSpeed = 3.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21411, 0)
+shape = SubResource("CylinderShape3D_52do1")
 
 [node name="AnimatedVatling_WGear" parent="." instance=ExtResource("1_71enn")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.697242, 0)
+target_position = Vector3(0, 0, 1)
+collision_mask = 5
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_height_offset = 0.5
+
+[node name="PathFollow3D" type="PathFollow3D" parent="."]
+
+[connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_target_reached"]

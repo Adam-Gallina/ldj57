@@ -17,12 +17,12 @@
 script = ExtResource("1_wpt3x")
 
 [node name="Buns2" parent="." instance=ExtResource("1_26wu8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06225, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.06225, 0)
 
 [node name="Torso2" parent="Buns2" instance=ExtResource("2_wpt3x")]
 
 [node name="Arm" parent="Buns2/Torso2" instance=ExtResource("3_6tpb3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.661228, 0.277904, 0.102614)
+transform = Transform3D(0.615, 0, 0, 0, 1, 0, 0, 0, 1, 0.661228, 0.277904, 0.102614)
 
 [node name="Hand" parent="Buns2/Torso2/Arm" instance=ExtResource("4_rhsc2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0292622, -0.608651, 0)
