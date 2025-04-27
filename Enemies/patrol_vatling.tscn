@@ -29,4 +29,5 @@ path_height_offset = 0.5
 
 [node name="PathFollow3D" type="PathFollow3D" parent="."]
 
+[connection signal="deactivated" from="AnimatedVatling_WGear" to="." method="set_mode" binds= [0]]
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_target_reached"]

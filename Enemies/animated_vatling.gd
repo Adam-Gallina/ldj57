@@ -1,5 +1,8 @@
 extends Node3D
 
+signal activated()
+signal deactivated()
+
 @export var GearsActive = true
 @export var TopGearSpeed = 4.
 @export var BotGearSpeed = 3.
@@ -15,6 +18,8 @@ func _process(delta):
 
 func _activate_gears():
 	GearsActive = true
+	activated.emit()
 
 func _deactivate_gears():
 	GearsActive = false
+	deactivated.emit()
