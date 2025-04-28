@@ -1,6 +1,7 @@
 extends Node
 
 enum PuzzleItem { Null, GearS, GearM, GearL, HallKey, Crank, Crowbar, Statuette1, Statuette2, Statuette3, Statuette4, Statuette5 }
+enum NoteItem { Null, Note1, Note2, Note3 }
 
 enum CollisionLayer { Player=1, Enemy=2, Environment=3, Interactive = 4}
 

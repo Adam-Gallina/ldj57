@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://dqxfmmhned4si"]
+
+[node name="NoteButton" type="Button"]
+text = "Note 1"

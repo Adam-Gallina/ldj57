@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bg2fd2c5t3wyv"]
+[gd_scene load_steps=30 format=3 uid="uid://bg2fd2c5t3wyv"]
 
 [ext_resource type="PackedScene" uid="uid://fcfvs6lptyxx" path="res://Player/player.tscn" id="1_4qc02"]
 [ext_resource type="MeshLibrary" uid="uid://cr68g5v2ew5av" path="res://Environment/WallTiles.tres" id="2_pphbs"]
@@ -17,6 +17,10 @@
 [ext_resource type="PackedScene" uid="uid://d0pegdmq18tia" path="res://Enemies/patrol_vatling.tscn" id="14_pphbs"]
 [ext_resource type="PackedScene" uid="uid://b8f24kfc42oro" path="res://InteractiveObjects/PuzzleItems/combo_lock.tscn" id="15_3qa0k"]
 [ext_resource type="PackedScene" uid="uid://b14qwvh11hqmk" path="res://InteractiveObjects/PuzzleItems/door_boards.tscn" id="15_7l7f8"]
+[ext_resource type="PackedScene" uid="uid://cau85gu55kosn" path="res://Models/Props/Lecturn.tscn" id="18_olj81"]
+[ext_resource type="Script" uid="uid://gfrd3n0v4xbj" path="res://InteractiveObjects/grabbable_note.gd" id="19_olj81"]
+[ext_resource type="PackedScene" uid="uid://3ye2rstccuw5" path="res://alert.tscn" id="20_icpcy"]
+[ext_resource type="PackedScene" uid="uid://tdyg7rlarl7q" path="res://InteractiveObjects/sample_note.tscn" id="21_e7grg"]
 
 [sub_resource type="Curve3D" id="Curve3D_3qa0k"]
 closed = true
@@ -40,6 +44,15 @@ size = Vector2(100, 100)
 size = Vector3(100, 100, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_ihcqn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f6xqv"]
+size = Vector3(0.53894, 0.272247, 0.429321)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k3uuf"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_4bs2e"]
+material = SubResource("StandardMaterial3D_k3uuf")
+size = Vector2(1, 1.5)
 
 [node name="TestMap" type="Node3D"]
 
@@ -183,6 +196,83 @@ transform = Transform3D(0.155107, 0, 0.987898, 0, 1, 0, -0.987898, 0, 0.155107, 
 
 [node name="Chest" parent="Node3D4/ChestLock" instance=ExtResource("14_ihcqn")]
 Locked = true
+
+[node name="StaticBody3D" parent="." instance=ExtResource("18_olj81")]
+transform = Transform3D(-0.865064, 0, 0.501662, 0, 1, 0, -0.501662, 0, -0.865064, 1.99309, 0, -1.79671)
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="StaticBody3D" node_paths=PackedStringArray("NoteNode") groups=["ItemHints"]]
+transform = Transform3D(0.995373, 0.0566155, -0.0776389, -7.01517e-08, 0.80799, 0.589196, 0.0960889, -0.586471, 0.80425, 0.206037, 1.08583, 0.0242751)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("19_olj81")
+NoteID = 1
+NoteNode = NodePath("SampleNoteBackground")
+Reticle = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/StaticBody3D2"]
+transform = Transform3D(1, 2.92063e-06, 0, 0, 1, -4.02331e-07, 0, -5.23031e-06, 1, -0.197692, -0.0584197, -0.109189)
+shape = SubResource("BoxShape3D_f6xqv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/StaticBody3D2"]
+transform = Transform3D(0.270072, -0.0133142, -0.0250674, 0.0259597, 0.0188846, 0.269655, -0.0114776, -0.270575, 0.020054, -0.203715, -0.0426125, -0.0824829)
+mesh = SubResource("QuadMesh_4bs2e")
+
+[node name="Alert" parent="StaticBody3D/StaticBody3D2" instance=ExtResource("20_icpcy")]
+transform = Transform3D(1, 0, 0, 0, 0.786288, -0.61786, 0, 0.61786, 0.786288, 0, -0.345445, -0.271448)
+
+[node name="SampleNoteBackground" parent="StaticBody3D/StaticBody3D2" instance=ExtResource("21_e7grg")]
+
+[node name="StaticBody3D2" parent="." instance=ExtResource("18_olj81")]
+transform = Transform3D(-0.460432, 0, 0.887695, 0, 1, 0, -0.887695, 0, -0.460432, 3.247, 0, -0.86451)
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="StaticBody3D2" node_paths=PackedStringArray("NoteNode") groups=["ItemHints"]]
+transform = Transform3D(0.995373, 0.0566155, -0.0776389, -7.01517e-08, 0.80799, 0.589196, 0.0960889, -0.586471, 0.80425, 0.206037, 1.08583, 0.0242751)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("19_olj81")
+NoteID = 2
+NoteName = "asdasdNote"
+NoteNode = NodePath("SampleNoteBackground")
+Reticle = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2/StaticBody3D2"]
+transform = Transform3D(1, 2.92063e-06, 0, 0, 1, -4.02331e-07, 0, -5.23031e-06, 1, -0.197692, -0.0584197, -0.109189)
+shape = SubResource("BoxShape3D_f6xqv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2/StaticBody3D2"]
+transform = Transform3D(0.270072, -0.0133142, -0.0250674, 0.0259597, 0.0188846, 0.269655, -0.0114776, -0.270575, 0.020054, -0.203715, -0.0426125, -0.0824829)
+mesh = SubResource("QuadMesh_4bs2e")
+
+[node name="Alert" parent="StaticBody3D2/StaticBody3D2" instance=ExtResource("20_icpcy")]
+transform = Transform3D(1, 0, 0, 0, 0.786288, -0.61786, 0, 0.61786, 0.786288, 0, -0.345445, -0.271448)
+
+[node name="SampleNoteBackground" parent="StaticBody3D2/StaticBody3D2" instance=ExtResource("21_e7grg")]
+
+[node name="StaticBody3D3" parent="." instance=ExtResource("18_olj81")]
+transform = Transform3D(-0.0578254, 0, 0.998327, 0, 1, 0, -0.998327, 0, -0.0578254, 3.39977, 0, 0.449841)
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="StaticBody3D3" node_paths=PackedStringArray("NoteNode") groups=["ItemHints"]]
+transform = Transform3D(0.995373, 0.0566155, -0.0776389, -7.01517e-08, 0.80799, 0.589196, 0.0960889, -0.586471, 0.80425, 0.206037, 1.08583, 0.0242751)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("19_olj81")
+NoteID = 3
+NoteName = "gfdfhdfgh Note"
+NoteNode = NodePath("SampleNoteBackground")
+Reticle = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3/StaticBody3D2"]
+transform = Transform3D(1, 2.92063e-06, 0, 0, 1, -4.02331e-07, 0, -5.23031e-06, 1, -0.197692, -0.0584197, -0.109189)
+shape = SubResource("BoxShape3D_f6xqv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D3/StaticBody3D2"]
+transform = Transform3D(0.270072, -0.0133142, -0.0250674, 0.0259597, 0.0188846, 0.269655, -0.0114776, -0.270575, 0.020054, -0.203715, -0.0426125, -0.0824829)
+mesh = SubResource("QuadMesh_4bs2e")
+
+[node name="Alert" parent="StaticBody3D3/StaticBody3D2" instance=ExtResource("20_icpcy")]
+transform = Transform3D(1, 0, 0, 0, 0.786288, -0.61786, 0, 0.61786, 0.786288, 0, -0.345445, -0.271448)
+
+[node name="SampleNoteBackground" parent="StaticBody3D3/StaticBody3D2" instance=ExtResource("21_e7grg")]
 
 [connection signal="activated" from="Node3D4/Lock" to="Node3D4/Lock/Door2" method="unlock"]
 [connection signal="deactivated" from="Node3D4/Lock" to="Node3D4/Lock/Door2" method="lock"]

@@ -15,11 +15,22 @@ var imgs : Dictionary = {}
 @onready var _hovered_item_name = $InventoryLayer/Inventory/HoveredItemName
 @onready var _hovered_item_desc = $InventoryLayer/Inventory/HoveredItemDescription
 
+var notes : Dictionary = {}
+@export var NoteButtonScene : PackedScene
 @onready var _notes_ui = $InventoryLayer/Notes
+@onready var _notes_parent = $InventoryLayer/Notes/TextureRect/VBoxContainer
+@onready var _selected_note_name = $InventoryLayer/Notes/NoteName
+@onready var _selected_note_desc = $InventoryLayer/Notes/NoteDescription
 
 func _ready() -> void:
 	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	hide_ui()
+
+	_hovered_item_name.text = ""
+	_hovered_item_desc.text = ""
+
+	_selected_note_name.text = ""
+	_selected_note_desc.text = ""
 
 func _process(_delta):
 	if Input.is_action_just_pressed('menu_pause'):
@@ -27,6 +38,34 @@ func _process(_delta):
 			get_tree().quit.call_deferred()
 
 		#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE else Input.MOUSE_MODE_VISIBLE
+
+
+func show_inventory():
+	show_ui()
+	_inventory_ui.show()
+	_notes_ui.hide()
+
+func show_notes():
+	show_ui()
+	_inventory_ui.hide()
+	_notes_ui.show()
+
+func show_ui():
+	_inventory_canvas.show()
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	Constants.GetPlayer().set_input(false, false)
+
+func hide_ui():
+	_inventory_canvas.hide()
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	Constants.GetPlayer().set_input(true, true)
+	inventory_item_selected.emit(Constants.PuzzleItem.Null)
+
+func toggle_ui():
+	if _inventory_canvas.visible: hide_ui()
+	else: show_ui()
+	
+	return _inventory_canvas.visible
 
 
 func add_item(item):
@@ -57,34 +96,21 @@ func remove_item(item_id):
 
 	return null
 
-func show_inventory():
-	show_ui()
-	_inventory_ui.show()
-	_notes_ui.hide()
-	_hovered_item_name.text = ""
-	_hovered_item_desc.text = ""
 
-func show_notes():
-	show_ui()
-	_inventory_ui.hide()
-	_notes_ui.show()
+func add_note(note):
+	notes[note.NoteID] = note
 
-func show_ui():
-	_inventory_canvas.show()
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	Constants.GetPlayer().set_input(false, false)
-
-func hide_ui():
-	_inventory_canvas.hide()
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	Constants.GetPlayer().set_input(true, true)
-	inventory_item_selected.emit(Constants.PuzzleItem.Null)
-
-func toggle_ui():
-	if _inventory_canvas.visible: hide_ui()
-	else: show_ui()
+	note.NoteNode.get_parent().remove_child(note.NoteNode)
+	_notes_ui.add_child(note.NoteNode)
+	note.NoteNode.hide()
 	
-	return _inventory_canvas.visible
+	var i = NoteButtonScene.instantiate()
+	i.text = note.NoteName
+	i.pressed.connect(func(): _on_inventory_note_selected(note.NoteID))
+	_notes_parent.add_child(i)
+
+func contains_note(note_id):
+	return notes.get(note_id)
 
 
 func _on_inventory_item_selected(item_id):
@@ -101,7 +127,13 @@ func _on_inventory_item_hovered(item_id):
 
 
 func _on_inventory_note_selected(note_id):
-	print('Selected ', note_id)
+	if contains_note(note_id):
+		$InteractStreamPlayer.play()
+		notes[note_id].NoteNode.show()
+		_selected_note_name.text = notes[note_id].NoteName
+		_selected_note_desc.text = notes[note_id].NoteDescription
+	else:
+		print('Tried to select invalid note')
 
 
 func show_reticle(reticle:Constants.ReticleType):
