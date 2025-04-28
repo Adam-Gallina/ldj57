@@ -45,14 +45,13 @@ func _physics_process(_delta):
 
 func _on_velocity_calculated(safe_v : Vector3):	
 	if not _moving: return
-	
+
 	velocity = safe_v
 	move_and_slide()
 
 
 func _attack(target):
 	if _next_attack <= 0:
-		print('smacked ', target)
 		_next_attack = AttackSpeed
 
 func damage(amount):

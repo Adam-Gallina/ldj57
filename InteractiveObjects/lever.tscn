@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://mecow5oc1hsn"]
+
+[ext_resource type="Script" uid="uid://hefskbbgjw73" path="res://InteractiveObjects/lever.gd" id="1_7gs44"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hcok6"]
+size = Vector3(0.483154, 1, 0.499023)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0ro26"]
+top_radius = 0.125
+bottom_radius = 0.125
+height = 0.5
+
+[node name="Lever" type="StaticBody3D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_7gs44")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00183105, 0, -0.250488)
+shape = SubResource("BoxShape3D_hcok6")
+
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.25)
+mesh = SubResource("CylinderMesh_0ro26")
+skeleton = NodePath("")

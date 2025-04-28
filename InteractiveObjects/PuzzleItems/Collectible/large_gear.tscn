@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpi18rctej3fn"]
+
+[ext_resource type="Script" uid="uid://dn1xdkf1cabjq" path="res://InteractiveObjects/grabbable.gd" id="1_qikts"]
+[ext_resource type="Texture2D" uid="uid://c2n0hcbbm026h" path="res://InteractiveObjects/PuzzleItems/Collectible/InventoryImages/GearL.png" id="2_87gnu"]
+[ext_resource type="PackedScene" uid="uid://b4h6kmhk3rwqn" path="res://Models/Workshop/Gear1.glb" id="3_qikts"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vmlrh"]
+height = 0.0667801
+radius = 0.374512
+
+[node name="LargeGear" type="StaticBody3D" groups=["ItemHints"]]
+collision_layer = 8
+collision_mask = 12
+script = ExtResource("1_qikts")
+ItemID = 3
+InventoryImage = ExtResource("2_87gnu")
+ItemName = "Large Gear"
+ItemDescription = "A gear almost too big to carry by yourself"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0337029, 0)
+shape = SubResource("CylinderShape3D_vmlrh")
+
+[node name="Gear12" parent="." instance=ExtResource("3_qikts")]

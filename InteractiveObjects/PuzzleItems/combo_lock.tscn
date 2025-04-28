@@ -1,0 +1,148 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8f24kfc42oro"]
+
+[ext_resource type="Script" uid="uid://d4hoba1mjbgl0" path="res://InteractiveObjects/combo_lock.gd" id="1_okgok"]
+[ext_resource type="PackedScene" uid="uid://kvyycoy3h58h" path="res://Models/Generic/Lock.glb" id="2_j86v6"]
+[ext_resource type="PackedScene" uid="uid://lq8yrjoaf4iu" path="res://Models/Bedroom/Chest.glb" id="3_wvneo"]
+[ext_resource type="PackedScene" uid="uid://yiv6e6vbdajb" path="res://Models/Bedroom/ChestLid.glb" id="4_bifes"]
+[ext_resource type="Script" uid="uid://c31j1hi2bvujt" path="res://InteractiveObjects/PuzzleItems/scrollwheel_label.gd" id="5_iinyu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r8j0k"]
+size = Vector3(1.58474, 0.696687, 1.19203)
+
+[node name="ChestLock" type="StaticBody3D" node_paths=PackedStringArray("ComboUI", "Scrollwheels")]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_okgok")
+ComboUI = NodePath("CanvasLayer")
+Scrollwheels = [NodePath("CanvasLayer/HBoxContainer/VBoxContainer"), NodePath("CanvasLayer/HBoxContainer/VBoxContainer2"), NodePath("CanvasLayer/HBoxContainer/VBoxContainer3"), NodePath("CanvasLayer/HBoxContainer/VBoxContainer4")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0254963, 0.314223, 0.00722867)
+shape = SubResource("BoxShape3D_r8j0k")
+
+[node name="Lock" parent="." instance=ExtResource("2_j86v6")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.724367, -0.683424, -0.565641)
+
+[node name="Chest2" parent="." instance=ExtResource("3_wvneo")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.616501, 0.558183)
+visible = false
+
+[node name="ChestLid" parent="Pivot" instance=ExtResource("4_bifes")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.616501, -0.558183)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -46.5
+offset_right = 40.0
+offset_bottom = 46.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+script = ExtResource("5_iinyu")
+
+[node name="IncrementButton" type="Button" parent="CanvasLayer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "^"
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="DecrementButton" type="Button" parent="CanvasLayer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "v"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+script = ExtResource("5_iinyu")
+
+[node name="IncrementButton" type="Button" parent="CanvasLayer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "^"
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "1"
+
+[node name="DecrementButton" type="Button" parent="CanvasLayer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "v"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+script = ExtResource("5_iinyu")
+
+[node name="IncrementButton" type="Button" parent="CanvasLayer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "^"
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "1"
+
+[node name="DecrementButton" type="Button" parent="CanvasLayer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "v"
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+script = ExtResource("5_iinyu")
+
+[node name="IncrementButton" type="Button" parent="CanvasLayer/HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+text = "^"
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+text = "1"
+
+[node name="DecrementButton" type="Button" parent="CanvasLayer/HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+text = "v"
+
+[node name="SubmitButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = 70.0
+offset_right = 31.0
+offset_bottom = 101.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Unlock"
+
+[node name="BackButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = 110.0
+offset_right = 31.0
+offset_bottom = 141.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back"
+
+[connection signal="activated" from="." to="Lock" method="hide"]
+[connection signal="activated" from="." to="CollisionShape3D" method="set_disabled" binds= [true]]
+[connection signal="deactivated" from="." to="Lock" method="show"]
+[connection signal="deactivated" from="." to="CollisionShape3D" method="set_disabled" binds= [false]]
+[connection signal="pressed" from="CanvasLayer/SubmitButton" to="." method="_on_submit"]
+[connection signal="pressed" from="CanvasLayer/BackButton" to="." method="hide_ui"]

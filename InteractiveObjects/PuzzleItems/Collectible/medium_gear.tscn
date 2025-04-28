@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bejnid6p6avm6"]
+
+[ext_resource type="Script" uid="uid://dn1xdkf1cabjq" path="res://InteractiveObjects/grabbable.gd" id="1_ttibc"]
+[ext_resource type="Texture2D" uid="uid://dpl03rpu0yxl4" path="res://InteractiveObjects/PuzzleItems/Collectible/InventoryImages/GearM.png" id="2_kfwtq"]
+[ext_resource type="PackedScene" uid="uid://c1p1dnd6oq5w6" path="res://Models/Workshop/Gear2.glb" id="3_ttibc"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vmlrh"]
+height = 0.0667801
+radius = 0.316406
+
+[node name="MediumGear" type="StaticBody3D" groups=["ItemHints"]]
+collision_layer = 8
+collision_mask = 12
+script = ExtResource("1_ttibc")
+ItemID = 2
+InventoryImage = ExtResource("2_kfwtq")
+ItemName = "Medium Gear"
+ItemDescription = "A gear covered in a red metallic-smelling fluid you choose to believe is grease"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0337029, 0)
+shape = SubResource("CylinderShape3D_vmlrh")
+
+[node name="Gear22" parent="." instance=ExtResource("3_ttibc")]
