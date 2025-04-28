@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://b14qwvh11hqmk"]
+
+[ext_resource type="Script" uid="uid://dhadxxq80gm7w" path="res://InteractiveObjects/Placeable/placeable.gd" id="1_lbn32"]
+[ext_resource type="PackedScene" uid="uid://be5vi54fph6ey" path="res://Models/Generic/Board.glb" id="2_lbn32"]
+[ext_resource type="PackedScene" uid="uid://cfya7pquih6oa" path="res://Models/Generic/Door.glb" id="3_hiq7t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hcok6"]
+size = Vector3(1.709, 2.39, 0.12)
+
+[node name="Boards" type="StaticBody3D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_lbn32")
+ValidItemID = Array[int]([6])
+CanRetrieveItem = false
+LockOnActivate = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.837044, 1.20811, -0.0167233)
+shape = SubResource("BoxShape3D_hcok6")
+
+[node name="Boards" type="Node3D" parent="."]
+
+[node name="Board" parent="Boards" instance=ExtResource("2_lbn32")]
+transform = Transform3D(0.261851, 1.42052, 0, -1.18133, 0.31487, 0, 0, 0, 2.275, -0.796825, 0.641347, 0)
+
+[node name="Board2" parent="Boards" instance=ExtResource("2_lbn32")]
+transform = Transform3D(-0.0517245, 1.45367, 0, -1.20889, -0.0621977, 0, 0, 0, 2.275, -0.903716, 1.17094, 0)
+
+[node name="Board3" parent="Boards" instance=ExtResource("2_lbn32")]
+transform = Transform3D(0.0616182, 1.45311, 0, -1.20843, 0.0740946, 0, 0, 0, 2.275, -0.767673, 1.71512, 0)
+
+[node name="Door" parent="." instance=ExtResource("3_hiq7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.833286, 0, 0)
+visible = false
+
+[connection signal="activated" from="." to="Boards" method="hide"]
+[connection signal="activated" from="." to="CollisionShape3D" method="set_disabled" binds= [true]]
+[connection signal="deactivated" from="." to="Boards" method="show"]
+[connection signal="deactivated" from="." to="CollisionShape3D" method="set_disabled" binds= [false]]

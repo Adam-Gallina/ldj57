@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://krkglmylaupd"]
+
+[ext_resource type="Script" uid="uid://dhadxxq80gm7w" path="res://InteractiveObjects/Placeable/placeable.gd" id="1_hnfbh"]
+[ext_resource type="PackedScene" uid="uid://kvyycoy3h58h" path="res://Models/Generic/Lock.glb" id="2_42s3q"]
+[ext_resource type="PackedScene" uid="uid://cfya7pquih6oa" path="res://Models/Generic/Door.glb" id="2_i0jys"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hcok6"]
+size = Vector3(1.709, 2.39, 0.12)
+
+[node name="Lock" type="StaticBody3D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_hnfbh")
+ValidItemID = Array[int]([4])
+CanRetrieveItem = false
+LockOnActivate = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.837044, 1.20811, -0.0167233)
+shape = SubResource("BoxShape3D_hcok6")
+
+[node name="Lock" parent="." instance=ExtResource("2_42s3q")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.833286, 0, 0)
+
+[node name="Door" parent="." instance=ExtResource("2_i0jys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.833286, 0, 0)
+visible = false
+
+[connection signal="activated" from="." to="Lock" method="hide"]
+[connection signal="activated" from="." to="CollisionShape3D" method="set_disabled" binds= [true]]
+[connection signal="deactivated" from="." to="Lock" method="show"]
+[connection signal="deactivated" from="." to="CollisionShape3D" method="set_disabled" binds= [false]]

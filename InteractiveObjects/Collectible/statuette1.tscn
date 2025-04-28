@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://l3ymn56xjx72"]
+
+[ext_resource type="Script" uid="uid://dn1xdkf1cabjq" path="res://InteractiveObjects/Collectible/grabbable.gd" id="1_nmq74"]
+[ext_resource type="Texture2D" uid="uid://ysg051ikqfcl" path="res://InteractiveObjects/Collectible/InventoryImages/Statue1.png" id="2_nmq74"]
+[ext_resource type="PackedScene" uid="uid://3ye2rstccuw5" path="res://Player/UI/alert.tscn" id="4_d7t18"]
+[ext_resource type="PackedScene" uid="uid://bqj0py3jkly6r" path="res://Models/Closet/ManStatuette.glb" id="4_m82n6"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vmlrh"]
+height = 0.858097
+radius = 0.240234
+
+[node name="Statuette1" type="StaticBody3D" groups=["ItemHints"]]
+collision_layer = 8
+collision_mask = 12
+script = ExtResource("1_nmq74")
+ItemID = 7
+InventoryImage = ExtResource("2_nmq74")
+ItemName = "Statuette of a Believer"
+ItemDescription = "A small marble statue. Holding fills you with determination"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.429361, 0)
+shape = SubResource("CylinderShape3D_vmlrh")
+
+[node name="ManStatuette" parent="." instance=ExtResource("4_m82n6")]
+transform = Transform3D(0.0675405, 0, 0, 0, 0.0675405, 0, 0, 0, 0.0675405, -0.000437021, 0.135477, 4.79221e-05)
+
+[node name="Alert" parent="." groups=["ItemHints"] instance=ExtResource("4_d7t18")]
+top_level = true

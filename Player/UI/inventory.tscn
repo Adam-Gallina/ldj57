@@ -1,0 +1,221 @@
+[gd_scene load_steps=9 format=3 uid="uid://pnydfdiv55s0"]
+
+[ext_resource type="Script" uid="uid://djxg3vwa8oe4t" path="res://Player/UI/inventory.gd" id="1_jh2io"]
+[ext_resource type="PackedScene" uid="uid://1muu1htrdsua" path="res://Player/UI/inventory_item.tscn" id="2_us6v5"]
+[ext_resource type="PackedScene" uid="uid://dqxfmmhned4si" path="res://Player/UI/inventory_note.tscn" id="3_uleqn"]
+[ext_resource type="Texture2D" uid="uid://dlh713vknfhua" path="res://Player/UI/Hand.png" id="3_xfn5r"]
+[ext_resource type="AudioStream" uid="uid://bbpftcgaci2d7" path="res://Audio/Interact.wav" id="4_jh2io"]
+[ext_resource type="Texture2D" uid="uid://58i01wj3ty5l" path="res://Player/UI/MagnifyingGlass.png" id="4_us6v5"]
+
+[sub_resource type="Gradient" id="Gradient_xfn5r"]
+colors = PackedColorArray(0, 0, 0, 0.392157, 0, 0, 0, 0.392157)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jh2io"]
+gradient = SubResource("Gradient_xfn5r")
+
+[node name="Inventory" type="Node"]
+script = ExtResource("1_jh2io")
+InventoryImageScene = ExtResource("2_us6v5")
+NoteButtonScene = ExtResource("3_uleqn")
+
+[node name="CursorLayer" type="CanvasLayer" parent="."]
+
+[node name="Hand" type="TextureRect" parent="CursorLayer"]
+modulate = Color(0.60183, 0.60183, 0.60183, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_xfn5r")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="MagnifyingGlass" type="TextureRect" parent="CursorLayer"]
+modulate = Color(0.60183, 0.60183, 0.60183, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_us6v5")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="InventoryLayer" type="CanvasLayer" parent="."]
+
+[node name="CloseButton" type="Button" parent="InventoryLayer"]
+offset_left = 29.0
+offset_top = 31.0
+offset_right = 166.0
+offset_bottom = 62.0
+text = " Close Inventory "
+
+[node name="InventoryButton" type="Button" parent="InventoryLayer"]
+offset_left = 388.0
+offset_top = 31.0
+offset_right = 525.0
+offset_bottom = 62.0
+text = "Inventory"
+
+[node name="NotesButton" type="Button" parent="InventoryLayer"]
+offset_left = 599.0
+offset_top = 31.0
+offset_right = 736.0
+offset_bottom = 62.0
+text = "Notes"
+
+[node name="Inventory" type="Control" parent="InventoryLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="InventoryLayer/Inventory"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -138.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("GradientTexture1D_jh2io")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InventoryLayer/Inventory/TextureRect"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -150.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="HoveredItemName" type="Label" parent="InventoryLayer/Inventory"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -78.5
+offset_top = -229.0
+offset_right = 78.5
+offset_bottom = -206.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "Hovered Item Name"
+horizontal_alignment = 1
+
+[node name="HoveredItemDescription" type="Label" parent="InventoryLayer/Inventory"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -271.5
+offset_top = -201.0
+offset_right = 271.5
+offset_bottom = -178.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "This is where the description of the currently hovered item will appear"
+horizontal_alignment = 1
+
+[node name="Notes" type="Control" parent="InventoryLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="InventoryLayer/Notes"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -554.0
+offset_right = -896.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("GradientTexture1D_jh2io")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryLayer/Notes/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 14.0
+offset_right = 14.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NoteName" type="Label" parent="InventoryLayer/Notes"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -21.5
+offset_top = -562.0
+offset_right = 274.5
+offset_bottom = -520.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "Selected Note Name"
+horizontal_alignment = 1
+
+[node name="NoteDescription" type="Label" parent="InventoryLayer/Notes"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -139.5
+offset_top = -508.0
+offset_right = 404.5
+offset_bottom = -485.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "This is where the description of the currently selected note will appear"
+horizontal_alignment = 1
+
+[node name="InteractStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_jh2io")
+volume_db = -15.0
+
+[connection signal="pressed" from="InventoryLayer/CloseButton" to="." method="hide_ui"]
+[connection signal="pressed" from="InventoryLayer/CloseButton" to="InteractStreamPlayer" method="play"]
+[connection signal="pressed" from="InventoryLayer/InventoryButton" to="." method="_on_inventory_button_pressed"]
+[connection signal="pressed" from="InventoryLayer/InventoryButton" to="InteractStreamPlayer" method="play"]
+[connection signal="pressed" from="InventoryLayer/NotesButton" to="." method="_on_notes_button_pressed"]
+[connection signal="pressed" from="InventoryLayer/NotesButton" to="InteractStreamPlayer" method="play"]

@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Inventory="*res://Player/inventory.tscn"
-Constants="*res://constants.gd"
+Inventory="*res://Player/UI/inventory.tscn"
+Constants="*res://Autoloaded/constants.gd"
 
 [display]
 

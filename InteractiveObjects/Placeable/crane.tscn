@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4e8rkrldomhc"]
+
+[ext_resource type="Script" uid="uid://dhadxxq80gm7w" path="res://InteractiveObjects/Placeable/placeable.gd" id="1_1geuk"]
+[ext_resource type="PackedScene" uid="uid://bbfo6r7rab8yb" path="res://Models/Workshop/Crane.glb" id="1_qhgng"]
+[ext_resource type="PackedScene" uid="uid://bx4s2os667d0b" path="res://Models/Workshop/CraneWinch.glb" id="2_1geuk"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3fg0w"]
+height = 1.59442
+radius = 0.339844
+
+[node name="Crane" type="StaticBody3D"]
+collision_layer = 12
+collision_mask = 0
+script = ExtResource("1_1geuk")
+CorrectItemID = 5
+ValidItemID = Array[int]([5])
+CanRetrieveItem = false
+LockOnActivate = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80368, 0)
+shape = SubResource("CylinderShape3D_3fg0w")
+
+[node name="Crane" parent="." instance=ExtResource("1_qhgng")]
+
+[node name="CraneWinch" parent="." instance=ExtResource("2_1geuk")]
+visible = false
+
+[connection signal="activated" from="." to="CraneWinch" method="show"]
+[connection signal="deactivated" from="." to="CraneWinch" method="hide"]

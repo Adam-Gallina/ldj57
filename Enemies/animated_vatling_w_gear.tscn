@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://iwdh3vxgc8j3" path="res://Models/Props/GearBlocker.glb" id="6_2lm4s"]
 [ext_resource type="PackedScene" uid="uid://4idndxh500jb" path="res://Models/Workshop/Gear3.glb" id="7_24pqc"]
 [ext_resource type="PackedScene" uid="uid://vnku0oce67qq" path="res://Models/Workshop/GearMount.glb" id="8_qljb1"]
-[ext_resource type="PackedScene" uid="uid://bejnid6p6avm6" path="res://InteractiveObjects/PuzzleItems/Collectible/medium_gear.tscn" id="9_efdpk"]
+[ext_resource type="PackedScene" uid="uid://bejnid6p6avm6" path="res://InteractiveObjects/Collectible/medium_gear.tscn" id="9_efdpk"]
 [ext_resource type="PackedScene" uid="uid://1srrty7c2gtg" path="res://Enemies/Models/Leg.glb" id="10_7aok7"]
 [ext_resource type="PackedScene" uid="uid://cqss2r2r0rr4j" path="res://Enemies/Models/Foot.glb" id="11_4y6p5"]
 
