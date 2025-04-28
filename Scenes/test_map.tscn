@@ -192,7 +192,7 @@ transform = Transform3D(-0.999804, 0, -0.0197559, 0, 1, 0, 0.0197559, 0, -0.9998
 Locked = true
 
 [node name="ChestLock" parent="Node3D4" instance=ExtResource("16_4v5x5")]
-transform = Transform3D(0.155107, 0, 0.987898, 0, 1, 0, -0.987898, 0, 0.155107, 8.80413, 0.561018, -22.6812)
+transform = Transform3D(0.155107, 0, 0.987898, 0, 1, 0, -0.987898, 0, 0.155107, 2.76674, 0.561015, 3.77338)
 
 [node name="Chest" parent="Node3D4/ChestLock" instance=ExtResource("17_ltvoi")]
 Locked = true

@@ -12,7 +12,8 @@ func interact():
 	if Locked:
 		return false
 
-	Inventory.add_note(self)
+	if not Inventory.contains_note(NoteID):
+		Inventory.add_note(self)
 	Inventory.show_notes()
 	Inventory._on_inventory_note_selected(NoteID)
 
