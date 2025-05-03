@@ -417,6 +417,7 @@ _data = {
 
 [node name="Map" type="Node3D"]
 script = SubResource("GDScript_phpw6")
+SkipIntro = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_oa7bu")
@@ -2391,18 +2392,15 @@ LockOnActivate = true
 [node name="StatuettePedestal" parent="Rooms/Closet/Statuettes" instance=ExtResource("39_i2lx1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.256126, 0.274006, 1.15577)
 CorrectItemID = 7
-LockOnActivate = false
 
 [node name="StatuettePedestal2" parent="Rooms/Closet/Statuettes" instance=ExtResource("39_i2lx1")]
 transform = Transform3D(-0.69889, 0, 0.715229, 0, 1, 0, -0.715229, 0, -0.69889, -0.105675, 0.274006, 0.456325)
 CorrectItemID = 8
-LockOnActivate = false
 
 [node name="StatuettePedestal3" parent="Rooms/Closet/Statuettes" node_paths=PackedStringArray("CurrItem") instance=ExtResource("39_i2lx1")]
 transform = Transform3D(0.980519, 0, -0.196425, 0, 1, 0, 0.196425, 0, 0.980519, -0.106993, 0.274006, -0.242306)
 CorrectItemID = 9
 CurrItem = NodePath("Statuette1")
-LockOnActivate = false
 
 [node name="Statuette1" parent="Rooms/Closet/Statuettes/StatuettePedestal3" instance=ExtResource("40_xe3ev")]
 transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
@@ -2411,7 +2409,6 @@ Locked = true
 [node name="StatuettePedestal4" parent="Rooms/Closet/Statuettes" instance=ExtResource("39_i2lx1")]
 transform = Transform3D(0.861053, 0, 0.508516, 0, 1, 0, -0.508516, 0, 0.861053, 0.178654, 0.274006, -0.852185)
 CorrectItemID = 10
-LockOnActivate = false
 
 [node name="Alert" parent="Rooms/Closet/Statuettes" instance=ExtResource("16_p670d")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.26646e-09, 0, 0.126767)
