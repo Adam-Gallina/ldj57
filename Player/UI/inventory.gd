@@ -14,6 +14,8 @@ var imgs : Dictionary = {}
 @onready var _inventory = $InventoryLayer/Inventory/TextureRect/HBoxContainer
 @onready var _hovered_item_name = $InventoryLayer/Inventory/HoveredItemName
 @onready var _hovered_item_desc = $InventoryLayer/Inventory/HoveredItemDescription
+@onready var _interaction_obj_name = $InventoryLayer/Inventory/InteractionName
+@onready var _interaction_obj_desc = $InventoryLayer/Inventory/InteractionDescription
 
 var notes : Dictionary = {}
 @export var NoteButtonScene : PackedScene
@@ -44,6 +46,10 @@ func show_inventory():
 	show_ui()
 	_inventory_ui.show()
 	_notes_ui.hide()
+func show_inventory_interaction(interaction_name, interaction_desc):
+	_interaction_obj_name.text = interaction_name
+	_interaction_obj_desc.text = interaction_desc
+	show_inventory()
 
 func show_notes():
 	show_ui()
@@ -57,6 +63,8 @@ func show_ui():
 		Constants.GetPlayer().set_input(false, false)
 
 func hide_ui():
+	_interaction_obj_name.text = ""
+	_interaction_obj_desc.text = ""
 	_inventory_canvas.hide()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if Constants.GetPlayer() != null:
@@ -74,8 +82,6 @@ func add_item(item):
 	if not item is Grabbable: return
 
 	items[item.ItemID] = item
-	if item.get_parent() != null:
-		item.get_parent().remove_child(item)
 
 	var i = InventoryImageScene.instantiate()
 	i.set_item(item)
@@ -83,6 +89,11 @@ func add_item(item):
 	i.mouse_entered.connect(func(): _on_inventory_item_hovered(item.ItemID))
 	_inventory.add_child(i)
 	imgs[item.ItemID] = i
+
+	if item.get_parent() != null:
+		item.play_grab_anim()
+		await item.anim_complete
+		item.get_parent().remove_child(item)
 
 func contains_item(item_id):
 	return items.get(item_id)

@@ -78,7 +78,6 @@ offset_bottom = 62.0
 text = "Notes"
 
 [node name="Inventory" type="Control" parent="InventoryLayer"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -86,6 +85,39 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="InteractionName" type="Label" parent="InventoryLayer/Inventory"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -146.5
+offset_top = -561.0
+offset_right = 146.5
+offset_bottom = -519.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "Interacted Object Name"
+horizontal_alignment = 1
+
+[node name="InteractionDescription" type="Label" parent="InventoryLayer/Inventory"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -271.5
+offset_top = -514.0
+offset_right = 271.5
+offset_bottom = -491.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "This is where the description of the last interacted object will appear"
+horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="InventoryLayer/Inventory"]
 layout_mode = 1
@@ -144,6 +176,7 @@ text = "This is where the description of the currently hovered item will appear"
 horizontal_alignment = 1
 
 [node name="Notes" type="Control" parent="InventoryLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

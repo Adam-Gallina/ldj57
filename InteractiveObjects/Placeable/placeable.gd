@@ -6,6 +6,9 @@ class_name Placeable
 @export var CurrItem : Grabbable
 @export var CanRetrieveItem = true
 
+@export var InteractionName = "Unnamed object"
+@export var InteractionMessage = "You're touching something alright"
+
 func _ready() -> void:
 	if CurrItem != null:
 		if CorrectItemID == CurrItem.ItemID:
@@ -16,7 +19,7 @@ func interact():
 		return false
 
 	if CurrItem == null:
-		Inventory.show_inventory()
+		Inventory.show_inventory_interaction(InteractionName, InteractionMessage)
 
 		var id = await Inventory.inventory_item_selected
 

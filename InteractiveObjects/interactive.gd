@@ -14,11 +14,6 @@ func lock():
 func unlock():
     Locked = false
 
-#func _process(delta: float) -> void:
- #   if get_node('Alert') and get_node('Alert').visible:
-  #      
-   #     get_node('Alert').rotation.y = 0
-
 func item_hint_toggled(state:bool):
     if get_node('Alert'):
         $Alert.visible = state
