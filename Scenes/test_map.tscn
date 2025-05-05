@@ -59,6 +59,7 @@ size = Vector2(1, 1.5)
 [node name="PatrolVatling" parent="." node_paths=PackedStringArray("path") instance=ExtResource("1_tvp2l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.41017, 0.0491863, -3.11406)
 path = NodePath("../Path3D")
+Mode = 0
 
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.95313, 0, -1.23722)
@@ -117,6 +118,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.211042, 0.0106471, -3.5781)
 [node name="Lock" parent="Node3D4" instance=ExtResource("9_l4uls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.858205, 0.00541021, -5.17127)
 CorrectItemID = 4
+InteractionName = "Old lock"
+InteractionMessage = "A slightly rusted lock. I bet a key goes to it. Keys usually do"
 
 [node name="Door2" parent="Node3D4/Lock" instance=ExtResource("7_mtn0p")]
 Locked = true
