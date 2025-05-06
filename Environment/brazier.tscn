@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=3 uid="uid://cpb3mg8anchfs"]
+
+[sub_resource type="GDScript" id="GDScript_srovc"]
+script/source = "extends Node3D
+
+func _ready() -> void:
+	$CPUParticles3D.emitting = true
+"
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ta0x8"]
+height = 1.0
+radius = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3rbiy"]
+vertex_color_use_as_albedo = true
+emission_enabled = true
+emission = Color(1, 0.138292, 0.173138, 1)
+disable_receive_shadows = true
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_srovc"]
+material = SubResource("StandardMaterial3D_3rbiy")
+size = Vector2(0.25, 0.25)
+
+[sub_resource type="Curve" id="Curve_x3syk"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.261364, 1), 1.4, 0.0, 0, 0, Vector2(0.590909, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.25169, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_5ie02"]
+offsets = PackedFloat32Array(0, 0.68)
+colors = PackedColorArray(0.24882, 0, 0, 1, 1, 0.905677, 0.440811, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ta0x8"]
+albedo_color = Color(0.357438, 0.357438, 0.357438, 1)
+metallic = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_yjwae"]
+top_radius = 0.35
+bottom_radius = 0.25
+height = 1.0
+
+[node name="Brazier" type="Node3D"]
+script = SubResource("GDScript_srovc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_ta0x8")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0742, 0)
+emitting = false
+amount = 30
+lifetime = 0.5
+speed_scale = 0.5
+mesh = SubResource("QuadMesh_srovc")
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+spread = 20.0
+gravity = Vector3(0, -1, 0)
+initial_velocity_min = 1.5
+initial_velocity_max = 2.0
+tangential_accel_min = -4.0
+tangential_accel_max = 4.0
+scale_amount_min = 0.3
+scale_amount_curve = SubResource("Curve_x3syk")
+color_ramp = SubResource("Gradient_5ie02")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22909, 0)
+light_color = Color(0.757969, 0.648269, 0.518559, 1)
+light_bake_mode = 1
+omni_range = 7.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+material_override = SubResource("StandardMaterial3D_ta0x8")
+mesh = SubResource("CylinderMesh_yjwae")
