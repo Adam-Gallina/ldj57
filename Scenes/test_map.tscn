@@ -30,18 +30,18 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_pphbs"]
-vertices = PackedVector3Array(-12.25, 0.499998, -1.25, -5.25, 0.499998, -1.25, -5.25, 0.499998, -6.25, -49.25, 0.499998, 0, -12.75, 0.499998, 0, -4, 0.499998, -6.75, -4, 0.499998, -49.25, -49.25, 0.499998, -49.25, -3, 0.499998, -6.25, -2.75, 0.499998, -5.25, 49.25, 0.499998, -5.25, 49.25, 0.499998, -49.25, -2.75, 0.499998, -0.75, 49.25, 0.499998, -0.75, -3.75, 0.499998, 1, -5.25, 0.499998, 1, -5, 0.499998, 49.25, 49.25, 0.499998, 49.25, -12.25, 0.499998, 1, -49.25, 0.499998, 49.25, -11, 0.499998, 49.25, -10.75, 0.499998, 1)
-polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 4, 3), PackedInt32Array(6, 5, 2), PackedInt32Array(0, 3, 2), PackedInt32Array(2, 3, 6), PackedInt32Array(6, 3, 7), PackedInt32Array(8, 5, 6), PackedInt32Array(8, 6, 9), PackedInt32Array(9, 6, 10), PackedInt32Array(10, 6, 11), PackedInt32Array(9, 10, 12), PackedInt32Array(12, 10, 13), PackedInt32Array(16, 15, 14), PackedInt32Array(14, 12, 16), PackedInt32Array(16, 12, 13), PackedInt32Array(16, 13, 17), PackedInt32Array(4, 18, 3), PackedInt32Array(3, 18, 19), PackedInt32Array(19, 18, 20), PackedInt32Array(18, 21, 20), PackedInt32Array(21, 15, 20), PackedInt32Array(20, 15, 16)]
-agent_radius = 0.63
-agent_max_climb = 0.0
-agent_max_slope = 0.02
-
 [sub_resource type="QuadMesh" id="QuadMesh_4wuf8"]
 size = Vector2(100, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4wuf8"]
 size = Vector3(100, 100, 1)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_pphbs"]
+vertices = PackedVector3Array(-7.5, 0.29698, 7.249, -8.75, 0.29698, 7.249, -7.75, 0.29698, 7.499, -7.5, 0.29698, 2.749, -7.75, 0.29698, 3.249, -7, 0.29698, 3.749, -6.25, 0.29698, 9.249, -7, 0.29698, 6.749, -5.75, 0.29698, 9.249, -4.25, 0.29698, 7.499, -0.75, 0.29698, 7.249, -0.75, 0.29698, 2.749, -11.25, 0.29698, 4.749, -11, 0.29698, 5.749, -10.25, 0.29698, 5.249, -10.25, 0.29698, 4.749)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Array(0, 6, 2), PackedInt32Array(6, 0, 7), PackedInt32Array(8, 6, 9), PackedInt32Array(9, 6, 7), PackedInt32Array(9, 7, 5), PackedInt32Array(5, 3, 9), PackedInt32Array(9, 3, 10), PackedInt32Array(10, 3, 11), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13)]
+agent_radius = 0.63
+agent_max_climb = 0.0
+agent_max_slope = 0.02
 
 [sub_resource type="SphereMesh" id="SphereMesh_ihcqn"]
 
@@ -65,30 +65,32 @@ Mode = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.95313, 0, -1.23722)
 curve = SubResource("Curve3D_3qa0k")
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-navigation_mesh = SubResource("NavigationMesh_pphbs")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="NavigationRegion3D"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+visible = false
 mesh = SubResource("QuadMesh_4wuf8")
-skeleton = NodePath("../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]
 collision_layer = 4
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 shape = SubResource("BoxShape3D_4wuf8")
 
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_pphbs")
+
 [node name="GridMap" type="GridMap" parent="NavigationRegion3D"]
 mesh_library = ExtResource("2_315us")
+cell_size = Vector3(2, 3, 2)
 cell_center_y = false
 collision_layer = 4
 collision_mask = 0
 data = {
-"cells": PackedInt32Array(65533, 65535, 3, 65533, 65534, 1048578, 65533, 65533, 1048578, 65532, 65535, 5, 65531, 65535, 5, 65530, 65535, 5, 65534, 65535, 1048586, 65534, 65533, 1048586, 65531, 1, 7, 65531, 2, 655367, 65531, 3, 655370, 65531, 0, 10, 65529, 4, 9, 65528, 5, 9, 65528, 6, 1048585, 65529, 7, 1048585, 65528, 7, 1048586, 65527, 6, 1048586, 65527, 5, 10, 65530, 3, 1441802, 65529, 3, 10, 65530, 4, 1441797, 65532, 27, 1441792, 65532, 26, 1441792, 65532, 28, 1441792, 65532, 29, 1441795, 65533, 29, 0, 65534, 29, 1441794, 65534, 30, 1441792, 65534, 31, 655362, 65533, 31, 655360, 65532, 31, 655363, 65534, 5, 655369, 65533, 6, 7, 65533, 7, 655367, 65535, 4, 655369, 65533, 8, 1441796, 65533, 9, 1441796, 65534, 6, 1441796, 65534, 7, 1441796, 65534, 8, 1441796, 0, 4, 655364, 1, 4, 655364, 65535, 5, 655370, 0, 6, 9, 65535, 6, 10, 0, 5, 10, 1, 5, 4, 65535, 7, 1048580, 65535, 8, 1048580, 2, 4, 655364, 2, 5, 4, 4, 1, 12, 3, 1, 1441799, 3, 0, 655372, 4, 0, 1048583, 4, 65535, 1441799, 5, 0, 1441799, 4, 2, 7, 3, 2, 1441799)
+"cells": PackedInt32Array(65533, 65535, 3, 65533, 65534, 1048578, 65533, 65533, 1048578, 65532, 65535, 5, 65531, 65535, 5, 65530, 65535, 5, 65534, 65535, 1048586, 65534, 65533, 1048586, 65531, 1, 7, 65531, 2, 655367, 65531, 3, 655370, 65531, 0, 10, 65529, 4, 9, 65528, 5, 9, 65528, 6, 1048585, 65529, 7, 1048585, 65528, 7, 1048586, 65527, 6, 1048586, 65527, 5, 10, 65530, 3, 1441802, 65529, 3, 10, 65530, 4, 1441797, 65532, 27, 1441792, 65532, 26, 1441792, 65532, 28, 1441792, 65532, 29, 1441795, 65533, 29, 0, 65534, 29, 1441794, 65534, 30, 1441792, 65534, 31, 655362, 65533, 31, 655360, 65532, 31, 655363, 65534, 5, 655369, 65533, 6, 7, 65533, 7, 655367, 65535, 4, 655369, 65533, 8, 1441796, 65533, 9, 1441796, 65534, 6, 1441796, 65534, 7, 1441796, 65534, 8, 1441796, 0, 4, 655364, 1, 4, 655364, 65535, 5, 655370, 0, 6, 9, 65535, 6, 10, 0, 5, 10, 1, 5, 4, 65535, 7, 1048580, 65535, 8, 1048580, 2, 4, 655364, 2, 5, 4, 4, 1, 12, 3, 1, 1441799, 3, 0, 655372, 4, 0, 1048583, 4, 65535, 1441799, 5, 0, 1441799, 4, 2, 7, 3, 2, 1441799, -5, 3, 17, -4, 3, 17, -3, 3, 17, -2, 3, 17, -1, 3, 17, -4, 2, 17, -3, 2, 17, -2, 2, 17, -1, 2, 17, -4, 1, 17, -3, 1, 17, -2, 1, 17, -1, 1, 17, -5, 1, 18, -5, 2, 655378, -6, 2, 17, -6, 3, 17, -4, 4, 1048594, -3, 4, 655378)
 }
+metadata/_editor_floor_ = Vector3(0, -1, 0)
 
 [node name="Player" parent="." instance=ExtResource("3_xfoml")]
 

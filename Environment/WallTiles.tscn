@@ -1,5 +1,6 @@
-[gd_scene load_steps=67 format=4 uid="uid://jlh7neiok8wi"]
+[gd_scene load_steps=80 format=4 uid="uid://jlh7neiok8wi"]
 
+[ext_resource type="Material" uid="uid://ckf1756xbk8g5" path="res://Environment/Dirt.tres" id="2_ryb5r"]
 [ext_resource type="Material" uid="uid://dm3r08p0n0cgi" path="res://Environment/WallTex.tres" id="7_38d8k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ec04s"]
@@ -779,6 +780,134 @@ point_count = 4
 offsets = PackedFloat32Array(0, 0.68)
 colors = PackedColorArray(0.24882, 0, 0, 1, 1, 0.905677, 0.440811, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7sxox"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_c5h7a"]
+_surfaces = [{
+"aabb": AABB(-1, 3, -1, 2, 1e-05, 2),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAP//AAD//wAAAAAAAP//AAD//wAAAAAAAAAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_q3fhw"]
+resource_name = "Floor_Plane_001"
+_surfaces = [{
+"aabb": AABB(-1, 3, -1, 2, 1e-05, 2),
+"attribute_data": PackedByteArray("AAD/////AAD/////AAAAAA=="),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": SubResource("StandardMaterial3D_7sxox"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAP///7///wAAAAD/v///AAD///+/AAAAAAAA/7////9/////f////3////9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_c5h7a")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cacrv"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tu3ig"]
+_surfaces = [{
+"aabb": AABB(-2, 3, -2, 4, 1e-05, 4),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAABAAIAAAADAAEAAAADAAEA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAP//AAD//wAAAAAAAP//AAD//wAAAAAAAAAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_n5ckl"]
+resource_name = "Floor2x_Plane_002"
+_surfaces = [{
+"aabb": AABB(-2, 3, -2, 4, 1e-05, 4),
+"attribute_data": PackedByteArray("AAD/////AAD/////AAAAAAAA/////wAA/////wAAAAA="),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
+"material": SubResource("StandardMaterial3D_cacrv"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP///7///wAAAAD/v///AAD///+/AAAAAAAA/78AAAAA////v///AAAAAP+///8AAP///78AAAAAAAD/v////3////9/////f////3////9/////f////3////9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_tu3ig")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2xgjp"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_cs5mg"]
+_surfaces = [{
+"aabb": AABB(-3, 3, -3, 6, 1e-05, 6),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAP//AAD//wAAAAAAAP//AAD//wAAAAAAAAAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_bafys"]
+resource_name = "Floor3x_Plane_003"
+_surfaces = [{
+"aabb": AABB(-3, 3, -3, 6, 1e-05, 6),
+"attribute_data": PackedByteArray("AAD/////AAD/////AAAAAA=="),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": SubResource("StandardMaterial3D_2xgjp"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAP///7///wAAAAD/v///AAD///+/AAAAAAAA/7////9/////f////3////9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_cs5mg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o17la"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_knbv0"]
+_surfaces = [{
+"aabb": AABB(-1, 3, -1, 2, 1e-05, 2),
+"format": 34896613377,
+"index_count": 3,
+"index_data": PackedByteArray("AAABAAIA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 3,
+"vertex_data": PackedByteArray("AAAAAP//AAD//wAAAAAAAP//AAD//wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_w18yu"]
+resource_name = "FloorAngle45_Plane"
+_surfaces = [{
+"aabb": AABB(-1, 3, -1, 2, 1e-05, 2),
+"attribute_data": PackedByteArray("AAD/////AAD/////"),
+"format": 34896613399,
+"index_count": 3,
+"index_data": PackedByteArray("AAABAAIA"),
+"material": SubResource("StandardMaterial3D_o17la"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 3,
+"vertex_data": PackedByteArray("AAAAAP///7///wAAAAD/v///AAD///+/////f////3////9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_knbv0")
+
 [node name="WallTiles" type="Node3D"]
 
 [node name="BridgeWall" type="MeshInstance3D" parent="."]
@@ -1028,3 +1157,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78846, -0.987667)
 light_color = Color(0.757969, 0.648269, 0.518559, 1)
 light_bake_mode = 1
 omni_range = 7.0
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3, -4)
+mesh = SubResource("ArrayMesh_q3fhw")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ryb5r")
+
+[node name="Floor2x" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -3, -7)
+mesh = SubResource("ArrayMesh_n5ckl")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ryb5r")
+
+[node name="Floor3x" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, -12)
+mesh = SubResource("ArrayMesh_bafys")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ryb5r")
+
+[node name="FloorAngle45" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, -3, -2)
+mesh = SubResource("ArrayMesh_w18yu")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ryb5r")
