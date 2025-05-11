@@ -1,0 +1,24 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://ckf1756xbk8g5"]
+
+[ext_resource type="Shader" uid="uid://bbp1w2qt25iqe" path="res://Environment/Materials/GloballyTiled.tres" id="1_umafu"]
+
+[sub_resource type="Gradient" id="Gradient_y35xu"]
+offsets = PackedFloat32Array(0, 0.229508, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.39817, 0.260932, 0.0917236, 1, 0.262397, 0.180577, 0.0449156, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gfjgm"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hr0ed"]
+resource_name = "_albedo"
+seamless = true
+color_ramp = SubResource("Gradient_y35xu")
+noise = SubResource("FastNoiseLite_gfjgm")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_umafu")
+shader_parameter/TileScale = 0.5
+shader_parameter/TextureParameterTriplanar = SubResource("NoiseTexture2D_hr0ed")
+shader_parameter/triplanar_scale = Vector3(1, 1, 1)
+shader_parameter/triplanar_offset = Vector3(0, 0, 0)
+shader_parameter/triplanar_sharpness = 0.5

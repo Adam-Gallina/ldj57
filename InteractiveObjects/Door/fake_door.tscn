@@ -1,11 +1,47 @@
-[gd_scene load_steps=5 format=3 uid="uid://vdj4k132crsn"]
+[gd_scene load_steps=7 format=4 uid="uid://vdj4k132crsn"]
 
 [ext_resource type="Script" uid="uid://hefskbbgjw73" path="res://InteractiveObjects/Door/door.gd" id="1_y58b8"]
-[ext_resource type="ArrayMesh" uid="uid://0wbbhrf3wdj3" path="res://Environment/Tiles/BasicWall_Cube_003.res" id="2_y58b8"]
-[ext_resource type="Material" uid="uid://dm3r08p0n0cgi" path="res://Environment/WallTex.tres" id="3_v75a3"]
+[ext_resource type="Material" uid="uid://dm3r08p0n0cgi" path="res://Environment/Materials/WallTex.tres" id="3_v75a3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hcok6"]
 size = Vector3(1.70909, 2.39005, 0.0949706)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ybvi8"]
+resource_name = "Stone"
+cull_mode = 2
+albedo_color = Color(0.472361, 0.472361, 0.472361, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_i1702"]
+_surfaces = [{
+"aabb": AABB(-1, 0, 0.734288, 2, 3, 0.265712),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"name": "Stone",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAD//wAA////////AAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ner6s"]
+resource_name = "Wall_Cube_003"
+_surfaces = [{
+"aabb": AABB(-1, 0, 0.734288, 2, 3, 0.265712),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//v/9f/7//n/9//5//v/9f/3//X/9//5//P/+f/3//X/8//1//P/+fAAD/n/8//18AAP8f/3//X/8//1//f/8f/z//n/9//9//P//f/3//n/8/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_ybvi8"),
+"name": "Stone",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAFTV////////VNX/////AABU1f//AAD//1TV//8AAP///78AAP//////v/////////+/AAAAAP///78AAAAAAAD/v///AAD///+///8AAAAA/78AAAAA////v/////8AAP//AAD///////8AAP//AAD/////////////VNVU1VTVVNVU1VTVVNVU1f+//7//v/+//7//v/+//7+qKqoqqiqqKqoqqiqqKqoq/////////////////////wAA/38AAP9/AAD/fwAA/3//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_i1702")
 
 [node name="FakeDoor" type="AnimatableBody3D" node_paths=PackedStringArray("MovementTarget")]
 collision_layer = 12
@@ -21,7 +57,8 @@ Locked = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.208, -0.017)
 shape = SubResource("BoxShape3D_hcok6")
 
-[node name="BasicWallCube003" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.8132, 0, 0, 0, 0.817882, 0, 0, 0, 0.541119, 0, 0, 0)
-mesh = ExtResource("2_y58b8")
+[node name="Wall" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.81, 0, 0, 0, 0.81, 0, 0, 0, 0.541, 0, 0, -0.473736)
+mesh = SubResource("ArrayMesh_ner6s")
+skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_v75a3")

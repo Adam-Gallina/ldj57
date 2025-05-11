@@ -1,11 +1,11 @@
 [gd_scene load_steps=17 format=3 uid="uid://ch8giqrqhbk4q"]
 
-[ext_resource type="Material" uid="uid://dm3r08p0n0cgi" path="res://Environment/WallTex.tres" id="1_7mycd"]
+[ext_resource type="Material" uid="uid://dm3r08p0n0cgi" path="res://Environment/Materials/WallTex.tres" id="1_7mycd"]
 [ext_resource type="PackedScene" uid="uid://be5vi54fph6ey" path="res://Models/Generic/Board.glb" id="2_272bh"]
-[ext_resource type="PackedScene" uid="uid://cx82wvril18o8" path="res://Environment/sconce.tscn" id="3_5vw27"]
+[ext_resource type="PackedScene" uid="uid://cx82wvril18o8" path="res://Environment/Lighting/sconce.tscn" id="3_5vw27"]
 [ext_resource type="PackedScene" uid="uid://chaoslcrikco1" path="res://Models/Main/cultist.glb" id="4_kek77"]
 [ext_resource type="PackedScene" uid="uid://btqm201kf054n" path="res://Models/Props/banner.tscn" id="5_4c57u"]
-[ext_resource type="PackedScene" uid="uid://b7lk04jjbkcgi" path="res://Environment/Scenes/WallTile.tscn" id="6_efxa6"]
+[ext_resource type="PackedScene" path="res://Environment/Scenes/WallTile.tscn" id="6_efxa6"]
 
 [sub_resource type="GDScript" id="GDScript_7mycd"]
 script/source = "extends Node3D

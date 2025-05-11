@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://bupdi8web5dw6"]
-
-[ext_resource type="PackedScene" uid="uid://dfwplp12grt3b" path="res://Environment/Tiles/CurvedWindow.glb" id="1_qif7u"]
-[ext_resource type="Material" uid="uid://dm3r08p0n0cgi" path="res://Environment/WallTex.tres" id="2_uv46d"]
-
-[node name="CurvedWindow2" instance=ExtResource("1_qif7u")]
-
-[node name="CurvedWindow" parent="." index="0"]
-surface_material_override/0 = ExtResource("2_uv46d")

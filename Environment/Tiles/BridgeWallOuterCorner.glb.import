@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cb8xreb8h6suo"
-path="res://.godot/imported/BarredWall.glb-7ccf805bc751e76c8c091406bcea5f93.scn"
+uid="uid://dbrux6ynxeq38"
+path="res://.godot/imported/BridgeWallOuterCorner.glb-08b1c869e5f1550e83794e38169c5a6e.scn"
 
 [deps]
 
-source_file="res://Environment/Tiles/BarredWall.glb"
-dest_files=["res://.godot/imported/BarredWall.glb-7ccf805bc751e76c8c091406bcea5f93.scn"]
+source_file="res://Environment/Tiles/BridgeWallOuterCorner.glb"
+dest_files=["res://.godot/imported/BridgeWallOuterCorner.glb-08b1c869e5f1550e83794e38169c5a6e.scn"]
 
 [params]
 

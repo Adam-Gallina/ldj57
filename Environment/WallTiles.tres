@@ -1,7 +1,7 @@
 [gd_resource type="MeshLibrary" load_steps=100 format=4 uid="uid://cr68g5v2ew5av"]
 
-[ext_resource type="Material" uid="uid://dm3r08p0n0cgi" path="res://Environment/WallTex.tres" id="1_lsji3"]
-[ext_resource type="Material" uid="uid://ckf1756xbk8g5" path="res://Environment/Dirt.tres" id="2_ame6u"]
+[ext_resource type="Material" uid="uid://dm3r08p0n0cgi" path="res://Environment/Materials/WallTex.tres" id="1_lsji3"]
+[ext_resource type="Material" uid="uid://ckf1756xbk8g5" path="res://Environment/Materials/Dirt.tres" id="2_ame6u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t6mpk"]
 resource_name = "DarkMetal"

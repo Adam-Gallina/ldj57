@@ -1,7 +1,7 @@
-[gd_scene load_steps=80 format=4 uid="uid://jlh7neiok8wi"]
+[gd_scene load_steps=77 format=4 uid="uid://jlh7neiok8wi"]
 
-[ext_resource type="Material" uid="uid://ckf1756xbk8g5" path="res://Environment/Dirt.tres" id="2_ryb5r"]
-[ext_resource type="Material" uid="uid://dm3r08p0n0cgi" path="res://Environment/WallTex.tres" id="7_38d8k"]
+[ext_resource type="Material" uid="uid://ckf1756xbk8g5" path="res://Environment/Materials/Dirt.tres" id="2_ryb5r"]
+[ext_resource type="Material" uid="uid://dm3r08p0n0cgi" path="res://Environment/Materials/WallTex.tres" id="7_38d8k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ec04s"]
 resource_name = "Stone"
@@ -812,38 +812,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_c5h7a")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cacrv"]
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_tu3ig"]
-_surfaces = [{
-"aabb": AABB(-2, 3, -2, 4, 1e-05, 4),
-"format": 34896613377,
-"index_count": 12,
-"index_data": PackedByteArray("AAABAAIAAAABAAIAAAADAAEAAAADAAEA"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 4,
-"vertex_data": PackedByteArray("AAAAAP//AAD//wAAAAAAAP//AAD//wAAAAAAAAAAAAA=")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_n5ckl"]
-resource_name = "Floor2x_Plane_002"
-_surfaces = [{
-"aabb": AABB(-2, 3, -2, 4, 1e-05, 4),
-"attribute_data": PackedByteArray("AAD/////AAD/////AAAAAAAA/////wAA/////wAAAAA="),
-"format": 34896613399,
-"index_count": 12,
-"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
-"material": SubResource("StandardMaterial3D_cacrv"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 8,
-"vertex_data": PackedByteArray("AAAAAP///7///wAAAAD/v///AAD///+/AAAAAAAA/78AAAAA////v///AAAAAP+///8AAP///78AAAAAAAD/v////3////9/////f////3////9/////f////3////9/")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_tu3ig")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2xgjp"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_cs5mg"]
@@ -1164,14 +1132,8 @@ mesh = SubResource("ArrayMesh_q3fhw")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_ryb5r")
 
-[node name="Floor2x" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -3, -7)
-mesh = SubResource("ArrayMesh_n5ckl")
-skeleton = NodePath("")
-surface_material_override/0 = ExtResource("2_ryb5r")
-
 [node name="Floor3x" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, -8)
 mesh = SubResource("ArrayMesh_bafys")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_ryb5r")
