@@ -2265,18 +2265,6 @@ shape = SubResource("BoxShape3D_vveqt")
 
 [node name="CurvedWindow3" parent="Rooms/Workshop/ViewingWall" instance=ExtResource("26_qwg7e")]
 
-[node name="StaticBody3D" parent="Rooms/Workshop/ViewingWall" instance=ExtResource("27_dmlpf")]
-transform = Transform3D(-1, 0, 0.000401326, 0, 1, 0, -0.000401326, 0, -1, 5.04932, 0, 26.932)
-
-[node name="StaticBody3D2" parent="Rooms/Workshop/ViewingWall" instance=ExtResource("27_dmlpf")]
-transform = Transform3D(-0.0444738, 0, 0.999011, 0, 1, 0, -0.999011, 0, -0.0444738, 5.98027, 0, 23.8661)
-
-[node name="StaticBody3D4" parent="Rooms/Workshop/ViewingWall" instance=ExtResource("27_dmlpf")]
-transform = Transform3D(-1, 0, 0.000401326, 0, 1, 0, -0.000401326, 0, -1, 5.05333, 0, 16.9638)
-
-[node name="StaticBody3D5" parent="Rooms/Workshop/ViewingWall" instance=ExtResource("27_dmlpf")]
-transform = Transform3D(-1, 0, 0.000401326, 0, 1, 0, -0.000401326, 0, -1, 5.05229, 0, 19.5492)
-
 [node name="Props" type="Node3D" parent="Rooms/Workshop"]
 
 [node name="StaticBody3D" parent="Rooms/Workshop/Props" instance=ExtResource("28_xtsh5")]
@@ -2350,6 +2338,18 @@ transform = Transform3D(0.418422, -0.908253, 0, 0.908253, 0.418422, 0, 0, 0, 1, 
 
 [node name="Bolt3" parent="Rooms/Workshop/Props" instance=ExtResource("35_753mk")]
 transform = Transform3D(-0.387463, 0.871976, -0.299218, 0.886705, 0.441309, 0.137846, 0.252246, -0.211907, -0.944175, -10.0734, 1.07685, -0.761749)
+
+[node name="StaticBody3D5" parent="Rooms/Workshop/Props" instance=ExtResource("27_dmlpf")]
+transform = Transform3D(-1, 0, 0.000401326, 0, 1, 0, -0.000401326, 0, -1, 1.04932, 0, 13.932)
+
+[node name="StaticBody3D6" parent="Rooms/Workshop/Props" instance=ExtResource("27_dmlpf")]
+transform = Transform3D(-0.0444738, 0, 0.999011, 0, 1, 0, -0.999011, 0, -0.0444738, 1.98027, 0, 10.8661)
+
+[node name="StaticBody3D7" parent="Rooms/Workshop/Props" instance=ExtResource("27_dmlpf")]
+transform = Transform3D(-1, 0, 0.000401326, 0, 1, 0, -0.000401326, 0, -1, 1.05333, 0, 3.9638)
+
+[node name="StaticBody3D8" parent="Rooms/Workshop/Props" instance=ExtResource("27_dmlpf")]
+transform = Transform3D(-1, 0, 0.000401326, 0, 1, 0, -0.000401326, 0, -1, 1.05229, 0, 6.5492)
 
 [node name="Hallway" type="Node3D" parent="Rooms"]
 
