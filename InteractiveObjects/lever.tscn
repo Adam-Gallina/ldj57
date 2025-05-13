@@ -10,10 +10,14 @@ top_radius = 0.125
 bottom_radius = 0.125
 height = 0.5
 
-[node name="Lever" type="StaticBody3D"]
+[node name="Lever" type="StaticBody3D" node_paths=PackedStringArray("RotationTarget")]
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_7gs44")
+RotationTarget = NodePath("Pivot")
+ActiveAngle = Vector3(-90, 0, 0)
+InactiveAngle = Vector3(0, 0, 0)
+ActiveOffset = Vector3(0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00183105, 0, -0.250488)

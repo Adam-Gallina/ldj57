@@ -21,6 +21,7 @@ func _ready() -> void:
 
 	_active_angle = Vector3(deg_to_rad(ActiveAngle.x), deg_to_rad(ActiveAngle.y), deg_to_rad(ActiveAngle.z))
 	_inactive_angle = Vector3(deg_to_rad(InactiveAngle.x), deg_to_rad(InactiveAngle.y), deg_to_rad(InactiveAngle.z))
+	update_visuals()
 
 
 func update_visuals():

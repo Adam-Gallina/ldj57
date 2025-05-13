@@ -55,7 +55,7 @@ script = ExtResource("1_nmq74")
 ItemID = 7
 InventoryImage = ExtResource("2_nmq74")
 ItemName = "Statuette of a Believer"
-ItemDescription = "A small marble statue. Holding fills you with determination"
+ItemDescription = "A small marble statue. Holding it fills you with determination"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.429361, 0)

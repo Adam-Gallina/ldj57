@@ -9,10 +9,10 @@ class_name Placeable
 @export var InteractionName = "Unnamed object"
 @export var InteractionMessage = "You're touching something alright"
 
-func _ready() -> void:
-	if CurrItem != null:
-		if CorrectItemID == CurrItem.ItemID:
-			activate.call_deferred()
+#func _ready() -> void:
+#	if CurrItem != null:
+#		if CorrectItemID == CurrItem.ItemID:
+#			activate.call_deferred()
 
 func interact():
 	if Locked:

@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4rb060wq678e"]
+
+[ext_resource type="Script" uid="uid://dn1xdkf1cabjq" path="res://InteractiveObjects/Collectible/grabbable.gd" id="1_1fawl"]
+[ext_resource type="Texture2D" uid="uid://c2n0hcbbm026h" path="res://InteractiveObjects/Collectible/InventoryImages/GearL.png" id="2_mxirh"]
+[ext_resource type="PackedScene" uid="uid://b4h6kmhk3rwqn" path="res://Models/Workshop/Gear1.glb" id="3_gd2af"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vmlrh"]
+height = 0.0667801
+radius = 0.374512
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1fawl"]
+albedo_color = Color(0.0389744, 0.574675, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_mxirh"]
+top_radius = 0.2
+bottom_radius = 0.2
+height = 0.1
+
+[node name="LargeGear" type="StaticBody3D" groups=["ItemHints"]]
+collision_layer = 8
+collision_mask = 12
+script = ExtResource("1_1fawl")
+ItemID = 13
+InventoryImage = ExtResource("2_mxirh")
+ItemName = "Grimy Gear"
+ItemDescription = "A large gear covered in a mysterious fluid"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0337029, 0)
+shape = SubResource("CylinderShape3D_vmlrh")
+
+[node name="Gear12" parent="." instance=ExtResource("3_gd2af")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0273774, 0)
+material_override = SubResource("StandardMaterial3D_1fawl")
+mesh = SubResource("CylinderMesh_mxirh")

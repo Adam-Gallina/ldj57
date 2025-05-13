@@ -2,7 +2,7 @@ extends Node3D
 class_name Interactive
 
 @export var Locked = false
-@export var Reticle : Constants.ReticleType
+@export var Reticle : Constants.ReticleType = Constants.ReticleType.Hand
 
 func interact():
     return false

@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5683vigm1qg"]
+
+[ext_resource type="Script" uid="uid://dn1xdkf1cabjq" path="res://InteractiveObjects/Collectible/grabbable.gd" id="1_ps2ff"]
+[ext_resource type="Texture2D" uid="uid://d0t5j1qn3hm8o" path="res://InteractiveObjects/Collectible/InventoryImages/HallKey.png" id="2_i3flv"]
+[ext_resource type="PackedScene" uid="uid://blgq5cusqwr0t" path="res://Models/Generic/Key.glb" id="3_fjtkg"]
+[ext_resource type="PackedScene" uid="uid://3ye2rstccuw5" path="res://Player/UI/alert.tscn" id="4_uvlad"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vmlrh"]
+height = 0.0553303
+radius = 0.270996
+
+[node name="HallKey" type="StaticBody3D" groups=["ItemHints"]]
+collision_layer = 8
+collision_mask = 12
+script = ExtResource("1_ps2ff")
+ItemID = 14
+InventoryImage = ExtResource("2_i3flv")
+ItemName = "Archive Key"
+ItemDescription = "A slightly rusted key. I bet it goes to a door. Keys usually do"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0594396, 0.0133307, 0.210902)
+shape = SubResource("CylinderShape3D_vmlrh")
+
+[node name="Key2" parent="." instance=ExtResource("3_fjtkg")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+
+[node name="Alert" parent="." instance=ExtResource("4_uvlad")]

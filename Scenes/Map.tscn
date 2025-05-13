@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=4 uid="uid://32taiw6vrc80"]
+[gd_scene load_steps=73 format=4 uid="uid://d202md2fj7jmb"]
 
 [ext_resource type="PackedScene" uid="uid://fcfvs6lptyxx" path="res://Player/player.tscn" id="1_26yhd"]
 [ext_resource type="AudioStream" uid="uid://bbpftcgaci2d7" path="res://Audio/Interact.wav" id="1_ci6au"]
@@ -19,21 +19,28 @@
 [ext_resource type="PackedScene" uid="uid://cpb3mg8anchfs" path="res://Environment/Lighting/brazier.tscn" id="11_5qtum"]
 [ext_resource type="PackedScene" uid="uid://gda1nw7nyv32" path="res://InteractiveObjects/Placeable/gear_mount.tscn" id="11_cwq17"]
 [ext_resource type="PackedScene" uid="uid://eul4s8gomenm" path="res://InteractiveObjects/Placeable/statuette_pedestal.tscn" id="12_8cxpi"]
-[ext_resource type="PackedScene" uid="uid://b4h6kmhk3rwqn" path="res://Models/Workshop/Gear1.glb" id="12_a0h6a"]
 [ext_resource type="PackedScene" uid="uid://b8f24kfc42oro" path="res://InteractiveObjects/ComboLock/combo_lock.tscn" id="13_j4oe2"]
-[ext_resource type="PackedScene" uid="uid://iwdh3vxgc8j3" path="res://Models/Props/GearBlocker.glb" id="13_wcnou"]
 [ext_resource type="PackedScene" uid="uid://l3ymn56xjx72" path="res://InteractiveObjects/Collectible/statuette1.tscn" id="13_wpvg5"]
 [ext_resource type="PackedScene" uid="uid://mbsq7c23mh5i" path="res://InteractiveObjects/Collectible/small_gear.tscn" id="14_1xwpj"]
 [ext_resource type="PackedScene" uid="uid://bkdejcy5ug50f" path="res://InteractiveObjects/ComboLock/chest.tscn" id="14_riaky"]
 [ext_resource type="PackedScene" uid="uid://3ye2rstccuw5" path="res://Player/UI/alert.tscn" id="15_pmuo0"]
-[ext_resource type="PackedScene" uid="uid://8e8h4q5ickb1" path="res://InteractiveObjects/Collectible/statuette4v2.tscn" id="15_riaky"]
-[ext_resource type="PackedScene" uid="uid://c1p1dnd6oq5w6" path="res://Models/Workshop/Gear2.glb" id="16_gg4i5"]
+[ext_resource type="PackedScene" uid="uid://8e8h4q5ickb1" path="res://InteractiveObjects/Collectible/statuette4.tscn" id="15_riaky"]
+[ext_resource type="Script" uid="uid://b8gaerpdstpn3" path="res://InteractiveObjects/toggle.gd" id="16_pwqop"]
 [ext_resource type="PackedScene" uid="uid://bejnid6p6avm6" path="res://InteractiveObjects/Collectible/medium_gear.tscn" id="16_vtkp8"]
 [ext_resource type="PackedScene" uid="uid://i5pc4f86mdkd" path="res://InteractiveObjects/Collectible/crowbar.tscn" id="17_cwq17"]
 [ext_resource type="PackedScene" uid="uid://cpi18rctej3fn" path="res://InteractiveObjects/Collectible/large_gear.tscn" id="17_rg57b"]
 [ext_resource type="Material" uid="uid://dm3r08p0n0cgi" path="res://Environment/Materials/WallTex.tres" id="19_cwq17"]
+[ext_resource type="PackedScene" uid="uid://tig06wkud5pw" path="res://InteractiveObjects/lever.tscn" id="19_gg4i5"]
+[ext_resource type="PackedScene" uid="uid://b4e8rkrldomhc" path="res://InteractiveObjects/Placeable/crane.tscn" id="19_y410r"]
+[ext_resource type="Script" uid="uid://dhadxxq80gm7w" path="res://InteractiveObjects/Placeable/placeable.gd" id="20_pmuo0"]
+[ext_resource type="PackedScene" uid="uid://dts5muxqx56x7" path="res://InteractiveObjects/WorkshopToggle/workshop_toggle.tscn" id="20_xvpjn"]
+[ext_resource type="PackedScene" uid="uid://b5683vigm1qg" path="res://InteractiveObjects/Collectible/archive_key.tscn" id="21_gg4i5"]
+[ext_resource type="PackedScene" uid="uid://bbfo6r7rab8yb" path="res://Models/Workshop/Crane.glb" id="21_pwqop"]
 [ext_resource type="PackedScene" uid="uid://dy0of7rw4g1ey" path="res://InteractiveObjects/Collectible/statuette3.tscn" id="22_ltf6m"]
 [ext_resource type="PackedScene" uid="uid://4q3er0kbekdy" path="res://InteractiveObjects/Collectible/crank.tscn" id="23_uus22"]
+[ext_resource type="PackedScene" uid="uid://c0w7rqfht4grn" path="res://InteractiveObjects/Collectible/statuette5.tscn" id="27_wcnou"]
+[ext_resource type="PackedScene" uid="uid://bbmwpoi33cnu1" path="res://InteractiveObjects/Collectible/statuette_incomplete.tscn" id="28_1xwpj"]
+[ext_resource type="PackedScene" uid="uid://c4rb060wq678e" path="res://InteractiveObjects/Collectible/large_gear_grimed.tscn" id="36_natfk"]
 
 [sub_resource type="GDScript" id="GDScript_58wgy"]
 script/source = "extends Node3D
@@ -156,6 +163,9 @@ vertices = PackedVector3Array(-2.75, 0.29698, -40.5157, -3, 0.29698, -43.2657, -
 polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 4), PackedInt32Array(2, 4, 3), PackedInt32Array(7, 6, 5), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 12), PackedInt32Array(10, 12, 11), PackedInt32Array(16, 15, 13), PackedInt32Array(13, 15, 14), PackedInt32Array(19, 18, 13), PackedInt32Array(13, 18, 17), PackedInt32Array(13, 17, 16), PackedInt32Array(19, 7, 18), PackedInt32Array(18, 7, 5), PackedInt32Array(18, 5, 11), PackedInt32Array(20, 10, 11), PackedInt32Array(20, 11, 5), PackedInt32Array(21, 25, 22), PackedInt32Array(22, 25, 24), PackedInt32Array(22, 24, 23), PackedInt32Array(27, 26, 28), PackedInt32Array(28, 26, 29), PackedInt32Array(29, 31, 28), PackedInt32Array(28, 31, 30), PackedInt32Array(33, 32, 34), PackedInt32Array(34, 32, 35), PackedInt32Array(35, 32, 36), PackedInt32Array(30, 31, 36), PackedInt32Array(36, 31, 35), PackedInt32Array(26, 27, 37), PackedInt32Array(37, 27, 38), PackedInt32Array(38, 27, 39), PackedInt32Array(33, 40, 32), PackedInt32Array(32, 40, 41), PackedInt32Array(41, 40, 42), PackedInt32Array(38, 39, 43), PackedInt32Array(43, 39, 41), PackedInt32Array(43, 41, 42), PackedInt32Array(45, 44, 46), PackedInt32Array(46, 44, 47), PackedInt32Array(50, 49, 51), PackedInt32Array(51, 49, 48), PackedInt32Array(51, 48, 46), PackedInt32Array(51, 46, 47), PackedInt32Array(53, 52, 54), PackedInt32Array(54, 52, 56), PackedInt32Array(54, 56, 55), PackedInt32Array(57, 55, 58), PackedInt32Array(58, 55, 56), PackedInt32Array(62, 61, 59), PackedInt32Array(59, 61, 60), PackedInt32Array(64, 63, 65), PackedInt32Array(65, 63, 66), PackedInt32Array(68, 67, 69), PackedInt32Array(69, 67, 70), PackedInt32Array(70, 67, 71), PackedInt32Array(67, 68, 72), PackedInt32Array(72, 68, 50), PackedInt32Array(50, 68, 49), PackedInt32Array(63, 70, 66), PackedInt32Array(66, 70, 71), PackedInt32Array(76, 75, 73), PackedInt32Array(73, 75, 74), PackedInt32Array(79, 78, 77), PackedInt32Array(82, 81, 80), PackedInt32Array(83, 79, 84), PackedInt32Array(84, 79, 80), PackedInt32Array(80, 79, 77), PackedInt32Array(80, 77, 82), PackedInt32Array(86, 85, 87), PackedInt32Array(87, 85, 89), PackedInt32Array(87, 89, 88), PackedInt32Array(92, 91, 90), PackedInt32Array(92, 90, 93), PackedInt32Array(93, 90, 94), PackedInt32Array(94, 90, 96), PackedInt32Array(94, 96, 95), PackedInt32Array(85, 96, 89), PackedInt32Array(89, 96, 90), PackedInt32Array(97, 64, 65), PackedInt32Array(99, 98, 100), PackedInt32Array(100, 98, 97), PackedInt32Array(100, 97, 65), PackedInt32Array(102, 101, 103), PackedInt32Array(103, 101, 104), PackedInt32Array(106, 105, 107), PackedInt32Array(107, 105, 104), PackedInt32Array(104, 101, 107), PackedInt32Array(107, 101, 108), PackedInt32Array(111, 110, 109), PackedInt32Array(109, 110, 99), PackedInt32Array(99, 110, 98), PackedInt32Array(112, 105, 113), PackedInt32Array(113, 105, 106), PackedInt32Array(111, 109, 108), PackedInt32Array(108, 109, 107), PackedInt32Array(115, 114, 116), PackedInt32Array(116, 114, 117), PackedInt32Array(117, 114, 118), PackedInt32Array(120, 119, 121), PackedInt32Array(121, 119, 122), PackedInt32Array(123, 121, 124), PackedInt32Array(124, 121, 122), PackedInt32Array(124, 122, 125), PackedInt32Array(127, 126, 128), PackedInt32Array(128, 126, 129), PackedInt32Array(132, 131, 126), PackedInt32Array(126, 131, 130), PackedInt32Array(126, 130, 129), PackedInt32Array(133, 135, 134), PackedInt32Array(137, 136, 138), PackedInt32Array(138, 136, 140), PackedInt32Array(138, 140, 139), PackedInt32Array(133, 141, 135), PackedInt32Array(135, 141, 139), PackedInt32Array(140, 142, 139), PackedInt32Array(139, 142, 143), PackedInt32Array(139, 143, 127), PackedInt32Array(145, 144, 142), PackedInt32Array(142, 144, 131), PackedInt32Array(142, 131, 132), PackedInt32Array(142, 132, 143), PackedInt32Array(146, 135, 128), PackedInt32Array(128, 135, 127), PackedInt32Array(127, 135, 139), PackedInt32Array(148, 147, 141), PackedInt32Array(141, 147, 139), PackedInt32Array(151, 150, 149), PackedInt32Array(153, 152, 154), PackedInt32Array(154, 152, 151), PackedInt32Array(154, 151, 149), PackedInt32Array(154, 149, 155), PackedInt32Array(155, 156, 154), PackedInt32Array(158, 157, 159), PackedInt32Array(159, 157, 160), PackedInt32Array(162, 161, 163), PackedInt32Array(163, 161, 164), PackedInt32Array(164, 102, 103), PackedInt32Array(160, 165, 159), PackedInt32Array(159, 165, 163), PackedInt32Array(159, 163, 164), PackedInt32Array(159, 164, 103), PackedInt32Array(167, 166, 168), PackedInt32Array(168, 166, 169), PackedInt32Array(169, 166, 170), PackedInt32Array(172, 171, 173), PackedInt32Array(173, 171, 174), PackedInt32Array(174, 171, 175), PackedInt32Array(171, 176, 175), PackedInt32Array(178, 177, 175), PackedInt32Array(175, 177, 174), PackedInt32Array(174, 177, 179), PackedInt32Array(181, 180, 182), PackedInt32Array(182, 180, 183), PackedInt32Array(173, 185, 172), PackedInt32Array(172, 185, 184), PackedInt32Array(187, 186, 185), PackedInt32Array(185, 186, 188), PackedInt32Array(188, 189, 184), PackedInt32Array(188, 184, 185)]
 geometry_collision_mask = 4294967044
 
+[sub_resource type="BoxMesh" id="BoxMesh_n3g5y"]
+size = Vector3(0.41, 1, 0.78)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_a0h6a"]
 size = Vector3(2.57135, 2.20483, 0.609924)
 
@@ -228,6 +238,25 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_tstl3")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xvpjn"]
+size = Vector3(0.256104, 1, 8.7673)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n3g5y"]
+size = Vector3(0.383057, 1, 3.6701)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mjs32"]
+size = Vector3(2.75, 0.135, 8.53)
+
+[sub_resource type="BoxMesh" id="BoxMesh_natfk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gg4i5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_natfk"]
+size = Vector3(0.156006, 0.834351, 0.20459)
+
+[sub_resource type="BoxMesh" id="BoxMesh_y410r"]
+size = Vector3(0.16, 0.805, 0.15)
 
 [sub_resource type="Gradient" id="Gradient_pkupc"]
 colors = PackedColorArray(0, 0, 0, 0.392157, 0, 0, 0, 0.392157)
@@ -483,96 +512,75 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -23)
 
 [node name="BarDoor" parent="NavigationRegion3D/Workshop" instance=ExtResource("6_dlo4w")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.1299, 0, -0.0431786)
-ActiveOffset = Vector3(0, 0, 1.298)
+Active = true
 
 [node name="Machine" parent="NavigationRegion3D/Workshop" instance=ExtResource("3_w7jjh")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.8892, 0, 3.5506)
 
-[node name="EntranceGears" type="Node3D" parent="NavigationRegion3D/Workshop" node_paths=PackedStringArray("StartGear", "EndGear", "TargetToggles")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.45976, 0, 2.00152)
-script = ExtResource("10_ajvq6")
-StartGear = NodePath("GearMount6")
-EndGear = NodePath("GearMount5")
-TargetToggles = [NodePath("GearMount")]
+[node name="SmallGear" parent="NavigationRegion3D/Workshop" instance=ExtResource("14_1xwpj")]
+transform = Transform3D(-4.37114e-08, 1.23002e-14, -1, 0, 1, 1.06581e-14, 1, 3.55271e-15, -4.37114e-08, -3.96107, 0.281095, 2.11248)
 
-[node name="GearMount6" parent="NavigationRegion3D/Workshop/EntranceGears" instance=ExtResource("11_cwq17")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.676058, 1.23143, 0.174727)
-Locked = true
-
-[node name="Gear12" parent="NavigationRegion3D/Workshop/EntranceGears/GearMount6" instance=ExtResource("12_a0h6a")]
-transform = Transform3D(-0.570714, 6.86581e-08, -0.821149, 0.821149, -3.58936e-08, -0.570714, -6.86581e-08, -1, -3.58936e-08, 0, 0, 0)
-
-[node name="GearBlocker2" parent="NavigationRegion3D/Workshop/EntranceGears/GearMount6" instance=ExtResource("13_wcnou")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-
-[node name="GearMount" parent="NavigationRegion3D/Workshop/EntranceGears" node_paths=PackedStringArray("CurrItem") instance=ExtResource("11_cwq17")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.110958, 1.12482, 0.174727)
-CorrectItemID = 1
-CurrItem = NodePath("SmallGear")
-LockOnActivate = false
-
-[node name="SmallGear" parent="NavigationRegion3D/Workshop/EntranceGears/GearMount" instance=ExtResource("14_1xwpj")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-
-[node name="Alert" parent="NavigationRegion3D/Workshop/EntranceGears/GearMount/SmallGear" instance=ExtResource("15_pmuo0")]
+[node name="Alert" parent="NavigationRegion3D/Workshop/SmallGear" instance=ExtResource("15_pmuo0")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 
-[node name="GearMount5" parent="NavigationRegion3D/Workshop/EntranceGears" instance=ExtResource("11_cwq17")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.283342, 1.42417, 0.174727)
+[node name="VatlingGearbox" type="MeshInstance3D" parent="NavigationRegion3D/Workshop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.57492, 0.959611, 1.82415)
+mesh = SubResource("BoxMesh_n3g5y")
+script = ExtResource("16_pwqop")
 Locked = true
+Reticle = 0
 
-[node name="Gear22" parent="NavigationRegion3D/Workshop/EntranceGears/GearMount5" instance=ExtResource("16_gg4i5")]
-transform = Transform3D(-0.570714, 6.86581e-08, -0.821149, 0.821149, -3.58936e-08, -0.570714, -6.86581e-08, -1, -3.58936e-08, 0, 0, 0)
-
-[node name="GearBlocker2" parent="NavigationRegion3D/Workshop/EntranceGears/GearMount5" instance=ExtResource("13_wcnou")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-
-[node name="Crowbar" parent="NavigationRegion3D/Workshop" instance=ExtResource("17_cwq17")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0534449, 0, 0.162519)
-
-[node name="VatlingGears" type="Node3D" parent="NavigationRegion3D/Workshop" node_paths=PackedStringArray("StartGear", "EndGear", "TargetToggles")]
-transform = Transform3D(1.17225e-07, 0, -1, 0, 1, 0, 1, 0, 1.17225e-07, 2.05297, 0.361636, 2.13061)
+[node name="VatlingGears" type="Node3D" parent="NavigationRegion3D/Workshop/VatlingGearbox" node_paths=PackedStringArray("StartGear", "EndGear", "TargetToggles")]
+transform = Transform3D(1.17225e-07, 0, -1, 0, 1, 0, 1, 0, 1.17225e-07, 0.0040617, -0.597975, 1.12499)
 script = ExtResource("10_ajvq6")
 StartGear = NodePath("GearMount9")
 EndGear = NodePath("GearMount10")
 TargetToggles = [NodePath("GearMount8"), NodePath("GearMount7")]
+Locked = true
 
-[node name="GearMount9" parent="NavigationRegion3D/Workshop/VatlingGears" instance=ExtResource("11_cwq17")]
+[node name="GearMount9" parent="NavigationRegion3D/Workshop/VatlingGearbox/VatlingGears" instance=ExtResource("11_cwq17")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.651751, 0.678447, 0.103768)
 Locked = true
+Reticle = 0
 
-[node name="MediumGear" parent="NavigationRegion3D/Workshop/VatlingGears/GearMount9" instance=ExtResource("16_vtkp8")]
+[node name="MediumGear" parent="NavigationRegion3D/Workshop/VatlingGearbox/VatlingGears/GearMount9" instance=ExtResource("16_vtkp8")]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 0, 0)
 Locked = true
+Reticle = 0
 
-[node name="GearMount8" parent="NavigationRegion3D/Workshop/VatlingGears" instance=ExtResource("11_cwq17")]
+[node name="GearMount8" parent="NavigationRegion3D/Workshop/VatlingGearbox/VatlingGears" instance=ExtResource("11_cwq17")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.330252, 1.0544, 0.109858)
 CorrectItemID = 1
 LockOnActivate = false
 
-[node name="SmallGear" parent="NavigationRegion3D/Workshop/VatlingGears/GearMount8" instance=ExtResource("14_1xwpj")]
+[node name="SmallGear" parent="NavigationRegion3D/Workshop/VatlingGearbox/VatlingGears/GearMount8" instance=ExtResource("14_1xwpj")]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 0, 0)
 visible = false
 
-[node name="GearMount7" parent="NavigationRegion3D/Workshop/VatlingGears" groups=["ItemHints"] instance=ExtResource("11_cwq17")]
+[node name="GearMount7" parent="NavigationRegion3D/Workshop/VatlingGearbox/VatlingGears" groups=["ItemHints"] instance=ExtResource("11_cwq17")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.214647, 0.957403, 0.107117)
 CorrectItemID = 3
 LockOnActivate = false
 
-[node name="LargeGear" parent="NavigationRegion3D/Workshop/VatlingGears/GearMount7" instance=ExtResource("17_rg57b")]
+[node name="LargeGear" parent="NavigationRegion3D/Workshop/VatlingGearbox/VatlingGears/GearMount7" instance=ExtResource("17_rg57b")]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 0, 0)
 visible = false
 
-[node name="Alert" parent="NavigationRegion3D/Workshop/VatlingGears/GearMount7" instance=ExtResource("15_pmuo0")]
+[node name="Alert" parent="NavigationRegion3D/Workshop/VatlingGearbox/VatlingGears/GearMount7" instance=ExtResource("15_pmuo0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.273991)
 
-[node name="GearMount10" parent="NavigationRegion3D/Workshop/VatlingGears" instance=ExtResource("11_cwq17")]
+[node name="GearMount10" parent="NavigationRegion3D/Workshop/VatlingGearbox/VatlingGears" instance=ExtResource("11_cwq17")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.761549, 1.07193, 0.123269)
 Locked = true
+Reticle = 0
 
-[node name="SmallGear2" parent="NavigationRegion3D/Workshop/VatlingGears/GearMount10" instance=ExtResource("14_1xwpj")]
+[node name="SmallGear2" parent="NavigationRegion3D/Workshop/VatlingGearbox/VatlingGears/GearMount10" instance=ExtResource("14_1xwpj")]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 0, 0)
 Locked = true
+Reticle = 0
+
+[node name="LargeGear" parent="NavigationRegion3D/Workshop/VatlingGearbox" instance=ExtResource("17_rg57b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.93871, -0.959611, 1.80494)
 
 [node name="ViewingWall" type="AnimatableBody3D" parent="NavigationRegion3D/Workshop"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, 10)
@@ -596,28 +604,96 @@ mesh = SubResource("ArrayMesh_n71li")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("19_cwq17")
 
+[node name="WorkshopToggle" parent="NavigationRegion3D/Workshop" node_paths=PackedStringArray("Outputs") instance=ExtResource("20_xvpjn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.943982, 0, 0.282673)
+Outputs = [NodePath("../BarDoor"), NodePath("../VatlingGearbox"), NodePath("../BarDoor"), NodePath("../../Platform/CraneGearbox")]
+
 [node name="Platform" type="Node3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -38)
 
-[node name="BarDoor2" parent="NavigationRegion3D/Platform" instance=ExtResource("6_dlo4w")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.02125, 0, 6.13751)
+[node name="Lever" parent="NavigationRegion3D/Platform" instance=ExtResource("19_gg4i5")]
+transform = Transform3D(-2.98023e-08, -0.735825, -0.677171, 1, -4.37114e-08, 0, -2.98023e-08, -0.677171, 0.735825, -1.79602, 1.72345, 1.95158)
 
-[node name="BarDoor3" parent="NavigationRegion3D/Platform" instance=ExtResource("6_dlo4w")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.13687, 0, -3)
+[node name="BarDoorStorage" parent="NavigationRegion3D/Platform/Lever" instance=ExtResource("6_dlo4w")]
+transform = Transform3D(-2.96001e-08, 1, 3.21639e-08, -0.677171, -4.21106e-08, 0.735825, 0.735825, 1.74802e-09, 0.677171, -1.72345, 6.54718, -0.704)
+Active = true
+
+[node name="BarDoorDecom" parent="NavigationRegion3D/Platform/Lever" instance=ExtResource("6_dlo4w")]
+transform = Transform3D(3.21639e-08, 1, 2.96001e-08, 0.735825, -4.21106e-08, 0.677171, 0.677171, 1.74802e-09, -0.735825, -1.72345, -7.85091, -1.53635)
+
+[node name="BarDoorWorkshop" parent="NavigationRegion3D/Platform/Lever" instance=ExtResource("6_dlo4w")]
+transform = Transform3D(3.21639e-08, 1, 2.96001e-08, 0.735825, -4.21106e-08, 0.677171, 0.677171, 1.74802e-09, -0.735825, -1.72345, -11.7336, 2.68259)
+
+[node name="Platform" type="StaticBody3D" parent="NavigationRegion3D/Platform"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 3.0625, 0, -3.0625)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Platform/Platform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0833626, 0.474198, -0.157213)
+shape = SubResource("BoxShape3D_xvpjn")
+
+[node name="CraneGearbox" type="MeshInstance3D" parent="NavigationRegion3D/Platform"]
+transform = Transform3D(0.716144, 0, 0.697953, 0, 1, 0, -0.697953, 0, 0.716144, -1.699, 1.14814, -2.86262)
+mesh = SubResource("BoxMesh_n3g5y")
+script = ExtResource("16_pwqop")
+Locked = true
+Reticle = 0
+
+[node name="Crane" parent="NavigationRegion3D/Platform/CraneGearbox" instance=ExtResource("19_y410r")]
+transform = Transform3D(-0.9998, 0, -0.0200176, 0, 1, 0, 0.0200176, 0, -0.9998, -0.0211182, -1.14814, -0.53484)
+Locked = true
+
+[node name="Gate" type="AnimatableBody3D" parent="NavigationRegion3D/Platform/CraneGearbox/Crane"]
+transform = Transform3D(-0.999974, 0, 0.00715584, 0, 1, 0, -0.00715584, 0, -0.999974, -0.52935, 0, -3.7645)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Platform/CraneGearbox/Crane/Gate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.101192, 0.451051, 0.0622787)
+shape = SubResource("BoxShape3D_n3g5y")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Platform/CraneGearbox/Crane"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.97182, -0.0636657, -3.79443)
+visible = false
+mesh = SubResource("BoxMesh_mjs32")
+
+[node name="Crowbar" parent="NavigationRegion3D/Platform/CraneGearbox/Crane/MeshInstance3D" instance=ExtResource("17_cwq17")]
+transform = Transform3D(-0.702029, 0, 0.712149, 0, 1, 0, -0.712149, 0, -0.702029, -0.0269815, 0.063666, 0.0378739)
+
+[node name="Crane2" parent="NavigationRegion3D/Platform" instance=ExtResource("21_pwqop")]
+transform = Transform3D(-0.670012, 0, -0.74235, 0, 1, 0, 0.74235, 0, -0.670012, 3.24135, 0, 2.0885)
 
 [node name="Decomtamination" type="Node3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -29)
 
-[node name="Door" parent="NavigationRegion3D/Decomtamination" instance=ExtResource("4_np2xp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.854713, 0, 2.86667)
+[node name="HallKey" parent="NavigationRegion3D/Decomtamination" instance=ExtResource("21_gg4i5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55414, 0, 0.718851)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Decomtamination"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33345, 0.463945, 0.262217)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("20_pmuo0")
+CorrectItemID = 13
+ValidItemID = Array[int]([13])
+CanRetrieveItem = false
+InteractionName = "Sink"
+InteractionMessage = "Cum in the sink or sink in the cum?"
+
+[node name="PlaceholderSink2" type="MeshInstance3D" parent="NavigationRegion3D/Decomtamination/StaticBody3D"]
+mesh = SubResource("BoxMesh_natfk")
+skeleton = NodePath("../../../Decomtamination")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Decomtamination/StaticBody3D"]
+shape = SubResource("BoxShape3D_gg4i5")
+
+[node name="LargeGear" parent="NavigationRegion3D/Decomtamination/StaticBody3D" instance=ExtResource("17_rg57b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.20898, 0)
 
 [node name="Storage" type="Node3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -40)
 
 [node name="Statuettes" type="Node3D" parent="NavigationRegion3D/Storage" node_paths=PackedStringArray("TargetToggles") groups=["ItemHints"]]
-transform = Transform3D(-0.642172, 0, -0.76656, 0, 1, 0, 0.76656, 0, -0.642172, 2.23642, 0.722971, 1.42915)
+transform = Transform3D(-0.303368, 0, -0.952873, 0, 1, 0, 0.952873, 0, -0.303368, 1.84528, 0.722971, 0.709576)
 script = ExtResource("11_1ye5v")
-TargetToggles = [NodePath("StatuettePedestal"), NodePath("StatuettePedestal2"), NodePath("StatuettePedestal3"), NodePath("StatuettePedestal4")]
+TargetToggles = [NodePath("StatuettePedestal"), NodePath("StatuettePedestal2"), NodePath("StatuettePedestal3"), NodePath("StatuettePedestal4"), NodePath("StatuettePedestal5")]
 LockOnActivate = true
 
 [node name="StatuettePedestal" parent="NavigationRegion3D/Storage/Statuettes" instance=ExtResource("12_8cxpi")]
@@ -639,6 +715,10 @@ CurrItem = NodePath("Statuette1")
 transform = Transform3D(0.861053, 0, 0.508516, 0, 1, 0, -0.508516, 0, 0.861053, 0.178654, 0.274006, -0.852185)
 CorrectItemID = 10
 
+[node name="StatuettePedestal5" parent="NavigationRegion3D/Storage/Statuettes" instance=ExtResource("12_8cxpi")]
+transform = Transform3D(0.861053, 0, 0.508516, 0, 1, 0, -0.508516, 0, 0.861053, 0.697521, 0.274006, -1.50338)
+CorrectItemID = 11
+
 [node name="BookcaseDoor" parent="NavigationRegion3D/Storage" instance=ExtResource("7_q6lx1")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.94846, 0, 3.81136)
 
@@ -653,26 +733,68 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -34)
 
 [node name="FakeDoor" parent="NavigationRegion3D/Passage" instance=ExtResource("8_5qtum")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 5.85919)
-Locked = false
+collision_layer = 4
+ActiveOffset = Vector3(-1.298, 0, 0)
+LockOnActivate = true
+Reticle = 0
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="NavigationRegion3D/Passage/FakeDoor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.643459, 1.22053, 0)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("16_pwqop")
+LockOnActivate = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Passage/FakeDoor/AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012085, -0.00762939, -0.115479)
+shape = SubResource("BoxShape3D_natfk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Passage/FakeDoor/AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.135069)
+mesh = SubResource("BoxMesh_y410r")
 
 [node name="Archive" type="Node3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -40)
 
 [node name="Lock" parent="NavigationRegion3D/Archive" instance=ExtResource("5_w7jjh")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.87708, 0, 3.87425)
-CorrectItemID = 4
+CorrectItemID = 14
+ValidItemID = Array[int]([14])
 
 [node name="Door" parent="NavigationRegion3D/Archive/Lock" instance=ExtResource("4_np2xp")]
 Locked = true
 
 [node name="Statuette3" parent="NavigationRegion3D/Archive" instance=ExtResource("22_ltf6m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.22542, 0, 2.09131)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.306718, -4.76837e-07, -0.154135)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Archive"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.846762, 0.463945, 2.6431)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("20_pmuo0")
+CorrectItemID = 12
+ValidItemID = Array[int]([12])
+InteractionName = "Statue maker"
+InteractionMessage = "Might be changed"
+
+[node name="PlaceholderSink2" type="MeshInstance3D" parent="NavigationRegion3D/Archive/StaticBody3D"]
+mesh = SubResource("BoxMesh_natfk")
+skeleton = NodePath("../../../Decomtamination")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Archive/StaticBody3D"]
+shape = SubResource("BoxShape3D_gg4i5")
+
+[node name="Statuette5" parent="NavigationRegion3D/Archive/StaticBody3D" instance=ExtResource("27_wcnou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.47908, 0)
 
 [node name="Office" type="Node3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -27)
 
 [node name="Door" parent="NavigationRegion3D/Office" instance=ExtResource("4_np2xp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.820624, 0, -2.86341)
+
+[node name="Statuette7" parent="NavigationRegion3D/Office" instance=ExtResource("28_1xwpj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1068, 0, 0.70533)
 
 [node name="Hallway" type="Node3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -20)
@@ -693,9 +815,6 @@ InteractionMessage = "Slowly decaying wooden boards stacked over a door"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0881758)
 Locked = true
 
-[node name="LargeGear" parent="NavigationRegion3D/Bedroom" instance=ExtResource("17_rg57b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65597, 0, -0.937539)
-
 [node name="ChestLock" parent="NavigationRegion3D/Bedroom" instance=ExtResource("13_j4oe2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14236, 0, 0.0509353)
 Combination = "0228"
@@ -703,8 +822,11 @@ Combination = "0228"
 [node name="Chest" parent="NavigationRegion3D/Bedroom/ChestLock" instance=ExtResource("14_riaky")]
 Locked = true
 
-[node name="Statuette4" parent="NavigationRegion3D/Bedroom/ChestLock/Chest" instance=ExtResource("15_riaky")]
-transform = Transform3D(-0.0364338, -0.988699, -0.145422, 0.937873, 0.0164171, -0.346591, 0.345061, -0.149015, 0.926676, 0.636353, 0.26229, 0.0204074)
+[node name="Statuette5" parent="NavigationRegion3D/Bedroom/ChestLock/Chest" instance=ExtResource("15_riaky")]
+transform = Transform3D(-0.0364338, -0.988699, -0.145422, 0.937873, 0.0164171, -0.346591, 0.345061, -0.149015, 0.926675, 0.636353, 0.26229, 0.0204074)
+
+[node name="LargeGear" parent="NavigationRegion3D/Bedroom" instance=ExtResource("36_natfk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.66625, 0, -0.621605)
 
 [node name="Quarantine" type="Node3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -4)
@@ -765,8 +887,11 @@ transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107
 [node name="Sconce12" parent="Lighting" instance=ExtResource("10_q6lx1")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -3.01217, 4.76837e-07, -25.1725)
 
+[node name="Brazier6" parent="Lighting" instance=ExtResource("11_5qtum")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.44327, -4.76837e-07, -20.138)
+
 [node name="Player" parent="." instance=ExtResource("1_26yhd")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 1.36659, 0, -2.7066)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 1.13368, 9.53674e-07, -2.96976)
 
 [node name="TutorialCanvasLayer" type="CanvasLayer" parent="."]
 
@@ -1038,21 +1163,35 @@ libraries = {
 
 [connection signal="activated" from="NavigationRegion3D/Viewing/Lock" to="NavigationRegion3D/Viewing/Lock/Door" method="unlock"]
 [connection signal="deactivated" from="NavigationRegion3D/Viewing/Lock" to="NavigationRegion3D/Viewing/Lock/Door" method="lock"]
-[connection signal="activated" from="NavigationRegion3D/Workshop/EntranceGears" to="NavigationRegion3D/Workshop/BarDoor" method="activate"]
-[connection signal="deactivated" from="NavigationRegion3D/Workshop/EntranceGears" to="NavigationRegion3D/Workshop/BarDoor" method="deactivate"]
-[connection signal="triggered" from="NavigationRegion3D/Workshop/EntranceGears/GearMount" to="NavigationRegion3D/Workshop/EntranceGears" method="interact" unbinds=1]
-[connection signal="activated" from="NavigationRegion3D/Workshop/VatlingGears" to="NavigationRegion3D/Workshop/ViewingWall" method="translate" binds= [Vector3(0, 2.5, 0)]]
-[connection signal="deactivated" from="NavigationRegion3D/Workshop/VatlingGears" to="NavigationRegion3D/Workshop/ViewingWall" method="translate" binds= [Vector3(0, -2.5, 0)]]
-[connection signal="triggered" from="NavigationRegion3D/Workshop/VatlingGears/GearMount8" to="NavigationRegion3D/Workshop/VatlingGears" method="interact" unbinds=1]
-[connection signal="triggered" from="NavigationRegion3D/Workshop/VatlingGears/GearMount7" to="NavigationRegion3D/Workshop/VatlingGears" method="interact" unbinds=1]
+[connection signal="activated" from="NavigationRegion3D/Workshop/VatlingGearbox" to="NavigationRegion3D/Workshop/VatlingGearbox/VatlingGears" method="unlock"]
+[connection signal="deactivated" from="NavigationRegion3D/Workshop/VatlingGearbox" to="NavigationRegion3D/Workshop/VatlingGearbox/VatlingGears" method="lock"]
+[connection signal="activated" from="NavigationRegion3D/Workshop/VatlingGearbox/VatlingGears" to="NavigationRegion3D/Workshop/ViewingWall" method="translate" binds= [Vector3(0, 2.5, 0)]]
+[connection signal="deactivated" from="NavigationRegion3D/Workshop/VatlingGearbox/VatlingGears" to="NavigationRegion3D/Workshop/ViewingWall" method="translate" binds= [Vector3(0, -2.5, 0)]]
+[connection signal="triggered" from="NavigationRegion3D/Workshop/VatlingGearbox/VatlingGears/GearMount8" to="NavigationRegion3D/Workshop/VatlingGearbox/VatlingGears" method="interact" unbinds=1]
+[connection signal="triggered" from="NavigationRegion3D/Workshop/VatlingGearbox/VatlingGears/GearMount7" to="NavigationRegion3D/Workshop/VatlingGearbox/VatlingGears" method="interact" unbinds=1]
+[connection signal="activated" from="NavigationRegion3D/Platform/Lever" to="NavigationRegion3D/Platform/Lever/BarDoorStorage" method="deactivate"]
+[connection signal="activated" from="NavigationRegion3D/Platform/Lever" to="NavigationRegion3D/Platform/Lever/BarDoorDecom" method="activate"]
+[connection signal="activated" from="NavigationRegion3D/Platform/Lever" to="NavigationRegion3D/Platform/Lever/BarDoorWorkshop" method="activate"]
+[connection signal="deactivated" from="NavigationRegion3D/Platform/Lever" to="NavigationRegion3D/Platform/Lever/BarDoorStorage" method="activate"]
+[connection signal="deactivated" from="NavigationRegion3D/Platform/Lever" to="NavigationRegion3D/Platform/Lever/BarDoorDecom" method="deactivate"]
+[connection signal="deactivated" from="NavigationRegion3D/Platform/Lever" to="NavigationRegion3D/Platform/Lever/BarDoorWorkshop" method="deactivate"]
+[connection signal="activated" from="NavigationRegion3D/Platform/CraneGearbox" to="NavigationRegion3D/Platform/CraneGearbox/Crane" method="unlock"]
+[connection signal="deactivated" from="NavigationRegion3D/Platform/CraneGearbox" to="NavigationRegion3D/Platform/CraneGearbox/Crane" method="lock"]
+[connection signal="activated" from="NavigationRegion3D/Platform/CraneGearbox/Crane" to="NavigationRegion3D/Platform/CraneGearbox/Crane/MeshInstance3D" method="show"]
+[connection signal="activated" from="NavigationRegion3D/Platform/CraneGearbox/Crane" to="NavigationRegion3D/Platform/CraneGearbox/Crane/Gate/CollisionShape3D" method="set_disabled" binds= [true]]
+[connection signal="activated" from="NavigationRegion3D/Decomtamination/StaticBody3D" to="NavigationRegion3D/Decomtamination/StaticBody3D/LargeGear" method="translate" binds= [Vector3(0, 2, 0)]]
 [connection signal="activated" from="NavigationRegion3D/Storage/Statuettes" to="NavigationRegion3D/Storage/BookcaseDoor" method="activate"]
 [connection signal="deactivated" from="NavigationRegion3D/Storage/Statuettes" to="NavigationRegion3D/Storage/BookcaseDoor" method="deactivate"]
 [connection signal="triggered" from="NavigationRegion3D/Storage/Statuettes/StatuettePedestal" to="NavigationRegion3D/Storage/Statuettes" method="interact" unbinds=1]
 [connection signal="triggered" from="NavigationRegion3D/Storage/Statuettes/StatuettePedestal2" to="NavigationRegion3D/Storage/Statuettes" method="interact" unbinds=1]
 [connection signal="triggered" from="NavigationRegion3D/Storage/Statuettes/StatuettePedestal3" to="NavigationRegion3D/Storage/Statuettes" method="interact" unbinds=1]
 [connection signal="triggered" from="NavigationRegion3D/Storage/Statuettes/StatuettePedestal4" to="NavigationRegion3D/Storage/Statuettes" method="interact" unbinds=1]
+[connection signal="triggered" from="NavigationRegion3D/Storage/Statuettes/StatuettePedestal5" to="NavigationRegion3D/Storage/Statuettes" method="interact" unbinds=1]
+[connection signal="activated" from="NavigationRegion3D/Passage/FakeDoor/AnimatableBody3D" to="NavigationRegion3D/Passage/FakeDoor" method="activate"]
+[connection signal="deactivated" from="NavigationRegion3D/Passage/FakeDoor/AnimatableBody3D" to="NavigationRegion3D/Passage/FakeDoor" method="deactivate"]
 [connection signal="activated" from="NavigationRegion3D/Archive/Lock" to="NavigationRegion3D/Archive/Lock/Door" method="unlock"]
 [connection signal="deactivated" from="NavigationRegion3D/Archive/Lock" to="NavigationRegion3D/Archive/Lock/Door" method="lock"]
+[connection signal="activated" from="NavigationRegion3D/Archive/StaticBody3D" to="NavigationRegion3D/Archive/StaticBody3D/Statuette5" method="translate" binds= [Vector3(0, 3, 0)]]
 [connection signal="activated" from="NavigationRegion3D/Bedroom/Boards" to="NavigationRegion3D/Bedroom/Boards/Door2" method="unlock"]
 [connection signal="deactivated" from="NavigationRegion3D/Bedroom/Boards" to="NavigationRegion3D/Bedroom/Boards/Door2" method="lock"]
 [connection signal="activated" from="NavigationRegion3D/Bedroom/ChestLock" to="NavigationRegion3D/Bedroom/ChestLock/Chest" method="unlock"]

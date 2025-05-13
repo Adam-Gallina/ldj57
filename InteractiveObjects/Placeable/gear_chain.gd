@@ -6,6 +6,9 @@ extends ToggleGroup
 @export var StartGearSpeed = 5.
 
 func _process(delta):
+	# Not really the best way to do it, as the Lock behavior of gear chain won't match the Lock behavior of toggle groups
+	if Locked: return
+
 	StartGear.rotation.z += StartGearSpeed * delta
 	var dir = -1
 
@@ -18,3 +21,17 @@ func _process(delta):
 
 	if Active:
 		EndGear.rotation.z += StartGearSpeed * delta * dir
+
+func interact():
+	if Locked: return
+
+	super()
+
+func unlock():
+	super()
+	interact()
+
+func lock():
+	if Active:
+		deactivate()
+	super()

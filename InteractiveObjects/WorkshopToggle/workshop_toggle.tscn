@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dts5muxqx56x7"]
+
+[ext_resource type="Script" uid="uid://cq6qr5cuyg27m" path="res://InteractiveObjects/WorkshopToggle/workshop_toggle.gd" id="1_vxna2"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dfo0i"]
+height = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vxna2"]
+height = 0.6
+
+[sub_resource type="BoxMesh" id="BoxMesh_povm1"]
+size = Vector3(0.25, 0.25, 0.25)
+
+[node name="WorkshopToggle" type="StaticBody3D" node_paths=PackedStringArray("RotationTarget")]
+collision_layer = 12
+collision_mask = 0
+script = ExtResource("1_vxna2")
+RotationTarget = NodePath("MeshInstance3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_dfo0i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+mesh = SubResource("CylinderMesh_vxna2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.374916, 0.299526)
+mesh = SubResource("BoxMesh_povm1")
+skeleton = NodePath("../..")

@@ -25,6 +25,7 @@ func toggle():
         deactivate()
 
 func activate():
+    if Active: return
     Active = true
 
     update_visuals()
@@ -34,6 +35,7 @@ func activate():
     if LockOnActivate: lock()
 
 func deactivate():
+    if not Active: return
     Active = false
 
     update_visuals()
